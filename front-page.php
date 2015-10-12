@@ -37,7 +37,7 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<?php
 		//display featured slider
-		get_template_part('part-featured-full');
+		get_template_part('parts/featured-full');
 		?>
     </section><!--#homeslider-->
 </div><!--#content .row-->
