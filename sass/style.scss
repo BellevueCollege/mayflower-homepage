@@ -12,5 +12,13 @@
  Tags:             accessibility-ready
  Text Domain:      mayflower-homepage
 */
+
 /* Set Browser Support */
+$critical-usage-threshold: 0.1;
+$graceful-usage-threshold: 2;
+$browser-minimum-versions: (
+  "ie": "10",
+);
+
 /* Load compass helpers */
+@import "compass";
