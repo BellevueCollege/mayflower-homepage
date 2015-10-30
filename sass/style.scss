@@ -22,3 +22,330 @@ $browser-minimum-versions: (
 
 /* Load compass helpers */
 @import "compass";
+
+/* ###################################### */
+/* ----- BC Home Page only          ----- */
+/* ###################################### */
+.content-row {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+.row-padding {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+
+#mobilelinks {
+	list-style-type: none;
+	margin-top: 2em;
+
+	li {
+		float: left;
+		padding: 0;
+		margin: 0 0 0 1em;
+	}
+	a {
+		margin-bottom: .666667em;
+	}
+}
+
+#menusfor {
+	margin-top: 1.3333333em;
+
+	h2 {
+		font-size: 1em;
+		font-style:italic;
+		color: #999;
+		padding-top: 1em;
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		margin-top: 0;
+		padding-bottom: 0.6666667em;
+	}
+	li {
+		margin: 0;
+		padding: 0;
+		font-size: .9em;
+		line-height: 1.666667em;
+		white-space: nowrap;
+	}
+}
+
+// Legal Bar Additions
+#front-page-legal {
+	text-align: center;
+	font-size: .8em;
+	margin: 0 auto;
+	padding: .25em 0;
+	ul {
+		list-style-type: none;
+	}
+	ul li {
+		display: inline;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		padding: 0 1em;
+		border-left: 1px solid #ddd;
+	}
+
+	ul li:first-child a {
+		border-left: none;
+	}
+
+	background: #fff;
+	@include box-shadow (-2px 2px 2px rgba(160, 160, 160, 0.7), 2px 2px 2px rgba(160, 160, 160, 0.7));
+}
+
+
+@media screen and (min-width: 55em) {
+	#menusfor .content-padding {
+		padding: 0 1em;
+	}
+}
+
+#homeslider {
+	margin-top: 2em;
+}
+
+#home-sidelinks {
+	border-top: 1px dotted #bbb;
+	padding-top: 1.666667em;
+}
+
+#home-news,
+#home-events {
+	@include background-image(linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%));
+
+	header {
+		background-color: #003D79;
+		color: white;
+	}
+	h2 {
+		font-size: 1.2em;
+		line-height: 1.66667em;
+		white-space: nowrap;
+	}
+	ul {
+		margin: 0.6666667em 0 1em 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	li {
+		margin-left: 0;
+		padding-left: 0;
+		line-height: 1.3333333em;
+		margin-top: 1em;
+	}
+}
+
+#home-events {
+	margin-top: 2em;
+}
+
+#home-news li a,
+#home-events li a {}
+#home-sidelinks li {
+	margin: 0;
+}
+
+#homead img{
+	display: block;
+	margin: 0 auto;
+}
+
+#apply {
+	margin-bottom: 2em;
+	text-align: center;
+
+	strong {
+		display: block;
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (min-width: 20em) {
+	#mobilelinks{
+		float: right;
+		width: 40%;
+		margin-top: 0;
+	}
+	#mobilelinks li {
+		float: none;
+		}
+	#mobilelinks a {
+		display: block;
+		margin-top: 0;
+	}
+	#menusfor {
+		float: left;
+		width: 60%;
+		margin-top: 0;
+		margin-bottom: 2em;
+	}
+	#homeslider {
+		clear: both;
+	}
+}
+@media screen and (min-width: 37em) {
+	.content-row {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+	}
+	.row-padding {
+		padding-top: 2em;
+		padding-bottom: 2em;
+	}
+
+	#mobilelinks{
+		display: none;
+	}
+	#menusfor {
+		display: table-cell;
+		vertical-align:top;
+		width: 25%;
+		margin-bottom: 0;
+		margin-top: 0;
+		float: none;
+
+		li {
+			font-size: 0.9em;
+		}
+	}
+	.no-display-table #menusfor {
+		float: left;
+		width: 24%;
+	}
+	#homeslider {
+		display: table-cell;
+		vertical-align:top;
+		width: 74.4681%;
+		padding-left: 2.127659574468085%;
+		vertical-align: top;
+		margin-top: 0;
+		clear: none;
+
+		padding-left: 1em\9; /*IE8 not like percentage padding*/
+	}
+	.no-display-table #homeslider {
+		float: left;
+		width: 74%;
+		padding-left: 0;
+		margin-left: 2%;
+	}
+
+	#apply a {
+		display: block;
+	}
+	#home-news,
+	#home-events,
+	#home-sidelinks {
+		zoom: 1;
+	}
+	#home-news {
+		margin-left: 0;
+		display: table-cell;
+		vertical-align:top;
+ 		width: 37.5%;
+	 }
+	.no-display-table #home-news {
+		float: left;
+		width: 33.0%;
+	}
+	#home-events {
+		margin-top: 0;
+		margin-left: 0;
+		display: table-cell;
+		vertical-align:top;
+ 		width: 37.5%;
+	}
+	.no-display-table #home-events {
+		float: left;
+		width: 33.0%;
+	}
+	#home-events h2,
+	#home-news h2 {
+		font-size: 1em;
+		line-height: 1.66667em;
+	}
+	#home-sidelinks {
+		display: table-cell;
+		vertical-align:top;
+		padding-top: 0;
+		border: none;
+ 		width: 230px;
+		padding-left: 2.127659574468085%;
+		padding-left: 1em\9; /*IE8 not like percentage padding*/
+	}
+	.no-display-table #home-sidelinks {
+		float: left;
+		width: 31.0%;
+		padding-left: 2%;
+	}
+}
+@media screen and (min-width: 45em) {
+	#menusfor h2{
+		padding-top: 2em;
+	}
+}
+@media screen and (min-width: 50em) {
+	#menusfor ul {
+		margin-top: .333333333em;
+	}
+
+	#menusfor li {
+		font-size: 1em;
+		line-height: 1.666667em;
+	}
+}
+@media screen and (min-width: 60em) {
+	#menusfor li {
+		font-size: 1.1em;
+		line-height: 1.666667em;
+	}
+}
+
+@media screen and (min-width: 45em) {
+	#home-events h2,
+	#home-news h2 {
+		font-size: 1.2em;
+		line-height: 1.66667em;
+	}
+}
+
+@media screen and (min-width: 62em) {
+
+	#menusfor .content-padding {
+		padding: 0 2em;
+	}
+	#menusfor li {
+		font-size: 1.2em;
+	}
+}
+
+/* ##################################### */
+/* Slider bc home page override */
+/* ###################################### */
+.bchome .carousel-inner {
+	box-shadow: 0 2px 8px #cdcdcd;
+}
+.bchome .carousel-caption h2 {
+	display: inline;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: Helvetica,​Arial,​sans-serif;}
+.bchome .carousel-caption p {
+	display: none;
+}
+@media screen and (min-width: 60em) {
+	.bchome .carousel-caption p {
+		display: inline;
+	}
+}
