@@ -70,3 +70,16 @@ function mayflower_body_class_ia( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class','mayflower_body_class_ia' );
+
+/**
+ * Register Menu Locations on Homepage
+ */
+function register_mayflower_homepage_menus() {
+	register_nav_menus(
+		array(
+			'homepage-menus-for' => __( 'Homepage "Menus For" area' ),
+			'homepage-popular' => __( 'Homepage Popular Areas' )
+		)
+	);
+}
+add_action( 'init', 'register_mayflower_homepage_menus' );

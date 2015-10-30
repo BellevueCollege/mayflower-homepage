@@ -19,19 +19,24 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
         <li><a href="//www.bellevuecollege.edu/contacts/" class="btn btn-info">Contact Us</a></li>
     </ul><!--#mobilelinks -->
 
-    <section class="box-shadow" id="menusfor">
-        <div class="content-padding">
-            <h2>Menus for:</h2>
-            <ul>
-                <li><a href="//www.bellevuecollege.edu/students/">Students</a></li>
-                <li><a href="//www.bellevuecollege.edu/future/">Future Students</a></li>
-                <li><a href="//www.bellevuecollege.edu/oiegi/">International Students</a></li>
-                <li><a href="//www.bellevuecollege.edu/employees/">Faculty &amp; Staff</a></li>
-                <li><a href="//www.bellevuecollege.edu/businesses/">Businesses</a></li>
-                <li><a href="//www.bellevuecollege.edu/visitors/">Visitors &amp; Community</a></li>
-            </ul>
-        </div>
+	<section class="box-shadow resources-menu" id="menusfor">
+		<div class="content-padding">
+			<h2><?php _e( 'Menus For:', 'mayflower-homepage' ); ?></h2>
+			<?php wp_nav_menu( array(
+				'theme_location' => 'homepage-menus-for',
+				'depth' => 1
+			) ); ?>
+		</div>
 	</section><!--#menusfor-->
+	<section class="box-shadow resources-menu" id="popularareas">
+		<div class="content-padding">
+			<h2><?php _e( 'Popular Areas:', 'mayflower-homepage' ); ?></h2>
+			<?php wp_nav_menu( array(
+				'theme_location' => 'homepage-popular',
+				'depth' => 1
+			) ); ?>
+		</div>
+	</section><!--#popularareas-->
 
 	<section id="homeslider">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
