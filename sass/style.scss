@@ -165,10 +165,6 @@ $browser-minimum-versions: (
 	#home-news,
 	#home-events {
 		margin-top: 0px;
-		h2 {
-			font-size: 1em;
-			line-height: 1.66667em;
-		}
 	}
 	.resources-menu {
 		li {
@@ -195,6 +191,14 @@ $browser-minimum-versions: (
 @media screen and (min-width: 992px) {
 	#mobilelinks{
 		display: none;
+	}
+
+}
+
+@media screen and (min-width: 1200px) {
+	.resources-menu li {
+		font-size: 1.15em;
+		line-height: 1.666em;
 	}
 }
 
