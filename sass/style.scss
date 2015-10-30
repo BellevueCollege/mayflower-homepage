@@ -35,24 +35,20 @@ $browser-minimum-versions: (
 	padding-bottom: 1em;
 }
 
+.col-no-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
 
 #mobilelinks {
-	list-style-type: none;
 	margin-top: 2em;
-
-	li {
-		float: left;
-		padding: 0;
-		margin: 0 0 0 1em;
-	}
 	a {
 		margin-bottom: .666667em;
 	}
 }
 
-#menusfor {
-	margin-top: 1.3333333em;
-
+.resources-menu {
+	margin-top: 2em;
 	h2 {
 		font-size: 1em;
 		font-style:italic;
@@ -70,8 +66,10 @@ $browser-minimum-versions: (
 		margin: 0;
 		padding: 0;
 		font-size: .9em;
-		line-height: 1.666667em;
 		white-space: nowrap;
+	}
+	section:last-child {
+		margin-top: 1em;
 	}
 }
 
@@ -104,12 +102,6 @@ $browser-minimum-versions: (
 }
 
 
-@media screen and (min-width: 55em) {
-	#menusfor .content-padding {
-		padding: 0 1em;
-	}
-}
-
 #homeslider {
 	margin-top: 2em;
 }
@@ -122,7 +114,7 @@ $browser-minimum-versions: (
 #home-news,
 #home-events {
 	@include background-image(linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%));
-
+	margin-top: 2em;
 	header {
 		background-color: #003D79;
 		color: white;
@@ -145,12 +137,8 @@ $browser-minimum-versions: (
 	}
 }
 
-#home-events {
-	margin-top: 2em;
-}
-
 #home-news li a,
-#home-events li a {}
+#home-events li a,
 #home-sidelinks li {
 	margin: 0;
 }
@@ -161,172 +149,52 @@ $browser-minimum-versions: (
 }
 
 #apply {
-	margin-bottom: 2em;
-	text-align: center;
-
 	strong {
 		display: block;
 		font-size: 1.2em;
 	}
 }
 
-@media screen and (min-width: 20em) {
-	#mobilelinks{
-		float: right;
-		width: 40%;
-		margin-top: 0;
-	}
-	#mobilelinks li {
-		float: none;
-		}
-	#mobilelinks a {
-		display: block;
-		margin-top: 0;
-	}
-	#menusfor {
-		float: left;
-		width: 60%;
-		margin-top: 0;
-		margin-bottom: 2em;
-	}
-	#homeslider {
-		clear: both;
-	}
-}
-@media screen and (min-width: 37em) {
-	.content-row {
-		display: table;
-		width: 100%;
-		table-layout: fixed;
-	}
+
+@media screen and (min-width: 768px) {
 	.row-padding {
 		padding-top: 2em;
 		padding-bottom: 2em;
 	}
 
-	#mobilelinks{
-		display: none;
-	}
-	#menusfor {
-		display: table-cell;
-		vertical-align:top;
-		width: 25%;
-		margin-bottom: 0;
-		margin-top: 0;
-		float: none;
-
-		li {
-			font-size: 0.9em;
+	#home-news,
+	#home-events {
+		margin-top: 0px;
+		h2 {
+			font-size: 1em;
+			line-height: 1.66667em;
 		}
 	}
-	.no-display-table #menusfor {
-		float: left;
-		width: 24%;
-	}
-	#homeslider {
-		display: table-cell;
-		vertical-align:top;
-		width: 74.4681%;
-		padding-left: 2.127659574468085%;
-		vertical-align: top;
-		margin-top: 0;
-		clear: none;
-
-		padding-left: 1em\9; /*IE8 not like percentage padding*/
-	}
-	.no-display-table #homeslider {
-		float: left;
-		width: 74%;
-		padding-left: 0;
-		margin-left: 2%;
-	}
-
-	#apply a {
-		display: block;
-	}
-	#home-news,
-	#home-events,
-	#home-sidelinks {
-		zoom: 1;
-	}
-	#home-news {
-		margin-left: 0;
-		display: table-cell;
-		vertical-align:top;
- 		width: 37.5%;
-	 }
-	.no-display-table #home-news {
-		float: left;
-		width: 33.0%;
-	}
-	#home-events {
-		margin-top: 0;
-		margin-left: 0;
-		display: table-cell;
-		vertical-align:top;
- 		width: 37.5%;
-	}
-	.no-display-table #home-events {
-		float: left;
-		width: 33.0%;
-	}
-	#home-events h2,
-	#home-news h2 {
-		font-size: 1em;
-		line-height: 1.66667em;
-	}
-	#home-sidelinks {
-		display: table-cell;
-		vertical-align:top;
-		padding-top: 0;
-		border: none;
- 		width: 230px;
-		padding-left: 2.127659574468085%;
-		padding-left: 1em\9; /*IE8 not like percentage padding*/
-	}
-	.no-display-table #home-sidelinks {
-		float: left;
-		width: 31.0%;
-		padding-left: 2%;
-	}
-}
-@media screen and (min-width: 45em) {
-	#menusfor h2{
-		padding-top: 2em;
-	}
-}
-@media screen and (min-width: 50em) {
-	#menusfor ul {
-		margin-top: .333333333em;
-	}
-
-	#menusfor li {
-		font-size: 1em;
-		line-height: 1.666667em;
-	}
-}
-@media screen and (min-width: 60em) {
-	#menusfor li {
-		font-size: 1.1em;
-		line-height: 1.666667em;
+	.resources-menu {
+		li {
+			font-size: 1em;
+		}
+		.content-padding {
+			padding: 0 2em;
+		}
 	}
 }
 
-@media screen and (min-width: 45em) {
-	#home-events h2,
-	#home-news h2 {
-		font-size: 1.2em;
-		line-height: 1.66667em;
+@media screen and (min-width: 768px) and (max-width: 992px) {
+	.resources-menu {
+		@include display-flex;
+		section {
+			@include flex(1);
+		}
+		section:last-child {
+			margin-top: 0;
+		}
 	}
 }
 
-@media screen and (min-width: 62em) {
-
-	#menusfor .content-padding {
-		padding: 0 2em;
-	}
-	#menusfor li {
-		font-size: 1.2em;
+@media screen and (min-width: 992px) {
+	#mobilelinks{
+		display: none;
 	}
 }
 
