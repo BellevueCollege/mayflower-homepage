@@ -30,9 +30,9 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 	</div>
 	<div class="col-xs-5 col-sm-4" id="mobilelinks">
 		<section>
-			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/maps/" class="btn btn-info">Maps</a>
-			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/directions/" class="btn btn-info">Directions</a>
-			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/contacts/" class="btn btn-info">Contact Us</a>
+			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/maps/" class="btn btn-info"><?php _e( 'Maps', 'mayflower-homepage' ); ?></a>
+			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/directions/" class="btn btn-info"><?php _e( 'Directions', 'mayflower-homepage' ); ?></a>
+			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/contacts/" class="btn btn-info"><?php _e( 'Contact Us', 'mayflower-homepage' ); ?></a>
 		</section>
 	</div>
 	<div class="col-xs-12 col-md-9 col-xl-10">
@@ -49,7 +49,7 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 	<div class="col-md-8 col-lg-9">
 		<section class="col-md-6 col-no-padding" id="home-news">
 			<header class="content-padding">
-				<h2>News &amp; Announcements</h2>
+				<h2><?php _e( 'News &amp; Announcements', 'mayflower-homepage' ); ?></h2>
 			</header>
 			<div class="content-padding">
 				<ul>
@@ -78,7 +78,7 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 		</section>
 		<section class="col-md-6 col-no-padding"  id="home-events">
 			<header class="content-padding">
-				<h2>Events</h2>
+				<h2><?php _e( 'Events', 'mayflower-homepage' ); ?></h2>
 			</header>
 			<div class="content-padding">
 				<ul>
@@ -101,14 +101,14 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 							wp_reset_postdata();
 					?>
 
-					<li><a class="more" href="//www.bellevuecollege.edu/events"><strong>More events...</strong></a></li>
-					<li><a id="calendar" href="//www.bellevuecollege.edu/enrollment/calendar/"><strong>Academic Calendar</strong></a> </li>
+					<li><a class="more" href="//www.bellevuecollege.edu/events"><strong><?php _e( 'More events...', 'mayflower-homepage' ); ?></strong></a></li>
+					<li><a id="calendar" href="//www.bellevuecollege.edu/enrollment/calendar/"><?php _e( 'Academic Calendar', 'mayflower-homepage' ); ?><strong></strong></a> </li>
 				</ul>
 			</div><!--.content-padding-->
 		</section><!--#home-events-->
 	</div>
 	<div class="col-md-4 col-lg-3">
-		<p id="apply" ><a href="//www.bellevuecollege.edu/admissions/?utm_source=bchomepage&utm_medium=button&utm_campaign=applybtn" class="btn btn-block btn-success"><strong>Apply</strong>for admission</a></p>
+		<p id="apply" ><a href="//www.bellevuecollege.edu/admissions/?utm_source=bchomepage&utm_medium=button&utm_campaign=applybtn" class="btn btn-block btn-success"><strong><?php _e( 'Apply', 'mayflower-homepage' ); ?></strong><?php _e( 'for admission', 'mayflower-homepage' ); ?></a></p>
 		<?php
 			$the_query = new WP_Query(array(
 				'post_type'=>'small_ad',
