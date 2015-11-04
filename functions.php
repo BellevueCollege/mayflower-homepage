@@ -101,3 +101,39 @@ function mayflower_homepage_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'mayflower_homepage_widgets_init' );
+
+
+/**
+ * Theme Settings area
+ *
+ * Configuration for Mayflower Homepage settings area
+ * in the customizer
+ */
+function mayflower_homepage_customize_register( $wp_customize ) {
+	$wp_customize->add_section( 'mayflower_homepage_options' , array(
+		'title'      => __( 'Mayflower Homepage ', 'mayflower-homepage' ),
+		'priority'   => 300,
+	) );
+	$wp_customize->add_setting( 'news_site_id' , array(
+		'default'     => '63',
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_setting( 'news_category_name' , array(
+		'default'     => 'BC Homepage',
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_site_id', array(
+		'label'        => __( 'News Site ID', 'mayflower-homepage' ),
+		'description'  => __( 'ID of site from which to draw homepage news section' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'news_site_id',
+		'type'         => 'number',
+	) ) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_category_name', array(
+		'label'        => __( 'News Category Name', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage news section' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'news_category_name',
+	) ) );
+}
+add_action( 'customize_register', 'mayflower_homepage_customize_register' );

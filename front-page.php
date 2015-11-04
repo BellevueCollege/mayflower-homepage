@@ -8,8 +8,8 @@
 get_header(); ?>
 
 <?php
-define('NEWS_WEBSITE_ID', 63);
-define('NEW_CATEGORY_NAME', "BC Homepage");
+define('NEWS_WEBSITE_ID', get_theme_mod( 'news_site_id' ) );
+define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 ?>
 <div class="row">
 	<?php if ( is_active_sidebar( 'home_menus_area' ) ) : ?>
