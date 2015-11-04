@@ -68,8 +68,11 @@ $browser-minimum-versions: (
 		font-size: .9em;
 		white-space: nowrap;
 	}
-	section:last-child {
+	section {
 		margin-top: 1em;
+	}
+	section:first-child {
+		margin-top: 0em;
 	}
 }
 
@@ -178,11 +181,13 @@ $browser-minimum-versions: (
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
 	.resources-menu {
+		display: -ms-flexbox;
 		@include display-flex;
 		section {
+			-ms-flex: 1;
 			@include flex(1);
 		}
-		section:last-child {
+		section {
 			margin-top: 0;
 		}
 	}

@@ -72,11 +72,15 @@
   white-space: nowrap;
 }
 /* line 71, sass/style.scss */
-.resources-menu section:last-child {
+.resources-menu section {
   margin-top: 1em;
 }
+/* line 74, sass/style.scss */
+.resources-menu section:first-child {
+  margin-top: 0em;
+}
 
-/* line 77, sass/style.scss */
+/* line 80, sass/style.scss */
 #front-page-legal {
   text-align: center;
   font-size: .8em;
@@ -85,38 +89,38 @@
   background: #fff;
   box-shadow: -2px 2px 2px rgba(160, 160, 160, 0.7), 2px 2px 2px rgba(160, 160, 160, 0.7);
 }
-/* line 82, sass/style.scss */
+/* line 85, sass/style.scss */
 #front-page-legal ul {
   list-style-type: none;
 }
-/* line 85, sass/style.scss */
+/* line 88, sass/style.scss */
 #front-page-legal ul li {
   display: inline;
   margin: 0;
   padding: 0;
 }
-/* line 91, sass/style.scss */
+/* line 94, sass/style.scss */
 #front-page-legal a {
   padding: 0 1em;
   border-left: 1px solid #ddd;
 }
-/* line 96, sass/style.scss */
+/* line 99, sass/style.scss */
 #front-page-legal ul li:first-child a {
   border-left: none;
 }
 
-/* line 105, sass/style.scss */
+/* line 108, sass/style.scss */
 #homeslider {
   margin-top: 2em;
 }
 
-/* line 109, sass/style.scss */
+/* line 112, sass/style.scss */
 #home-sidelinks {
   border-top: 1px dotted #bbb;
   padding-top: 1.666667em;
 }
 
-/* line 114, sass/style.scss */
+/* line 117, sass/style.scss */
 #home-news,
 #home-events {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
@@ -125,27 +129,27 @@
   background-image: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
   margin-top: 2em;
 }
-/* line 118, sass/style.scss */
+/* line 121, sass/style.scss */
 #home-news header,
 #home-events header {
   background-color: #003D79;
   color: white;
 }
-/* line 122, sass/style.scss */
+/* line 125, sass/style.scss */
 #home-news h2,
 #home-events h2 {
   font-size: 1.2em;
   line-height: 1.66667em;
   white-space: nowrap;
 }
-/* line 127, sass/style.scss */
+/* line 130, sass/style.scss */
 #home-news ul,
 #home-events ul {
   margin: 0.6666667em 0 1em 0;
   padding: 0;
   list-style-type: none;
 }
-/* line 132, sass/style.scss */
+/* line 135, sass/style.scss */
 #home-news li,
 #home-events li {
   margin-left: 0;
@@ -154,71 +158,73 @@
   margin-top: 1em;
 }
 
-/* line 140, sass/style.scss */
+/* line 143, sass/style.scss */
 #home-news li a,
 #home-events li a,
 #home-sidelinks li {
   margin: 0;
 }
 
-/* line 146, sass/style.scss */
+/* line 149, sass/style.scss */
 #homead img {
   display: block;
   margin: 0 auto;
 }
 
-/* line 152, sass/style.scss */
+/* line 155, sass/style.scss */
 #apply strong {
   display: block;
   font-size: 1.2em;
 }
 
 @media screen and (min-width: 768px) {
-  /* line 160, sass/style.scss */
+  /* line 163, sass/style.scss */
   .row-padding {
     padding-top: 2em;
     padding-bottom: 2em;
   }
 
-  /* line 165, sass/style.scss */
+  /* line 168, sass/style.scss */
   #home-news,
   #home-events {
     margin-top: 0px;
   }
 
-  /* line 170, sass/style.scss */
+  /* line 173, sass/style.scss */
   .resources-menu li {
     font-size: 1em;
   }
-  /* line 173, sass/style.scss */
+  /* line 176, sass/style.scss */
   .resources-menu .content-padding {
     padding: 0 2em;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
-  /* line 180, sass/style.scss */
+  /* line 183, sass/style.scss */
   .resources-menu {
+    display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
   }
-  /* line 182, sass/style.scss */
+  /* line 186, sass/style.scss */
   .resources-menu section {
+    -ms-flex: 1;
     -webkit-flex: 1;
     flex: 1;
   }
-  /* line 185, sass/style.scss */
-  .resources-menu section:last-child {
+  /* line 190, sass/style.scss */
+  .resources-menu section {
     margin-top: 0;
   }
 }
 @media screen and (min-width: 992px) {
-  /* line 192, sass/style.scss */
+  /* line 197, sass/style.scss */
   #mobilelinks {
     display: none;
   }
 }
 @media screen and (min-width: 1200px) {
-  /* line 199, sass/style.scss */
+  /* line 204, sass/style.scss */
   .resources-menu li {
     font-size: 1.15em;
     line-height: 1.666em;
@@ -227,12 +233,12 @@
 /* ##################################### */
 /* Slider bc home page override */
 /* ###################################### */
-/* line 208, sass/style.scss */
+/* line 213, sass/style.scss */
 .bchome .carousel-inner {
   box-shadow: 0 2px 8px #cdcdcd;
 }
 
-/* line 211, sass/style.scss */
+/* line 216, sass/style.scss */
 .bchome .carousel-caption h2 {
   display: inline;
   font-size: 1em;
@@ -240,13 +246,13 @@
   font-family: Helvetica,​Arial,​sans-serif;
 }
 
-/* line 216, sass/style.scss */
+/* line 221, sass/style.scss */
 .bchome .carousel-caption p {
   display: none;
 }
 
 @media screen and (min-width: 60em) {
-  /* line 220, sass/style.scss */
+  /* line 225, sass/style.scss */
   .bchome .carousel-caption p {
     display: inline;
   }

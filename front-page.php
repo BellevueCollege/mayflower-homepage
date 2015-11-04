@@ -12,22 +12,11 @@ define('NEWS_WEBSITE_ID', 63);
 define('NEW_CATEGORY_NAME', "BC Homepage");
 ?>
 <div class="row">
-	<div id class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
-		<section id="menusfor" class="col-xs-12 col-sm-6 col-md-12 box-shadow">
-			<h2><?php _e( 'Menus For:', 'mayflower-homepage' ); ?></h2>
-			<?php wp_nav_menu( array(
-				'theme_location' => 'homepage-menus-for',
-				'depth' => 1
-			) ); ?>
-		</section><!--#menusfor-->
-		<section id="popularareas" class="col-xs-12 col-sm-6 col-md-12  box-shadow">
-			<h2><?php _e( 'Popular Areas:', 'mayflower-homepage' ); ?></h2>
-			<?php wp_nav_menu( array(
-				'theme_location' => 'homepage-popular',
-				'depth' => 1
-			) ); ?>
-		</section><!--#popularareas-->
-	</div>
+	<?php if ( is_active_sidebar( 'home_menus_area' ) ) : ?>
+		<div id class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
+			<?php dynamic_sidebar( 'home_menus_area' ); ?>
+		</div>
+	<?php endif; ?>
 	<div class="col-xs-5 col-sm-4" id="mobilelinks">
 		<section>
 			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/maps/" class="btn btn-info"><?php _e( 'Maps', 'mayflower-homepage' ); ?></a>
@@ -35,7 +24,12 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 			<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/contacts/" class="btn btn-info"><?php _e( 'Contact Us', 'mayflower-homepage' ); ?></a>
 		</section>
 	</div>
+<?php /* Expand slideshow to full-width if no widgets are present in Menus area */
+	if ( is_active_sidebar( 'home_menus_area' ) ) { ?>
 	<div class="col-xs-12 col-md-9 col-xl-10">
+<?php } else { ?>
+	<div class="col-xs-12">
+<?php } ?>
 		<section id="homeslider">
 			<?php
 			//display featured slider

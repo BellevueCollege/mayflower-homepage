@@ -71,15 +71,33 @@ function mayflower_body_class_ia( $classes ) {
 }
 add_filter( 'body_class','mayflower_body_class_ia' );
 
+
 /**
  * Register Menu Locations on Homepage
+ *
  */
 function register_mayflower_homepage_menus() {
 	register_nav_menus(
 		array(
-			'homepage-menus-for' => __( 'Homepage "Menus For" area' ),
-			'homepage-popular' => __( 'Homepage Popular Areas' )
+			'front_page_legal' => __( 'Front Page Legal Links' )
 		)
 	);
 }
 add_action( 'init', 'register_mayflower_homepage_menus' );
+
+/**
+ * Register our sidebars and widgetized areas on Homepage
+ *
+ */
+function mayflower_homepage_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Homepage Menus Area',
+		'id'            => 'home_menus_area',
+		'before_widget' => '<section class="col-xs-12 box-shadow">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'mayflower_homepage_widgets_init' );
