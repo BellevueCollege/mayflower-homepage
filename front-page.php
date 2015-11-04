@@ -37,7 +37,6 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 	</div>
 	<div class="col-xs-12 col-md-9 col-xl-10">
 		<section id="homeslider">
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php
 			//display featured slider
 			get_template_part('parts/featured-full');
@@ -136,8 +135,5 @@ define('NEW_CATEGORY_NAME', "BC Homepage");
 	</div><!--#home-sidelinks-->
 </div><!-- .content-row -->
 
-<?php endwhile; else: ?>
-<p><?php _e('Sorry, these aren\'t the bytes you are looking for.'); ?></p>
-<?php endif; ?>
 
 <?php get_footer(); ?>
