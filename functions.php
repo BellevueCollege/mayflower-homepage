@@ -122,6 +122,10 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'default'     => 'BC Homepage',
 		'transport'   => 'refresh',
 	) );
+	$wp_customize->add_setting( 'apply_btn_html' , array(
+		'default'     => '<a href="//www.bellevuecollege.edu/admissions/?utm_source=bchomepage&utm_medium=button&utm_campaign=applybtn" class="btn btn-block btn-success"><strong>Apply</strong>for admission</a>',
+		'transport'   => 'refresh',
+	) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_site_id', array(
 		'label'        => __( 'News Site ID', 'mayflower-homepage' ),
 		'description'  => __( 'ID of site from which to draw homepage news section' ),
@@ -134,6 +138,13 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'description'  => __( 'Category from which to draw homepage news section' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'news_category_name',
+	) ) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'apply_btn_html', array(
+		'label'        => __( 'Apply Button HTML', 'mayflower-homepage' ),
+		'description'  => __( 'HTML for Homepage Apply Button' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'apply_btn_html',
+		'type'         => 'textarea',
 	) ) );
 }
 add_action( 'customize_register', 'mayflower_homepage_customize_register' );

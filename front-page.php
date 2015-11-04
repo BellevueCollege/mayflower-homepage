@@ -101,7 +101,9 @@ define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 		</section><!--#home-events-->
 	</div>
 	<div class="col-md-4 col-lg-3">
-		<p id="apply" ><a href="//www.bellevuecollege.edu/admissions/?utm_source=bchomepage&utm_medium=button&utm_campaign=applybtn" class="btn btn-block btn-success"><strong><?php _e( 'Apply', 'mayflower-homepage' ); ?></strong><?php _e( 'for admission', 'mayflower-homepage' ); ?></a></p>
+		<p id="apply" >
+			<?php echo get_theme_mod( 'apply_btn_html' ); ?>
+		</p>
 		<?php
 			$the_query = new WP_Query(array(
 				'post_type'=>'small_ad',
