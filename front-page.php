@@ -78,7 +78,7 @@ define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 					<?php
 						$the_query = new WP_Query(array(
 							'post_type'=>'post',
-							'category_name' => 'events',
+							'category_name' => get_theme_mod( 'events_category' ),
 							'orderby'=> 'date',
 							'order'=> 'ASC',
 						));

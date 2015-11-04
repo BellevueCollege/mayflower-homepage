@@ -110,6 +110,25 @@ add_action( 'widgets_init', 'mayflower_homepage_widgets_init' );
  * in the customizer
  */
 function mayflower_homepage_customize_register( $wp_customize ) {
+
+	/**
+	 * Load all categories into array
+	 *
+	 * From http://josephfitzsimmons.com/adding-a-select-box-with-categories-into-wordpress-theme-customizer/
+	 */
+	function get_categories_select() {
+		$teh_cats = get_categories();
+		$results;
+		$count = count($teh_cats);
+		for ( $i=0; $i < $count; $i++ ) {
+			if (isset($teh_cats[$i]))
+				$results[$teh_cats[$i]->slug] = $teh_cats[$i]->name;
+			else
+				$count++;
+		}
+		return $results;
+	}
+
 	$wp_customize->add_section( 'mayflower_homepage_options' , array(
 		'title'      => __( 'Mayflower Homepage ', 'mayflower-homepage' ),
 		'priority'   => 300,
@@ -120,6 +139,10 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_setting( 'news_category_name' , array(
 		'default'     => 'BC Homepage',
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_setting( 'events_category' , array(
+		'default'     => '',
 		'transport'   => 'refresh',
 	) );
 	$wp_customize->add_setting( 'apply_btn_html' , array(
@@ -138,6 +161,14 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'description'  => __( 'Category from which to draw homepage news section' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'news_category_name',
+	) ) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'events_category', array(
+		'label'        => __( 'Events Category', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage events' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'events_category',
+		'type'         => 'select',
+		'choices'  => get_categories_select( ),
 	) ) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'apply_btn_html', array(
 		'label'        => __( 'Apply Button HTML', 'mayflower-homepage' ),
