@@ -163,20 +163,20 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_site_id', array(
 		'label'        => __( 'News Site ID', 'mayflower-homepage' ),
-		'description'  => __( 'ID of site from which to draw homepage news section' ),
+		'description'  => __( 'ID of site from which to draw homepage news section', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'news_site_id',
 		'type'         => 'number',
 	) ) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_category_name', array(
 		'label'        => __( 'News Category Name', 'mayflower-homepage' ),
-		'description'  => __( 'Category from which to draw homepage news section' ),
+		'description'  => __( 'Category from which to draw homepage news section', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'news_category_name',
 	) ) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'events_category', array(
 		'label'        => __( 'Events Category', 'mayflower-homepage' ),
-		'description'  => __( 'Category from which to draw homepage events' ),
+		'description'  => __( 'Category from which to draw homepage events', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'events_category',
 		'type'         => 'select',
@@ -184,7 +184,7 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	) ) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'apply_btn_html', array(
 		'label'        => __( 'Apply Button HTML', 'mayflower-homepage' ),
-		'description'  => __( 'HTML for Homepage Apply Button' ),
+		'description'  => __( 'HTML for Homepage Apply Button', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'apply_btn_html',
 		'type'         => 'textarea',
