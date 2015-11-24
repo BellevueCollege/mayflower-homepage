@@ -1,0 +1,228 @@
+/*!
+ Theme Name:       Mayflower Homepage
+ Theme URI:        http://github.com/bellevuecollege/mayflower-homepage/
+ Description:      Mayflower Child Theme to provide custom Bellevue College Homepage
+ Author:           Bellevue College Information Technology Services
+ Author URI:       http://www.bellevuecollege.edu
+ Template:         mayflower
+ Version:          1.1
+ GitHub Theme URI: bellevuecollege/mayflower-homepage
+ License:          GNU General Public License v2 or later
+ License URI:      http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:             accessibility-ready
+ Text Domain:      mayflower-homepage
+*/
+
+/* Set Browser Support */
+$critical-usage-threshold: 0.1;
+$graceful-usage-threshold: 2;
+$browser-minimum-versions: (
+  "ie": "10",
+);
+
+/* Load compass helpers */
+@import "compass";
+
+/* ###################################### */
+/* ----- BC Home Page only          ----- */
+/* ###################################### */
+.content-row {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+.row-padding {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.col-no-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+#mobilelinks {
+	margin-top: 2em;
+	a {
+		margin-bottom: .666667em;
+	}
+}
+
+.resources-menu {
+	margin-top: 2em;
+	h2 {
+		font-size: 1em;
+		font-style:italic;
+		color: #999;
+		padding-top: 1em;
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		margin-top: 0;
+		padding-bottom: 0.6666667em;
+	}
+	li {
+		margin: 0;
+		padding: 0;
+		font-size: .9em;
+		white-space: nowrap;
+	}
+	section {
+		margin-top: 1em;
+	}
+	section:first-child {
+		margin-top: 0em;
+	}
+}
+
+// Legal Bar Additions
+#front-page-legal {
+	text-align: center;
+	font-size: .8em;
+	margin: 0 auto;
+	padding: .25em 0;
+	ul {
+		list-style-type: none;
+	}
+	ul li {
+		display: inline;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		padding: 0 1em;
+		border-left: 1px solid #ddd;
+	}
+
+	ul li:first-child a {
+		border-left: none;
+	}
+
+	background: #fff;
+	@include box-shadow (-2px 2px 2px rgba(160, 160, 160, 0.7), 2px 2px 2px rgba(160, 160, 160, 0.7));
+}
+
+
+#homeslider {
+	margin-top: 2em;
+}
+
+#home-sidelinks {
+	border-top: 1px dotted #bbb;
+	padding-top: 1.666667em;
+}
+
+#home-news,
+#home-events {
+	@include background-image(linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%));
+	margin-top: 2em;
+	header {
+		background-color: #003D79;
+		color: white;
+	}
+	h2 {
+		font-size: 1.2em;
+		line-height: 1.66667em;
+		white-space: nowrap;
+	}
+	ul {
+		margin: 0.6666667em 0 1em 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	li {
+		margin-left: 0;
+		padding-left: 0;
+		line-height: 1.3333333em;
+		margin-top: 1em;
+	}
+}
+
+#home-news li a,
+#home-events li a,
+#home-sidelinks li {
+	margin: 0;
+}
+
+#homead img{
+	display: block;
+	margin: 0 auto;
+}
+
+#apply {
+	strong {
+		display: block;
+		font-size: 1.2em;
+	}
+}
+
+
+@media screen and (min-width: 768px) {
+	.row-padding {
+		padding-top: 2em;
+		padding-bottom: 2em;
+	}
+
+	#home-news,
+	#home-events {
+		margin-top: 0px;
+	}
+	.resources-menu {
+		li {
+			font-size: 1em;
+		}
+		.content-padding {
+			padding: 0 2em;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.resources-menu {
+		display: -ms-flexbox;
+		@include display-flex;
+		section {
+			-ms-flex: 1;
+			@include flex(1);
+		}
+		section {
+			margin-top: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 992px) {
+	#mobilelinks{
+		display: none;
+	}
+
+}
+
+@media screen and (min-width: 1200px) {
+	.resources-menu li {
+		font-size: 1.15em;
+		line-height: 1.666em;
+	}
+}
+
+/* ##################################### */
+/* Slider bc home page override */
+/* ###################################### */
+.bchome .carousel-inner {
+	box-shadow: 0 2px 8px #cdcdcd;
+}
+.bchome .carousel-caption h2 {
+	display: inline;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: Helvetica,​Arial,​sans-serif;}
+.bchome .carousel-caption p {
+	display: none;
+}
+@media screen and (min-width: 60em) {
+	.bchome .carousel-caption p {
+		display: inline;
+	}
+}
