@@ -61,7 +61,7 @@ define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 							));
 							while ( $the_query->have_posts() ) :
 							$the_query->the_post(); ?>
-											<li><a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+											<li><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></li>
 											<?php endwhile;
 											// wp_reset_postdata();
 											restore_current_blog(); }
@@ -88,7 +88,7 @@ define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 							$the_query->the_post();
 						?>
 						<!-- begin event listing -->
-						<li><a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+						<li><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></li>
 						<!-- end event listing -->
 						<?php
 							endwhile;
@@ -121,7 +121,7 @@ define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 
 					if ( !empty( $small_ad_ext_url ) ){ ?>
 						<p id="homead">
-							<a href="<?php echo esc_url($small_ad_ext_url);?>" title="<?php the_title(); ?>"><?php the_post_thumbnail('home-small-ad', array('class' => 'box-shadow img-responsive'));?></a>
+							<a href="<?php echo esc_url($small_ad_ext_url);?>"><?php the_post_thumbnail('home-small-ad', array('class' => 'box-shadow img-responsive'));?></a>
 						</p>
 				<?php }  //end if ?>
 
