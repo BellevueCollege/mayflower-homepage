@@ -95,7 +95,13 @@ $browser-minimum-versions: (
 		padding: 0 1em;
 		border-left: 1px solid #ddd;
 	}
-
+	a:link {
+		color: #666;
+	}
+	a:active,
+	a:hover{
+		color: #003d79;
+	}
 	ul li:first-child a {
 		border-left: none;
 	}
