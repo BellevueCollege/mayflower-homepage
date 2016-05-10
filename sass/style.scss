@@ -226,3 +226,13 @@ $browser-minimum-versions: (
 		display: inline;
 	}
 }
+
+#bc-home-front-page {
+	a:link {
+		text-decoration: none;
+	}
+	a:hover,
+	a:active {
+		text-decoration: underline;
+	}
+}
