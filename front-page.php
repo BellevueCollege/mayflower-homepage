@@ -12,7 +12,7 @@ define('NEWS_WEBSITE_ID', get_theme_mod( 'news_site_id' ) );
 define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 ?>
 <div id = "bc-home-front-page" >
-	<h1 class="sr-only"><?php _e('Welcome to Bellevue College','mayflower-homepage') ?></h1>
+	<h1 class="sr-only" id="content"><?php _e('Welcome to Bellevue College','mayflower-homepage') ?></h1>
 	<div class="row">
 		<?php if ( is_active_sidebar( 'home_menus_area' ) ) : ?>
 			<div id class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
