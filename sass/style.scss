@@ -95,7 +95,9 @@ $browser-minimum-versions: (
 		padding: 0 1em;
 		border-left: 1px solid #ddd;
 	}
-	a:link {
+	a,
+	a:link,
+	a:visited {
 		color: #666;
 	}
 	a:active,
