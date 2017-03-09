@@ -1,0 +1,34 @@
+{
+  "name": "mayflower-homepage",
+  "version": "1.2.0",
+  "description": "Mayflower Child Theme to provide custom Bellevue College Homepage",
+  "main": " ",
+  "browserslist": [
+    "> 2% in US",
+    "last 2 versions",
+    "Firefox ESR"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-sass": "~3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.1",
+    "uglify-save-license": "^0.4.1"
+  },
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://github.com/BellevueCollege/mayflower-homepage/"
+  },
+  "author": "Bellevue College ITS",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "http://github.com/BellevueCollege/mayflower-homepage/issues"
+  },
+  "homepage": "http://github.com/BellevueCollege/mayflower-homepage#readme"
+}

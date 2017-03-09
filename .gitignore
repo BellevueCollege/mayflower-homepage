@@ -1,19 +1,39 @@
-*.log
+# Generally Ignore
 .htaccess
-sitemap.xml
-sitemap.xml.gz
-wp-config.php
-wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
-wp-content/blogs.dir/
-wp-content/cache/
-wp-content/upgrade/
-wp-content/uploads/
-wp-content/wp-cache-config.php
+*.log
 
-# SASS Config
-config.rb
+# ==================
+# Windows detritus
+# ==================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac Crap
+.DS_Store
+
+# SASS Cache
 .sass-cache
 
 .idea/
+.vscode
+
+# Gulp/NPM stuff
+node_modules
+build
+*.node
+components
+coverage
+*.orig
+.idea
+sandbox
+test/out-fixtures/*
+test/watch-*.txt
+gulp.1
