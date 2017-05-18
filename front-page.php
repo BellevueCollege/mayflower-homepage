@@ -101,35 +101,79 @@ define('NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
 					</ul>
 				</div><!--.content-padding-->
 			</section><!--#home-events-->
-		</div>
+		</div> 
+		<!--
+			========
+			Small Ad 
+			========
+		-->
 		<div class="col-md-4 col-lg-3">
 			<p id="apply" >
 				<?php echo get_theme_mod( 'apply_btn_html' ); ?>
 			</p>
-			<?php
+
+			<?php  $number = 0; // small ad
 				$the_query = new WP_Query(array(
 					'post_type'=>'small_ad',
 					'orderby'=> 'rand',
 					'order'=> 'ASC',
-					'posts_per_page' => 1,
+					'posts_per_page' => $number,
 				));
+				?>
+				<div id="smallAd">
+					<div id="smallAd-carousel" class="carousel slide" data-ride="carousel" data-wrap="true"> 
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner center-block" role="listbox">
+							<?php							
+							while ( $the_query->have_posts() ) :
+								$the_query->the_post();
 
-				while ( $the_query->have_posts() ) :
-				$the_query->the_post();
+								// If url field has content, add the URL to the post thumbnail.
+								$small_ad_ext_url = get_post_meta( $post->ID, '_small_ad_url', true );
+								
+									if ( $the_query->current_post == 0 ) { ?>
+									<div class="item active">
+								<?php }  else { ?>
+									<div class="item">
+								<?php } 	
+									if( $small_ad_ext_url ) { ?>					
+										<a href="<?php echo esc_url( $small_ad_ext_url );?>"><?php the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );?></a>
+									<?php }  else {
+										the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );
+									} ?>
+									</div>
+							<?php // }  //end if ?>
+							<?php endwhile; ?>
+						</div>				
 
-				// If url field has content, add the URL to the post thumbnail.
-					$small_ad_ext_url = get_post_meta( $post->ID, '_small_ad_url', true );
-
-					if ( !empty( $small_ad_ext_url ) ){ ?>
-						<p id="homead">
-							<a href="<?php echo esc_url($small_ad_ext_url);?>"><?php the_post_thumbnail('home-small-ad', array('class' => 'box-shadow img-responsive'));?></a>
-						</p>
-				<?php }  //end if ?>
-
-			<?php
-				endwhile;
-					wp_reset_postdata();
-			?>
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+					<?php
+					
+						while( $the_query->have_posts() ) :					
+							$the_query->the_post();
+							$number = $the_query->current_post;
+					
+							if ( $number == 0 ) { ?>
+								<li data-target="#smallAd-carousel" data-slide-to="<?php echo $number; ?>" class="active"></li>
+							<?php } else { ?>
+								<li data-target="#smallAd-carousel" data-slide-to="<?php echo $number; ?>"></li>
+							<?php }
+						endwhile; ?>		 			
+					</ol>
+					
+					<!-- Controls -->
+					<?php  $published_ad = wp_count_posts( 'small_ad' )->publish;
+						if($published_ad > 1) : ?>
+							<a class="left carousel-control" href="#smallAd-carousel" role="button" data-slide="prev">
+								<span class="glyphicon glyphicon-triangle-left" aria-hidden="true" value="left"></span>
+							</a>
+							<a class="right carousel-control" href="#smallAd-carousel" role="button" data-slide="next">
+								<span class="glyphicon glyphicon-triangle-right" aria-hidden="true" value="right"></span>
+							</a>
+					<?php endif; wp_reset_postdata(); ?>
+				</div><!-- smallAd-carousel-->
+			</div><!-- small Ad -->			
 		</div><!--#home-sidelinks-->
 	</div><!-- .content-row -->
 </div>
