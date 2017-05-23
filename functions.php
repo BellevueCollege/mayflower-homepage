@@ -15,13 +15,13 @@ function bc_footer() {
 		$bc_globals_bfoot_filename,
 		$bc_globals_legal_filename;
 
-	$bc_footer =  $bc_globals_html_filepath . $bc_globals_bfoot_filename;
-	$bc_footerlegal =  $bc_globals_html_filepath . $bc_globals_legal_filename;
-	include_once($bc_footer);
+	$bc_footer = $bc_globals_html_filepath . $bc_globals_bfoot_filename;
+	$bc_footerlegal = $bc_globals_html_filepath . $bc_globals_legal_filename;
+	include_once( $bc_footer );
 	get_template_part( 'part-front-page-legal' );
-	include_once($bc_footerlegal);
+	include_once( $bc_footerlegal );
 }
-add_action('mayflower_footer', 'bc_footer', 50);
+add_action( 'mayflower_footer', 'bc_footer', 50 );
 
 
 /**
@@ -32,19 +32,19 @@ add_action('mayflower_footer', 'bc_footer', 50);
  * as this is a child theme.
  *
  */
-if ( current_user_can('manage_network') ) {
-	if( file_exists( get_stylesheet_directory() . '/inc/mayflower-bc-home/bc-home.php') ) {
-		require( get_stylesheet_directory() . '/inc/mayflower-bc-home/bc-home.php');
+if ( current_user_can( 'manage_network' ) ) {
+	if ( file_exists( get_stylesheet_directory() . '/inc/mayflower-bc-home/bc-home.php' ) ) {
+		require( get_stylesheet_directory() . '/inc/mayflower-bc-home/bc-home.php' );
 	}
 }
 
 /* Adds a box to the main column on the Post and Page edit screens */
 function add_global_section_meta_box() {
 	global $post;
-	if ( ! empty($post) && is_a($post, 'WP_Post') ) {
-		if ("0" == $post->post_parent){
-			$screens = array('page');
-			foreach ($screens as $screen) {
+	if ( ! empty( $post ) && is_a( $post, 'WP_Post' ) ) {
+		if ( '0' === $post->post_parent ) {
+			$screens = array( 'page' );
+			foreach ( $screens as $screen ) {
 				add_meta_box(
 					'global_section_meta_box',
 					'College Navigation Area',
@@ -79,7 +79,7 @@ add_filter( 'body_class','mayflower_body_class_ia' );
 function register_mayflower_homepage_menus() {
 	register_nav_menus(
 		array(
-			'front_page_legal' => __( 'Front Page Legal Links' )
+			'front_page_legal' => __( 'Front Page Legal Links' ),
 		)
 	);
 }
@@ -130,7 +130,7 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	 *
 	 */
 	function sanitize_int( $input ) {
-		return (int)$input;
+		return (int) $input;
 	}
 
 	$wp_customize->add_section( 'mayflower_homepage_options' , array(
