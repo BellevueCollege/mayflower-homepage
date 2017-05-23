@@ -6,11 +6,6 @@
  *
  */
 get_header(); ?>
-
-<?php
-define( 'NEWS_WEBSITE_ID', get_theme_mod( 'news_site_id' ) );
-define( 'NEW_CATEGORY_NAME', get_theme_mod( 'news_category_name' ) );
-?>
 <div id = "bc-home-front-page" >
 	<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
 	<div class="row">
