@@ -114,17 +114,13 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	/**
 	 * Load all categories into array
 	 *
-	 * From http://josephfitzsimmons.com/adding-a-select-box-with-categories-into-wordpress-theme-customizer/
+	 * Inspired by http://josephfitzsimmons.com/adding-a-select-box-with-categories-into-wordpress-theme-customizer/
+	 * but modified to use foreach loop for simplicity
 	 */
 	function get_categories_select() {
-		$teh_cats = get_categories();
 		$results;
-		$count = count($teh_cats);
-		for ( $i=0; $i < $count; $i++ ) {
-			if (isset($teh_cats[$i]))
-				$results[$teh_cats[$i]->slug] = $teh_cats[$i]->name;
-			else
-				$count++;
+		foreach ( get_categories() as $cat ) {
+			$results[ $cat->slug ] = $cat->name;
 		}
 		return $results;
 	}
