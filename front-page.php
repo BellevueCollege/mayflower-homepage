@@ -102,35 +102,39 @@ get_header(); ?>
 			<p id="apply" >
 				<?php echo get_theme_mod( 'apply_btn_html' ); ?>
 			</p>
+			<?php  $number = 0; // small ad
+				$the_query = new WP_Query(array(
+					'post_type'=>'small_ad',
+					'orderby'=> 'ID',
+					'order'=> 'ASC',
+					'posts_per_page' => $number,
+				));
+				?>
+				<div id="smallAd">
+					<div id="smallAd-carousel" class="carousel slide" data-ride="carousel" data-wrap="true"> 
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner center-block" role="listbox"  id="smallAdImages"  style="display:none">
+							<?php							
+							while ( $the_query->have_posts() ) :
+								$the_query->the_post();
 
-			<?php $number = 0; // small ad
-			$the_query = new WP_Query( array(
-				'post_type'      => 'small_ad',
-				'orderby'        => 'rand',
-				'order'          => 'ASC',
-				'posts_per_page' => $number,
-			));
-			?>
-			<div id="smallAd">
-				<div id="smallAd-carousel" class="carousel slide" data-ride="carousel" data-wrap="true"> <!-- Wrapper for slides -->
-					<div class="carousel-inner center-block" role="listbox">
-						<?php while ( $the_query->have_posts() ) :
-							$the_query->the_post();
-							// If url field has content, add the URL to the post thumbnail.
-							$small_ad_ext_url = get_post_meta( $post->ID, '_small_ad_url', true );
-							if ( 0 === $the_query->current_post ) { ?>
-								<div class="item active">
-							<?php } else { ?>
-								<div class="item">
-							<?php }
-							if ( $small_ad_ext_url ) { ?>
-								<a href="<?php echo esc_url( $small_ad_ext_url );?>"><?php the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );?></a>
-							<?php } else {
-								the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );
-							} ?>
-							</div>
-						<?php endwhile; ?>
-					</div>
+								// If url field has content, add the URL to the post thumbnail.
+								$small_ad_ext_url = get_post_meta( $post->ID, '_small_ad_url', true );
+								
+									if ( $the_query->current_post == 0 ) { ?>
+									<div class="item active">
+								<?php }  else { ?>
+									<div class="item">
+								<?php } 	
+									if( $small_ad_ext_url ) { ?>					
+										<a href="<?php echo esc_url( $small_ad_ext_url );?>"><?php the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );?></a>
+									<?php }  else {
+										the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );
+									} ?>
+									</div>
+							<?php // }  //end if ?>
+							<?php endwhile; ?>
+						</div>				
 
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
@@ -159,9 +163,38 @@ get_header(); ?>
 					<?php endif;
 					wp_reset_postdata(); ?>
 				</div><!-- smallAd-carousel-->
-			</div><!-- small Ad -->			
+			</div><!-- small Ad -->	
 		</div><!--#home-sidelinks-->
 	</div><!-- .content-row -->
 </div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	/* store images in a variable object */
+	var images = $( "#smallAdImages" ).children();
 
+	function shuffle(array) {
+		/* https://github.com/Daplie/knuth-shuffle */
+		var currentSlide = array.length,
+			rand, temp;
+		while ( 0 !== currentSlide ) {
+			rand = Math.floor( Math.random() * currentSlide );
+			currentSlide -= 1;
+
+			temp = array[currentSlide];
+			array[currentSlide] = array[rand];
+			array[rand] = temp;
+		}
+		return array;
+	}
+		/* shuffle array */
+	var shufImg = shuffle( images );
+	shufImg.each( function() {
+		$( this ).removeClass( "active" ).attr('aria-selected', 'false' ).attr('tabindex', '-1' );
+	});
+	/* add class to first shuffled object */
+	$( "#smallAdImages" ).html(shufImg).show();
+	$( "#smallAdImages" ).children().first().addClass( "active" ).attr('aria-selected', 'true' ).attr('tabindex', '0' );
+
+});
+</script>
 <?php get_footer(); ?>
