@@ -101,7 +101,7 @@ function add_small_ad_columns($small_ad_columns) {
 	switch( $column ) {
 
 		    case 'thumbnail':
-					echo get_the_post_thumbnail( $post->ID, 'sort-screen-thumbnail' );
+					echo get_the_post_thumbnail( $post->ID, 'thumbnail' );
 					break;
 
 			case 'small_ad_link_to':
