@@ -111,7 +111,7 @@ get_header(); ?>
 				));
 				?>
 				<div id="smallAd">
-					<div id="smallAd-carousel" class="carousel slide" data-ride="carousel" data-wrap="true"> 
+					<div id="smallAd-carousel" class="carousel slide" data-ride="carousel" data-wrap="true" data-interval="false"> 
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner center-block" role="listbox"  id="smallAdImages"  style="display:none">
 							<?php							
@@ -137,31 +137,30 @@ get_header(); ?>
 						</div>				
 
 					<!-- Indicators -->
+					<?php
+					if( $the_query->post_count > 1 ) { ?>
 					<ol class="carousel-indicators">
 					<?php
-					while ( $the_query->have_posts() ) :
-						$the_query->the_post();
+					while ( $the_query->have_posts() > 0 ) : $the_query->the_post();
 						$number = $the_query->current_post;
-						if ( 0 === $number ) { ?>
-							<li data-target="#smallAd-carousel" data-slide-to="<?php echo intval( $number ); ?>" class="active"></li>
-						<?php } else { ?>
-							<li data-target="#smallAd-carousel" data-slide-to="<?php echo intval( $number ); ?>"></li>
-						<?php }
+						if( $number >= 0 || $number <= 5 ) {
+							if ( 0 === $number ) { ?>
+								<li data-target="#smallAd-carousel" data-slide-to="<?php echo intval( $number ); ?>" class="active"></li>
+							<?php } else { ?>
+								<li data-target="#smallAd-carousel" data-slide-to="<?php echo intval( $number ); ?>"></li>
+							<?php }
+						}
 					endwhile; ?>
 					</ol>
-					
-					<!-- Controls -->
-					<?php
-					$published_ad = wp_count_posts( 'small_ad' )->publish;
-					if ( $published_ad > 1 ) : ?>
+						<!-- Controls -->
 						<a class="left carousel-control" href="#smallAd-carousel" role="button" data-slide="prev">
 							<span class="glyphicon glyphicon-triangle-left" aria-hidden="true" value="left"></span>
 						</a>
 						<a class="right carousel-control" href="#smallAd-carousel" role="button" data-slide="next">
 							<span class="glyphicon glyphicon-triangle-right" aria-hidden="true" value="right"></span>
 						</a>
-					<?php endif;
-					wp_reset_postdata(); ?>
+					<?php } ?> 
+					<?php wp_reset_postdata(); ?>
 				</div><!-- smallAd-carousel-->
 			</div><!-- small Ad -->	
 		</div><!--#home-sidelinks-->
