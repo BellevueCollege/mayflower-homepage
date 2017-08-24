@@ -18,19 +18,6 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
-	<title><?php
-		$post_meta_data = get_post_custom($post->ID);
-		if ( isset( $post_meta_data['_seo_custom_page_title'][0] ) ) {
-			echo $post_meta_data['_seo_custom_page_title'][0];
-		} else {
-			if ( is_front_page() ) { bloginfo('name');
-				?> @ Bellevue College<?php
-			} else {
-				wp_title( " :: ", true, 'right' );
-			}
-		}
-	?></title>
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<?php if ( isset ( $post_meta_data['_seo_meta_description'][0] ) ) { ?>
 		<meta name="description" content="<?php echo $post_meta_data['_seo_meta_description'][0]; ?>" />
