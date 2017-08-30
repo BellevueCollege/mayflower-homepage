@@ -45,10 +45,11 @@ get_header(); ?>
 						<?php
 						if ( is_multisite() ) {
 							global $switched;
+							$news_category_name = get_theme_mod( 'news_category_name' );
 							switch_to_blog( get_theme_mod( 'news_site_id' ) ); //switched to the news site
 							$the_query = new WP_Query( array(
 								'post_type'      => 'post',
-								'category_name'  => get_theme_mod( 'news_category_name' ),
+								'category_name'  => $news_category_name,
 								'orderby'        => 'date',
 								'order'          => 'DESC',
 								'posts_per_page' => 3,
