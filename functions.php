@@ -4,7 +4,19 @@
  */
 add_action( 'wp_enqueue_scripts', 'mayflower_homepage_enqueue_styles' );
 function mayflower_homepage_enqueue_styles() {
+
+	// Enqueue parent theme stylesheet
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+
+	// Degregister default stylesheet
+	wp_deregister_style( 'mayflower' );
+
+	// Then add it again, using theme version number
+	wp_register_style( 'mayflower', get_stylesheet_uri(), array( 'parent-style' ), wp_get_theme()->get( 'Version' ) );
+
+	// enqueue it again
+	wp_enqueue_style( 'mayflower' );
+
 }
 
 /**
