@@ -91,28 +91,80 @@ add_filter( 'body_class','mayflower_body_class_ia' );
 function register_mayflower_homepage_menus() {
 	register_nav_menus(
 		array(
-			'front_page_legal' => __( 'Front Page Legal Links' ),
+			'mfhomepage_menus_for' => __( 'Front Page - Top Left' ),
+			'mfhomepage_resources' => __( 'Front Page - Top Center' ),
+			'mfhomepage_contact'   => __( 'Front Page - Top Right' ),
+			'front_page_legal'     => __( 'Front Page - Legal Links' ),
 		)
 	);
 }
 add_action( 'init', 'register_mayflower_homepage_menus' );
 
-/**
- * Register our sidebars and widgetized areas on Homepage
- *
- */
-function mayflower_homepage_widgets_init() {
+//////////
+// Front Page Menu Walker - Button Groups!
+/////////
+class MFHomepage_Walker extends Walker_Nav_Menu {
 
-	register_sidebar( array(
-		'name'          => 'Homepage Menus Area',
-		'id'            => 'home_menus_area',
-		'before_widget' => '<section class="col-xs-12 box-shadow">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>',
-	) );
+	// Displays start of an element. E.g '<li> Item Name'
+	// @see Walker::start_el()
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$object = $item->object;
+		$type = $item->type;
+		$title = $item->title;
+		$description = $item->description;
+		$permalink = $item->url;
+		//$output .= '<pre>' . print_r($item, true) . '</pre>';
+
+		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
+			$output .= "<a class='btn btn-default btn-block " . implode( '', $item->classes ) . "' href='$permalink'>";
+			$output .= $title;
+
+		} elseif ( $depth > 0 ) {
+			$output .= "<li><a href='$permalink'>$title";
+		} else {
+			$output .= '<div class="btn-group btn-group-justified" role="group">';
+			$output .= '<a class="btn btn-default dropdown-toggle ' . implode( '', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			$output .= $title;
+			$output .= ' <span class="caret"></span>';
+			$output .= '</a>';
+		}
+
+	}
+
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
+
+		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
+			$output .= '</a>';
+
+		} elseif ( $depth > 0 ) {
+			$output .= '</a></li>';
+		} else {
+			$output .= '</div>';
+		}
+	}
+	function start_lvl( &$output, $depth, $args = array() ) {
+		$output .= '<ul class="dropdown-menu">';
+	}
+	function end_lvl( &$output, $depth, $args = array() ) {
+		$output .= '</ul>';
+	}
+
 }
-add_action( 'widgets_init', 'mayflower_homepage_widgets_init' );
+
+function mfhomepage_get_menu_name( $location ) {
+	$menu_name = $location;
+	$locations = get_nav_menu_locations();
+	$menu_id = $locations[ $menu_name ] ;
+	$menu_object = wp_get_nav_menu_object( $menu_id );
+	return $menu_object->name;
+}
+
+
+
+
+
+
+
 
 
 /**

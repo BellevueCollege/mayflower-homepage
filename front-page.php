@@ -9,28 +9,54 @@ get_header(); ?>
 <div id = "bc-home-front-page" >
 	<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
 	<div class="row">
-		<?php if ( is_active_sidebar( 'home_menus_area' ) ) : ?>
-			<div id class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
-				<?php dynamic_sidebar( 'home_menus_area' ); ?>
-			</div>
-		<?php endif; ?>
-		<div class="col-xs-5 col-sm-4" id="mobilelinks">
-			<section>
-				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/maps/" class="btn btn-info"><?php esc_html_e( 'Maps', 'mayflower-homepage' ); ?></a>
-				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/directions/" class="btn btn-info"><?php esc_html_e( 'Directions', 'mayflower-homepage' ); ?></a>
-				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/contacts/" class="btn btn-info"><?php esc_html_e( 'Contact Us', 'mayflower-homepage' ); ?></a>
-			</section>
-		</div>
-		<?php /* Expand slideshow to full-width if no widgets are present in Menus area */
-		if ( is_active_sidebar( 'home_menus_area' ) ) { ?>
-			<div class="col-xs-12 col-md-9 col-xl-10">
-		<?php } else { ?>
-			<div class="col-xs-12">
-		<?php } ?>
-			<section id="homeslider">
+		<div id="mfhomepage-top-menus" class="col-xs-12">
+			<div id="mfhomepage-menus-for">
+				<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>
 				<?php
-				//display featured slider
-				get_template_part( 'parts/featured-full' ); ?>
+				wp_nav_menu( array(
+					'theme_location' => 'mfhomepage_menus_for',
+					'menu_class'     => 'mfhomepage-menus-for',
+					'container'     => false,
+					'depth'     => 2,
+					'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
+					'walker' => new MFHomepage_Walker(),
+				) );
+				?>
+			</div>
+			<div id="mfhomepage-resources">
+				<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_resources' ) ); ?></h2>
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'mfhomepage_resources',
+					'menu_class'     => 'mfhomepage-resources',
+					'container'     => false,
+					'depth'     => 2,
+					'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
+					'walker' => new MFHomepage_Walker(),
+				) );
+				?>
+		</div>
+			<div id="mfhomepage-contact">
+				<h2 class="top-menu-title sr-only"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_contact' ) ); ?></h2>
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'mfhomepage_contact',
+					'menu_class'     => 'mfhomepage-contact',
+					'container'     => false,
+					'depth'     => 2,
+					'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
+					'walker' => new MFHomepage_Walker(),
+				) );
+				?>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="row">
+			<div class="col-xs-12">
+			<section id="homeslider">
+				<?php get_template_part( 'parts/featured-full' ); ?>
 			</section><!--#homeslider-->
 		</div><!--#content .row-->
 	</div>
