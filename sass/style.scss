@@ -254,15 +254,7 @@ $breakpoint-bs-lg: 75em;
 	}
 }
 
-#bc-home-front-page {
-	a:link {
-		text-decoration: none;
-	}
-	a:hover,
-	a:active {
-		text-decoration: underline;
-	}
-}
+
 /* ################# */
 /* Small Ad Controls */
 /* ################# */
@@ -502,7 +494,7 @@ $breakpoint-bs-lg: 75em;
 
 	background: $brand-primary;
 
-	margin: 1rem 0 0 0;
+	margin: 1em 0;
 	padding: 1em;
 
 	& h2 {
@@ -513,7 +505,168 @@ $breakpoint-bs-lg: 75em;
 	}
 }
 
+// Homepage Card Design
+a.mfhomepage-card {
+	background: #fff;
+	color: #000;
+
+	// Flex for children
+	display: flex;
+	flex-direction: column;
+
+	// Flex for this element
+	flex: 1 0 auto;
+
+	margin: 1em 0;
+	padding: 1em;
+
+	h3, h4 {
+		font-family: $font-body;
+		font-size: 1.2em;
+
+		display: inline-block;
+		text-decoration: none;
+		clear: none;
+
+		margin: 0;
+	}
+
+	h4 {
+		font-size: 1.1em;
+		display: block;
+		font-weight: bold;
+
+		margin-bottom: .5em;
+	}
+
+	p {
+		text-decoration: none;
+		display: inline-block; // this gets rid of underline, somehow. 
+	}
+
+}
+
+// Hover effects on cards
+a.mfhomepage-card:hover,
+a.mfhomepage-card:active,
+a.mfhomepage-card:focus {
+	color:#000;
+	background: #e6e5e5;
+
+}
+
+// News Card styles
+#mfhomepage-news {
+
+	a.mfhomepage-card {
+		padding: 0;
+
+		.card-heading {
+			// Background image comes in via inline CSS
+			background-color: $brand-primary;
+			background-repeat: no-repeat;
+			background-position: center; 
+			background-size: cover;
+			min-height: 15em;
+
+			// Child elements
+			display: flex;
+			justify-content: flex-end;
+			flex-direction: column;
+
+			// This element
+			flex: 1 0 auto;
+		}
+
+		h3 {
+			background: rgba(0, 0, 0, .6);
+			padding: 1em;
+			color: #fff;
+			margin: 0;
+		}
+
+		.card-content {
+			padding: 1em;
+		}
+	}
+}
+
+// Layout
+#mfhomepage-events-deadlines,
+#mfhomepage-news {
+	display: flex;
+	flex-direction: column;
+}
+
+#mfhomepage-events,
+#mfhomepage-deadlines {
+
+	// Flex styles on this element
+	flex: 1 0 auto;
+	
+	a.mfhomepage-card {
+
+		.card-heading {
+			margin-bottom: 1rem;
+			display: flex;
+			align-items: baseline;
+		}
+
+		.card-icon {
+			font-size: 2em;
+			margin-right: 1rem;
+		}
+
+		
+	}
+}
+
+#mfhomepage-events {
+	
+	a.mfhomepage-card {
+		border-top: 1em solid $bc-green;
+	}
+}
+
+#mfhomepage-deadlines {
+
+	a.mfhomepage-card {
+		border-top: 1em solid $bc-orange;
+	}
+	
+}
+
 @media ( min-width: $breakpoint-bs-sm ) {
+	a.mfhomepage-card {
+		margin: 0 0 1rem 0;
+	}
+
+	#mfhomepage-deadlines,
+	#mfhomepage-events {
+		& > a.mfhomepage-card {
+			margin-right: 1em; 
+			flex: 1 1 33.33333%;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	#mfhomepage-events,
+	#mfhomepage-deadlines {
+		display: flex;
+	}
+
+	#mfhomepage-deadlines {
+		a.mfhomepage-card {
+			border:0;
+			border-left: 2em solid $bc-orange;
+		}
+	}
+
+
+
 	#mfhomepage-top-menus {
 
 		#mfhomepage-menus-for {
@@ -531,6 +684,20 @@ $breakpoint-bs-lg: 75em;
 }
 
 @media ( min-width: $breakpoint-bs-md ) {
+
+	#mfhomepage-news-events {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	#mfhomepage-news {
+		flex: 0 0 calc(25% - .5em);
+	}
+
+	#mfhomepage-events-deadlines {
+		flex: 0 0 calc(75% - .5em);
+	}
+
 	#mfhomepage-top-menus {
 		display: flex;
 
@@ -544,7 +711,6 @@ $breakpoint-bs-lg: 75em;
 		#mfhomepage-resources,
 		#mfhomepage-contact {
 			flex: 1 0 auto;
-			width: auto;
 			display: flex;
 			align-items: center;
 
@@ -564,3 +730,4 @@ $breakpoint-bs-lg: 75em;
 		}
 	}
 }
+

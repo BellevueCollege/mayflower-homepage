@@ -42,25 +42,16 @@ if ( current_user_can('manage_network') ) {
 			'not_found_in_trash'  => 'No Small Ads found in trash',
 		);
 		$args = array(
-			'label'               => 'small_ad',
-			'description'         => 'Small Ads for college home page',
-			'labels'              => $labels,
-            'supports' 	  		  => array('title', 'editor', 'thumbnail', 'category', 'revisions'),
-			'taxonomies' 		  => array(/*'category', 'post_tag',*/), // this is IMPORTANT
-			'hierarchical'        => false,
-			'public'              => true,
-			'show_ui'             => true,
-			'show_in_menu'        => true,
-			'show_in_nav_menus'   => false,
-			'show_in_admin_bar'   => true,
-			'menu_position'       => 5,
-			//'menu_icon'           => '',
-			'can_export'          => true,
-			'has_archive'         => true,
-			'exclude_from_search' => false,
-			'publicly_queryable'  => true,
-			'capability_type'     => 'page',
-		);
+		    'labels' => $labels,
+            'public' => true,
+            'show_ui' => true,
+            'hierarchical' => true,
+            'has_archive' =>true,
+            'rewrite' => true,
+			'menu_position' => 4,
+            'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', 'comments'),
+			'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
+           );
 		register_post_type( 'small_ad', $args );
 
 	}

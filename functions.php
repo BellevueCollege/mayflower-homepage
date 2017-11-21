@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Enqueue Child Theme Stylesheet
  */
@@ -201,13 +202,9 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'title'      => __( 'Mayflower Homepage ', 'mayflower-homepage' ),
 		'priority'   => 300,
 	) );
-	$wp_customize->add_setting( 'news_site_id' , array(
-		'default'           => '63',
-		'transport'         => 'refresh',
-		'sanitize_callback' => 'sanitize_int',
-	) );
-	$wp_customize->add_setting( 'news_category_name' , array(
-		'default'           => 'BC Homepage',
+
+	$wp_customize->add_setting( 'news_category' , array(
+		'default'           => '',
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
@@ -216,23 +213,19 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_setting( 'apply_btn_html' , array(
-		'default'           => '<a href="//www.bellevuecollege.edu/admissions/?utm_source=bchomepage&utm_medium=button&utm_campaign=applybtn" class="btn btn-block btn-success"><strong>Apply</strong>for admission</a>',
+	$wp_customize->add_setting( 'deadlines_category' , array(
+		'default'           => '',
 		'transport'         => 'refresh',
-		'sanitize_callback' => 'wp_kses_post',
+		'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_site_id', array(
-		'label'        => __( 'News Site ID', 'mayflower-homepage' ),
-		'description'  => __( 'ID of site from which to draw homepage news section', 'mayflower-homepage' ),
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_category', array(
+		'label'        => __( 'News Category', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage events', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
-		'settings'     => 'news_site_id',
-		'type'         => 'number',
-	) ) );
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_category_name', array(
-		'label'        => __( 'News Category Name', 'mayflower-homepage' ),
-		'description'  => __( 'Category from which to draw homepage news section', 'mayflower-homepage' ),
-		'section'      => 'mayflower_homepage_options',
-		'settings'     => 'news_category_name',
+		'settings'     => 'news_category',
+		'type'         => 'select',
+		'choices'  => get_categories_select( ),
 	) ) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'events_category', array(
 		'label'        => __( 'Events Category', 'mayflower-homepage' ),
@@ -242,12 +235,13 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'type'         => 'select',
 		'choices'  => get_categories_select( ),
 	) ) );
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'apply_btn_html', array(
-		'label'        => __( 'Apply Button HTML', 'mayflower-homepage' ),
-		'description'  => __( 'HTML for Homepage Apply Button', 'mayflower-homepage' ),
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'deadlines_category', array(
+		'label'        => __( 'Deadlines Category', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage upcoming deadlines', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
-		'settings'     => 'apply_btn_html',
-		'type'         => 'textarea',
+		'settings'     => 'deadlines_category',
+		'type'         => 'select',
+		'choices'  => get_categories_select( ),
 	) ) );
 }
 add_action( 'customize_register', 'mayflower_homepage_customize_register' );
