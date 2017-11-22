@@ -117,14 +117,14 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 		//$output .= '<pre>' . print_r($item, true) . '</pre>';
 
 		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
-			$output .= "<a class='btn btn-default btn-block " . implode( '', $item->classes ) . "' href='$permalink'>";
+			$output .= "<a class='btn btn-default btn-block " . implode( ' ', $item->classes ) . "' href='$permalink'>";
 			$output .= $title;
 
 		} elseif ( $depth > 0 ) {
 			$output .= "<li><a href='$permalink'>$title";
 		} else {
 			$output .= '<div class="btn-group btn-group-justified" role="group">';
-			$output .= '<a class="btn btn-default dropdown-toggle ' . implode( '', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			$output .= '<a class="btn btn-default dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			$output .= $title;
 			$output .= ' <span class="caret"></span>';
 			$output .= '</a>';
@@ -144,7 +144,7 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 		}
 	}
 	function start_lvl( &$output, $depth, $args = array() ) {
-		$output .= '<ul class="dropdown-menu">';
+		$output .= '<ul class="dropdown-menu dropdown-menu-right">';
 	}
 	function end_lvl( &$output, $depth, $args = array() ) {
 		$output .= '</ul>';

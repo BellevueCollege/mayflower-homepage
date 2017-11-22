@@ -421,9 +421,15 @@ $breakpoint-bs-lg: 75em;
 
 
 /// New
+#main-wrap.bchome {
+	padding: 0;
+	margin: 0;
+}
+.bchome .container.no-padding {
+	padding: 0;
+}
 #mfhomepage-top-menus {
 	margin-top: 1em;
-	
 	justify-content: space-between;
 
 	& > div > div {
@@ -449,7 +455,6 @@ $breakpoint-bs-lg: 75em;
 	#mfhomepage-contact {
 		float: left;
 		width: 50%;
-		
 
 		.btn-block,
 		.btn-group-justified {
@@ -458,15 +463,18 @@ $breakpoint-bs-lg: 75em;
 		}
 
 		& > div {
+			display: flex;
 			flex-direction: column;
 		}
 
 	}
+
 	#mfhomepage-resources {
 		float: right;
 		padding-left: .25em;
 		padding-right: 1em;
 	}
+
 	#mfhomepage-contact {
 		text-align: right;
 		float: right;
@@ -479,7 +487,7 @@ $breakpoint-bs-lg: 75em;
 			flex-direction: row;
 		}
 	}
-}
+} 
 
 #homeslider {
 	margin-top: .75em;
@@ -488,14 +496,15 @@ $breakpoint-bs-lg: 75em;
 //////
 // News and Events
 /////
+#mfhomepage-news-events-container {
+	background: $brand-primary;
+	margin-top: 1em;
+	padding: 1rem;
+}
+
 #mfhomepage-news-events {
 	display: flex;
 	flex-direction: column;
-
-	background: $brand-primary;
-
-	margin: 1em 0;
-	padding: 1em;
 
 	& h2 {
 		color: #fff;
@@ -580,6 +589,7 @@ a.mfhomepage-card:focus {
 
 		h3 {
 			background: rgba(0, 0, 0, .6);
+			display: block;
 			padding: 1em;
 			color: #fff;
 			margin: 0;
@@ -691,26 +701,32 @@ a.mfhomepage-card:focus {
 	}
 
 	#mfhomepage-news {
-		flex: 0 0 calc(25% - .5em);
+		flex: 0 0 calc(25% - 1em);
 	}
 
 	#mfhomepage-events-deadlines {
-		flex: 0 0 calc(75% - .5em);
+		flex: 0 0 calc(75% - 1.5em);
 	}
 
 	#mfhomepage-top-menus {
+
+	}
+	#mfhomepage-top-menus {
+
 		display: flex;
+		justify-content: space-between;
 
 		margin-top: .5em;
 		
 		h2 {
 			display: inline-block;
+			padding-right: .75rem;
 		}
 
 		#mfhomepage-menus-for,
 		#mfhomepage-resources,
 		#mfhomepage-contact {
-			flex: 1 0 auto;
+			flex: 1 1 auto;
 			display: flex;
 			align-items: center;
 
@@ -719,14 +735,18 @@ a.mfhomepage-card:focus {
 				display: flex;
 				flex-direction: row;
 			}
-
+		}
+		#mfhomepage-menus-for {
+			flex: 1 0 auto;
 		}
 		#mfhomepage-resources {
+			flex: 1 1 auto;
 			margin: 0 1em;
 		}
 		#mfhomepage-contact {
 			text-align: right;
-			flex: 0 0 auto;
+			flex: 0 1 15em;
+			justify-content: flex-end;
 		}
 	}
 }

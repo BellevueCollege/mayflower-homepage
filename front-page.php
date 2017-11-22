@@ -6,62 +6,57 @@
  *
  */
 get_header(); ?>
-<div id = "bc-home-front-page" >
-	<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
-	<div class="row">
-		<div id="mfhomepage-top-menus" class="col-xs-12">
-			<div id="mfhomepage-menus-for">
-				<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'mfhomepage_menus_for',
-					'menu_class'     => 'mfhomepage-menus-for',
-					'container'     => false,
-					'depth'     => 2,
-					'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
-					'walker' => new MFHomepage_Walker(),
-				) );
-				?>
-			</div>
-			<div id="mfhomepage-resources">
-				<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_resources' ) ); ?></h2>
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'mfhomepage_resources',
-					'menu_class'     => 'mfhomepage-resources',
-					'container'     => false,
-					'depth'     => 2,
-					'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
-					'walker' => new MFHomepage_Walker(),
-				) );
-				?>
-			</div>
-			<div id="mfhomepage-contact">
-				<h2 class="top-menu-title sr-only"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_contact' ) ); ?></h2>
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'mfhomepage_contact',
-					'menu_class'     => 'mfhomepage-contact',
-					'container'     => false,
-					'depth'     => 2,
-					'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
-					'walker' => new MFHomepage_Walker(),
-				) );
-				?>
-			</div>
-		</div>
+
+<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
+<section id="mfhomepage-top-menus" class="container no-padding">
+	<div id="mfhomepage-menus-for">
+		<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'mfhomepage_menus_for',
+			'menu_class'     => 'mfhomepage-menus-for',
+			'container'     => false,
+			'depth'     => 2,
+			'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker' => new MFHomepage_Walker(),
+		) );
+		?>
 	</div>
+	<div id="mfhomepage-resources">
+		<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_resources' ) ); ?></h2>
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'mfhomepage_resources',
+			'menu_class'     => 'mfhomepage-resources',
+			'container'     => false,
+			'depth'     => 2,
+			'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker' => new MFHomepage_Walker(),
+		) );
+		?>
+	</div>
+	<div id="mfhomepage-contact">
+		<h2 class="top-menu-title sr-only"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_contact' ) ); ?></h2>
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'mfhomepage_contact',
+			'menu_class'     => 'mfhomepage-contact',
+			'container'     => false,
+			'depth'     => 2,
+			'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker' => new MFHomepage_Walker(),
+		) );
+		?>
+	</div>
+</section>
 
 	
-	<div class="row">
-		<div class="col-xs-12">
-			<section id="homeslider">
-				<?php get_template_part( 'parts/featured-full' ); ?>
-			</section><!--#homeslider-->
-		</div><!--#content .row-->
-	</div>
+<section id="homeslider" class="containe-fluid no-padding">
+	<?php get_template_part( 'parts/featured-full' ); ?>
+</section><!--#homeslider-->
 
-	<section id="mfhomepage-news-events">
+<section id="mfhomepage-news-events-container">
+	<div id="mfhomepage-news-events" class="container no-padding">
 		<?php $the_query = new WP_Query( array(
 			'post_type'      => 'post',
 			'category_name'  => get_theme_mod( 'news_category' ),
@@ -194,13 +189,7 @@ get_header(); ?>
 				<a class="btn btn-default" href="https://www.bellevuecollege.edu/events/">All Campus Events</a>
 			</div>
 		</section>
-		
-
-		
-
-		
-	</section>
-
-</div>
+	</div>
+</section>
 
 <?php get_footer(); ?>
