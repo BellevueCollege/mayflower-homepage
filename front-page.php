@@ -97,7 +97,7 @@ get_header(); ?>
 					<a href="<?php echo esc_url(
 							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
 							); ?>" class="news-card mfhomepage-card">
-						<div class="card-heading" style="background-image: url('<?php the_post_thumbnail_url( 'featured-full' ) ?>')">
+						<div class="card-heading" style="background-image: url('<?php the_post_thumbnail_url( 'mfhomepage-card-background' ) ?>')">
 							<div class="card-title">
 								<h3><?php the_title(); ?></h3>
 							</div>

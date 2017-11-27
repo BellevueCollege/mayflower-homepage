@@ -20,6 +20,12 @@ function mayflower_homepage_enqueue_styles() {
 
 }
 
+/*
+ * Define Image Sizes
+ */
+
+add_image_size( 'mfhomepage-card-background', 760, 260, true );
+
 /**
  * Override bc_footer function to add additional footer element
  */
