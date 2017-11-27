@@ -51,7 +51,7 @@ get_header(); ?>
 </section>
 
 	
-<section id="homeslider" class="containe-fluid no-padding">
+<section id="homeslider" class="container-fluid no-padding">
 	<?php get_template_part( 'parts/featured-full' ); ?>
 </section><!--#homeslider-->
 
