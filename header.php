@@ -107,7 +107,7 @@
 					</div><!-- container header -->
 				</div><!-- content-padding -->
 	<?php } /* END MAYFLOWER HOMEPAGE SPECIFIC CODE */
-	
+
 
 	if ( ! is_front_page() ) { ?>
 		<div class="row">

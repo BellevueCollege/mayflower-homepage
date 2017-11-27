@@ -13,8 +13,8 @@ wp_footer();
 
 <!-- <?php
 $mayflower_version = wp_get_theme();
-echo $mayflower_version->Name . " version " . $mayflower_version->Version;
-?>  -->
+echo esc_textarea( $mayflower_version->Name ) . ' version ' . esc_textarea( $mayflower_version->Version );
+?> -->
 
 </body>
 </html>

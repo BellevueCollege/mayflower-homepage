@@ -15,10 +15,10 @@ get_header(); ?>
 		wp_nav_menu( array(
 			'theme_location' => 'mfhomepage_menus_for',
 			'menu_class'     => 'mfhomepage-menus-for',
-			'container'     => false,
-			'depth'     => 2,
-			'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
-			'walker' => new MFHomepage_Walker(),
+			'container'      => false,
+			'depth'          => 2,
+			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'         => new MFHomepage_Walker(),
 		) );
 		?>
 	</div>
@@ -28,10 +28,10 @@ get_header(); ?>
 		wp_nav_menu( array(
 			'theme_location' => 'mfhomepage_resources',
 			'menu_class'     => 'mfhomepage-resources',
-			'container'     => false,
-			'depth'     => 2,
-			'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
-			'walker' => new MFHomepage_Walker(),
+			'container'      => false,
+			'depth'          => 2,
+			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'         => new MFHomepage_Walker(),
 		) );
 		?>
 	</div>
@@ -41,10 +41,10 @@ get_header(); ?>
 		wp_nav_menu( array(
 			'theme_location' => 'mfhomepage_contact',
 			'menu_class'     => 'mfhomepage-contact',
-			'container'     => false,
-			'depth'     => 2,
-			'items_wrap' => '<div id="%1$s" class="%2$s">%3$s</div>',
-			'walker' => new MFHomepage_Walker(),
+			'container'      => false,
+			'depth'          => 2,
+			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'         => new MFHomepage_Walker(),
 		) );
 		?>
 	</div>
