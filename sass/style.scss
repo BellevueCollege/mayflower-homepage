@@ -523,12 +523,20 @@ a.mfhomepage-card:focus {
 	}
 
 	#mfhomepage-news {
-		flex: 0 0 calc(25% - .5em);
+		// Can't use shorthand 'flex' with calc() in IE11
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: calc(25% - .5em);
+
 		margin-right: .5em;
 	}
 
 	#mfhomepage-events-deadlines {
-		flex: 0 0 calc(75% - .5em);
+		// Can't use shorthand 'flex' with calc() in IE11
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: calc(75% - .5em);
+		
 		margin-left: .5em;
 	}
 
