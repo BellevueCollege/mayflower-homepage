@@ -493,6 +493,98 @@ $breakpoint-bs-lg: 75em;
 	margin-top: .75em;
 }
 
+#mfhomepage-content {
+	margin-top: 1em;
+	display: flex;
+	flex-direction: column-reverse;
+	
+	& .mfhomepage-content-module {
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+
+		margin-top: 1em;
+		margin-bottom: 1em;
+
+		padding: 1em;
+		min-width: calc(33% - 1em);
+		min-height: 12rem;
+
+		background: #fff;
+
+		font-size: 1.2rem;
+		line-height: 1.75rem;
+
+		h2 {
+			margin: 0;
+			margin-bottom: .25rem;
+			font-size: 1.1rem;
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			font-size: 1.1em;
+			
+		}
+	}
+	& a.mfhomepage-content-module {
+		text-decoration: none;
+
+		flex: 1 0 auto;
+
+		padding: 1em 0;
+		
+
+		
+
+		background-color: $brand-primary;
+		background-repeat: no-repeat;
+		background-position: center; 
+		background-size: cover;
+
+		div {
+			background: rgba(0, 0, 0, .6);
+			text-align: center;
+			//display: flex;
+			//justify-content: center;
+		}
+
+		p {
+			display: inline-block;
+			text-align: center;
+			margin: .5em;
+			padding: .25em .75em;
+
+			text-decoration: none;
+			color: #fff;
+
+			font-weight: bold;
+
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			border-color: #000;
+			div {
+				background: #000;
+			}
+		}
+
+		&.mfhomepage-button {
+			p {
+				border-radius: 5px;
+				border: 2px solid #e6e5e5;
+				background: rgba(0, 0, 0, .6);
+			}
+		}
+	}
+}
+
+
 //////
 // News and Events
 /////
@@ -678,6 +770,9 @@ a.mfhomepage-card:focus {
 
 
 	#mfhomepage-top-menus {
+		h2 {
+			flex: 0 0 auto;
+		}
 
 		#mfhomepage-menus-for {
 			padding: 0;
@@ -687,9 +782,25 @@ a.mfhomepage-card:focus {
 		#mfhomepage-contact {
 			padding: 0;
 			padding-left: .25em;
-
+			
 		}
 
+	}
+
+	#mfhomepage-content {
+		margin-top: 1em;
+		flex-direction: row;
+		
+		& .mfhomepage-content-module {
+			margin-right: 1em;
+
+			border: 1px solid #e6e5e5;
+			border-radius: 5px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
 	}
 }
 
@@ -701,11 +812,13 @@ a.mfhomepage-card:focus {
 	}
 
 	#mfhomepage-news {
-		flex: 0 0 calc(25% - 1em);
+		flex: 0 0 calc(25% - .5em);
+		margin-right: .5em;
 	}
 
 	#mfhomepage-events-deadlines {
-		flex: 0 0 calc(75% - 1.5em);
+		flex: 0 0 calc(75% - .5em);
+		margin-left: .5em;
 	}
 
 	#mfhomepage-top-menus {
@@ -727,6 +840,7 @@ a.mfhomepage-card:focus {
 		#mfhomepage-resources,
 		#mfhomepage-contact {
 			flex: 1 1 auto;
+
 			display: flex;
 			align-items: center;
 
@@ -737,16 +851,15 @@ a.mfhomepage-card:focus {
 			}
 		}
 		#mfhomepage-menus-for {
-			flex: 1 0 auto;
 		}
 		#mfhomepage-resources {
-			flex: 1 1 auto;
 			margin: 0 1em;
 		}
 		#mfhomepage-contact {
 			text-align: right;
-			flex: 0 1 15em;
 			justify-content: flex-end;
+
+			flex: 1 1 5em;
 		}
 	}
 }

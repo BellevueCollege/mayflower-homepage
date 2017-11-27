@@ -55,11 +55,34 @@ get_header(); ?>
 	<?php get_template_part( 'parts/featured-full' ); ?>
 </section><!--#homeslider-->
 
+
+<?php if ( 'page' == get_option( 'show_on_front' ) && have_posts() ) :
+	while ( have_posts() ) : the_post(); ?>
+		<?php
+		/**
+		* Prevent Empty Container from loading if there is no content
+		*/
+		if ( $post->post_content != '' ) : ?>
+			<section id="mfhomepage-content" class="container no-padding">
+				<?php the_content(); ?>
+			</section>
+		<?php endif; ?>
+	
+	<?php endwhile; ?>
+<?php endif; ?>
+
+
 <section id="mfhomepage-news-events-container">
 	<div id="mfhomepage-news-events" class="container no-padding">
 		<?php $the_query = new WP_Query( array(
-			'post_type'      => 'post',
-			'category_name'  => get_theme_mod( 'news_category' ),
+			'post_type'      => get_theme_mod( 'featured_post_type' ),
+			'tax_query' => array(
+				array(
+					'taxonomy' => get_theme_mod( 'featured_post_type_taxonomy' ),
+					'field'    => 'slug',
+					'terms'    => get_theme_mod( 'news_category' ),
+				),
+			),
 			'orderby'        => 'date',
 			'order'          => 'DES',
 			'posts_per_page' => 1,
@@ -71,7 +94,9 @@ get_header(); ?>
 				$the_query->the_post();
 
 				if ( has_post_thumbnail() ) : ?>
-					<a href="<?php echo the_permalink(); ?>" class="news-card mfhomepage-card">
+					<a href="<?php echo esc_url(
+							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+							); ?>" class="news-card mfhomepage-card">
 						<div class="card-heading" style="background-image: url('<?php the_post_thumbnail_url( 'featured-full' ) ?>')">
 							<div class="card-title">
 								<h3><?php the_title(); ?></h3>
@@ -85,6 +110,9 @@ get_header(); ?>
 
 							if ( ! empty( $mfhomepage_post_content ) ) { ?>
 								<p>
+									<?php echo esc_textarea(
+										get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_date_field' ), true )
+									); ?>&ndash;
 									<?php echo esc_textarea( $mfhomepage_content_trimmed ); ?>
 								</p>
 							<?php } ?>
@@ -100,8 +128,14 @@ get_header(); ?>
 			<h2>Happening around campus</h2>
 			<?php
 			$the_query = new WP_Query( array(
-				'post_type'      => 'post',
-				'category_name'  => get_theme_mod( 'deadlines_category' ),
+				'post_type'      => get_theme_mod( 'featured_post_type' ),
+				'tax_query' => array(
+					array(
+						'taxonomy' => get_theme_mod( 'featured_post_type_taxonomy' ),
+						'field'    => 'slug',
+						'terms'    => get_theme_mod( 'deadlines_category' ),
+					),
+				),
 				'orderby'        => 'date',
 				'order'          => 'ASC',
 				'posts_per_page' => 3,
@@ -111,11 +145,15 @@ get_header(); ?>
 				<div id="mfhomepage-deadlines">
 					<?php while ( $the_query->have_posts() ) :
 						$the_query->the_post(); ?>
-						<a href="<?php echo the_permalink(); ?>" class="deadlines-card mfhomepage-card">
+						<a href="<?php echo esc_url(
+							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+							); ?>" class="deadlines-card mfhomepage-card">
 							<div class="card-heading">
-								<div class="card-icon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
+								<div class="card-icon"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></div>
 								<div class="card-title">
-									<h3>Oct 24 at 12:00 pm</h3>
+									<h3><?php echo esc_textarea(
+										get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_date_field' ), true )
+									); ?></h3>
 								</div>
 							</div>
 							<div class="card-content">
@@ -143,8 +181,13 @@ get_header(); ?>
 			
 			<?php
 			$the_query = new WP_Query( array(
-				'post_type'      => 'post',
-				'category_name'  => get_theme_mod( 'events_category' ),
+				'tax_query' => array(
+					array(
+						'taxonomy' => get_theme_mod( 'featured_post_type_taxonomy' ),
+						'field'    => 'slug',
+						'terms'    => get_theme_mod( 'events_category' ),
+					),
+				),
 				'orderby'        => 'date',
 				'order'          => 'ASC',
 				'posts_per_page' => 3,
@@ -154,11 +197,15 @@ get_header(); ?>
 				<div id="mfhomepage-events">
 					<?php while ( $the_query->have_posts() ) :
 						$the_query->the_post(); ?>
-						<a href="<?php echo the_permalink(); ?>" class="events-card mfhomepage-card">
+						<a href="<?php echo esc_url(
+							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+							); ?>" class="events-card mfhomepage-card">
 							<div class="card-heading">
 								<div class="card-icon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
 								<div class="card-title">
-									<h3>Oct 24 at 12:00 pm</h3>
+									<h3><?php echo esc_textarea(
+										get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_date_field' ), true )
+									); ?></h3>
 								</div>
 							</div>
 							<div class="card-content">
