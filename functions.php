@@ -149,10 +149,10 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 			$output .= '</div>';
 		}
 	}
-	function start_lvl( &$output, $depth, $args = array() ) {
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= '<ul class="dropdown-menu dropdown-menu-right">';
 	}
-	function end_lvl( &$output, $depth, $args = array() ) {
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= '</ul>';
 	}
 
