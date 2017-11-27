@@ -441,7 +441,8 @@ $breakpoint-bs-lg: 75em;
 		clear: none;
 		margin: 0;
 		vertical-align: middle;
-		font-size: 1rem;
+		font-size: 1.2rem;
+		line-height: 1.75em;
 		padding-right: .25em;
 	}
 
@@ -456,10 +457,8 @@ $breakpoint-bs-lg: 75em;
 		float: left;
 		width: 50%;
 
-		.btn-block,
-		.btn-group-justified {
-			margin-top: 5px;
-			display: block;
+		.btn-group > .btn {
+			width: 100%;
 		}
 
 		& > div {
@@ -476,15 +475,17 @@ $breakpoint-bs-lg: 75em;
 	}
 
 	#mfhomepage-contact {
-		text-align: right;
-		float: right;
-
 		padding-left: .25em;
 		padding-right: 1em;
 
 		& > div {
 			display: flex;
 			flex-direction: row;
+
+			& > .btn,
+			& > .btn-group {
+				flex: 1 0 auto;
+			}
 		}
 	}
 } 
@@ -520,13 +521,17 @@ $breakpoint-bs-lg: 75em;
 		h2 {
 			margin: 0;
 			margin-bottom: .25rem;
-			font-size: 1.1rem;
+			font-size: 1em;  // based on overall font-size
 		}
 
 		ul {
 			list-style: none;
 			padding: 0;
 			font-size: 1.1em;
+
+			li {
+				line-height: 1.5em;
+			}
 			
 		}
 	}
@@ -536,9 +541,6 @@ $breakpoint-bs-lg: 75em;
 		flex: 1 0 auto;
 
 		padding: 1em 0;
-		
-
-		
 
 		background-color: $brand-primary;
 		background-repeat: no-repeat;
@@ -600,7 +602,7 @@ $breakpoint-bs-lg: 75em;
 
 	& h2 {
 		color: #fff;
-		font-size: 1.2em;
+		font-size: 1.2rem;
 		margin:0;
 		margin-bottom: .5em;
 	}
@@ -834,16 +836,19 @@ a.mfhomepage-card:focus {
 		h2 {
 			display: inline-block;
 			padding-right: .75rem;
+
+			font-size: 1rem;
 		}
 
 		#mfhomepage-menus-for,
 		#mfhomepage-resources,
 		#mfhomepage-contact {
-			flex: 1 1 auto;
+			flex: 0 1 auto;
 
 			display: flex;
 			align-items: center;
 
+			width: auto;
 
 			& > div {
 				display: flex;
@@ -853,13 +858,12 @@ a.mfhomepage-card:focus {
 		#mfhomepage-menus-for {
 		}
 		#mfhomepage-resources {
+			flex: 1 1 auto;
 			margin: 0 1em;
 		}
 		#mfhomepage-contact {
 			text-align: right;
-			justify-content: flex-end;
-
-			flex: 1 1 5em;
+			
 		}
 	}
 }

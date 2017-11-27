@@ -123,13 +123,13 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 		//$output .= '<pre>' . print_r($item, true) . '</pre>';
 
 		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
-			$output .= "<a class='btn btn-default btn-block " . implode( ' ', $item->classes ) . "' href='$permalink'>";
+			$output .= "<a class='btn btn-default " . implode( ' ', $item->classes ) . "' href='$permalink'>";
 			$output .= $title;
 
 		} elseif ( $depth > 0 ) {
 			$output .= "<li><a href='$permalink'>$title";
 		} else {
-			$output .= '<div class="btn-group btn-group-justified" role="group">';
+			$output .= '<div class="btn-group " role="group">';
 			$output .= '<a class="btn btn-default dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			$output .= $title;
 			$output .= ' <span class="caret"></span>';
