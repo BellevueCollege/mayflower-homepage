@@ -62,7 +62,7 @@ get_header(); ?>
 		/**
 		* Prevent Empty Container from loading if there is no content
 		*/
-		if ( $post->post_content != '' ) : ?>
+		if ( '' !== $post->post_content ) : ?>
 			<section id="mfhomepage-content" class="container no-padding">
 				<?php the_content(); ?>
 			</section>
@@ -83,8 +83,8 @@ get_header(); ?>
 					'terms'    => get_theme_mod( 'news_category' ),
 				),
 			),
-			'orderby'        => 'date',
-			'order'          => 'DES',
+			'orderby'        => 'menu_order',
+			'order'          => 'DSC',
 			'posts_per_page' => 1,
 		) ); ?>
 		<section id="mfhomepage-news">
@@ -95,8 +95,8 @@ get_header(); ?>
 
 				if ( has_post_thumbnail() ) : ?>
 					<a href="<?php echo esc_url(
-							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
-							); ?>" class="news-card mfhomepage-card">
+						get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+					); ?>" class="news-card mfhomepage-card">
 						<div class="card-heading" style="background-image: url('<?php the_post_thumbnail_url( 'mfhomepage-card-background' ) ?>')">
 							<div class="card-title">
 								<h3><?php the_title(); ?></h3>
@@ -136,7 +136,7 @@ get_header(); ?>
 						'terms'    => get_theme_mod( 'deadlines_category' ),
 					),
 				),
-				'orderby'        => 'date',
+				'orderby'        => 'menu_order',
 				'order'          => 'ASC',
 				'posts_per_page' => 3,
 			));
@@ -147,7 +147,7 @@ get_header(); ?>
 						$the_query->the_post(); ?>
 						<a href="<?php echo esc_url(
 							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
-							); ?>" class="deadlines-card mfhomepage-card">
+						); ?>" class="deadlines-card mfhomepage-card">
 							<div class="card-heading">
 								<div class="card-icon"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></div>
 								<div class="card-title">
@@ -188,7 +188,7 @@ get_header(); ?>
 						'terms'    => get_theme_mod( 'events_category' ),
 					),
 				),
-				'orderby'        => 'date',
+				'orderby'        => 'menu_order',
 				'order'          => 'ASC',
 				'posts_per_page' => 3,
 			));
@@ -199,7 +199,7 @@ get_header(); ?>
 						$the_query->the_post(); ?>
 						<a href="<?php echo esc_url(
 							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
-							); ?>" class="events-card mfhomepage-card">
+						); ?>" class="events-card mfhomepage-card">
 							<div class="card-heading">
 								<div class="card-icon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
 								<div class="card-title">

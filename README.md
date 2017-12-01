@@ -27,6 +27,7 @@ $CustomPress_Core->import=array (
         'not_found' => 'No Featured News & Events found',
         'not_found_in_trash' => 'No Featured News & Events found in Trash',
         'parent_item_colon' => 'Parent Feature: ',
+        'custom_fields_block' => 'Related Fields',
       ),
       'supports' => 
       array (
@@ -35,6 +36,7 @@ $CustomPress_Core->import=array (
         'author' => 'author',
         'thumbnail' => 'thumbnail',
         'revisions' => 'revisions',
+        'page_attributes' => 'page-attributes',
       ),
       'supports_reg_tax' => 
       array (
@@ -46,7 +48,7 @@ $CustomPress_Core->import=array (
       'description' => 'News and events featured on the Bellevue College homepage',
       'menu_position' => 5,
       'public' => true,
-      'hierarchical' => false,
+      'hierarchical' => true,
       'has_archive' => false,
       'rewrite' => 
       array (
@@ -92,7 +94,7 @@ $CustomPress_Core->import=array (
           'new_item_name' => 'New Feature Type',
           'edit_item' => 'Edit Feature Type',
           'update_item' => 'Update Feature Type',
-          'search_items' => 'Search Feature Types',
+          'search_items' => 'Search',
           'popular_items' => 'Popular Feature Types',
           'all_items' => 'All Feature Types',
           'parent_item' => 'Parent Feature Type',
@@ -102,7 +104,7 @@ $CustomPress_Core->import=array (
           'choose_from_most_used' => 'Choose from most used feature types',
         ),
         'public' => true,
-        'show_admin_column' => false,
+        'show_admin_column' => true,
         'hierarchical' => true,
         'rewrite' => 
         array (
@@ -162,10 +164,10 @@ $CustomPress_Core->import=array (
       'field_type' => 'text',
       'field_sort_order' => 'default',
       'field_date_format' => '',
-      'field_regex' => '',
+      'field_regex' => '^(?:http(s)?:\\/\\/)[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&\'\\(\\)\\*\\+,;=.]+$',
       'field_regex_options' => '',
-      'field_regex_message' => '',
-      'field_message' => '',
+      'field_regex_message' => 'This URL does not appear to be valid! Please make sure it starts with https://.',
+      'field_message' => 'Please enter a URL',
       'field_default_option' => NULL,
       'field_description' => 'Enter the URL which you would like this featured area to link to from the homepage',
       'object_type' => 
@@ -175,7 +177,7 @@ $CustomPress_Core->import=array (
       'hide_type' => 
       array (
       ),
-      'field_required' => 0,
+      'field_required' => 1,
       'field_id' => 'text_5a15ba386625f',
       'field_order' => 1,
     ),
