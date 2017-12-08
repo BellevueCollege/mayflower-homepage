@@ -63,7 +63,7 @@ get_header(); ?>
 		* Prevent Empty Container from loading if there is no content
 		*/
 		if ( '' !== $post->post_content ) : ?>
-			<section id="mfhomepage-content" class="container no-padding">
+			<section id="mfhomepage-content" class="container">
 				<?php the_content(); ?>
 			</section>
 		<?php endif; ?>
@@ -71,14 +71,77 @@ get_header(); ?>
 	<?php endwhile; ?>
 <?php endif; ?>
 
+<?php
+$the_query = new WP_Query( array(
+	'post_type'      => get_theme_mod( 'modules_post_type' ),
+	'orderby'        => 'menu_order',
+	'order'          => 'ASC',
+	'posts_per_page' => 6,
+));
+
+if ( $the_query->have_posts() ) : ?>
+	<section id="mfhomepage-modules" class="container no-padding">
+		<?php while ( $the_query->have_posts() ) :
+			$the_query->the_post();
+
+			// Load variables
+			$module_type       = get_post_meta( get_the_ID(), get_theme_mod( 'module_type_field' ), true );
+			$module_link       = ( get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true ) ?: '#' );
+			$module_width      = get_post_meta( get_the_ID(), get_theme_mod( 'module_width_field' ), true );
+			$module_background = get_the_post_thumbnail_url( get_the_ID(), 'mfhomepage-module-background' );
+
+			// Build module CSS classes
+			$module_classes    = 'mfhomepage-content-module ';
+			switch ( $module_width ) {
+				case 'one-third':
+					$module_classes .= 'mfhomepage-content-module-1 ';
+					break;
+				case 'two-thirds':
+					$module_classes .= 'mfhomepage-content-module-2 ';
+					break;
+				case 'full':
+					$module_classes .= 'mfhomepage-content-module-3 ';
+					break;
+			}
+			?>
+
+			<?php if ( 'Text' === $module_type ) : ?>
+
+				<div class="<?php echo esc_attr( $module_classes ) ?>">
+					<h2><?php the_title() ?></h2>
+					<?php the_content(); ?>
+				</div>
+
+			<?php elseif ( 'Image Link' === $module_type ) : ?>
+
+				<a href="<?php echo esc_url( $module_link ) ?>" class="<?php echo esc_attr( $module_classes ) ?>" style="background-image: url( '<?php echo esc_url( $module_background ) ?>' );">
+					<div><?php the_content() ?></div>
+				</a>
+				
+			<?php elseif ( 'Image Link with Button' === $module_type ) : ?>
+
+				<a href="<?php echo esc_url( $module_link ) ?>" class="<?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn" style="background-image: url( '<?php echo esc_url( $module_background ) ?>' );">
+					<div><?php the_content() ?></div>
+				</a>
+
+			<?php else : ?>
+				<!-- Error: Missing post type! -->
+			<?php endif; ?>
+
+		<?php endwhile; ?>
+	</section>
+<?php
+endif;
+wp_reset_postdata();
+?>
 
 <section id="mfhomepage-news-events-container">
 	<div id="mfhomepage-news-events" class="container no-padding">
 		<?php $the_query = new WP_Query( array(
-			'post_type'      => get_theme_mod( 'featured_post_type' ),
+			'post_type'      => get_theme_mod( 'newsevents_post_type' ),
 			'tax_query' => array(
 				array(
-					'taxonomy' => get_theme_mod( 'featured_post_type_taxonomy' ),
+					'taxonomy' => get_theme_mod( 'newsevents_post_type_taxonomy' ),
 					'field'    => 'slug',
 					'terms'    => get_theme_mod( 'news_category' ),
 				),
@@ -95,7 +158,7 @@ get_header(); ?>
 
 				if ( has_post_thumbnail() ) : ?>
 					<a href="<?php echo esc_url(
-						get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+						get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 					); ?>" class="news-card mfhomepage-card">
 						<div class="card-heading" style="background-image: url('<?php the_post_thumbnail_url( 'mfhomepage-card-background' ) ?>')">
 							<div class="card-title">
@@ -111,7 +174,7 @@ get_header(); ?>
 							if ( ! empty( $mfhomepage_post_content ) ) { ?>
 								<p>
 									<?php echo esc_textarea(
-										get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_date_field' ), true )
+										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
 									); ?>&ndash;
 									<?php echo esc_textarea( $mfhomepage_content_trimmed ); ?>
 								</p>
@@ -128,10 +191,10 @@ get_header(); ?>
 			<h2>Happening around campus</h2>
 			<?php
 			$the_query = new WP_Query( array(
-				'post_type'      => get_theme_mod( 'featured_post_type' ),
+				'post_type'      => get_theme_mod( 'newsevents_post_type' ),
 				'tax_query' => array(
 					array(
-						'taxonomy' => get_theme_mod( 'featured_post_type_taxonomy' ),
+						'taxonomy' => get_theme_mod( 'newsevents_post_type_taxonomy' ),
 						'field'    => 'slug',
 						'terms'    => get_theme_mod( 'deadlines_category' ),
 					),
@@ -146,13 +209,13 @@ get_header(); ?>
 					<?php while ( $the_query->have_posts() ) :
 						$the_query->the_post(); ?>
 						<a href="<?php echo esc_url(
-							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 						); ?>" class="deadlines-card mfhomepage-card">
 							<div class="card-heading">
 								<div class="card-icon"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></div>
 								<div class="card-title">
 									<h3><?php echo esc_textarea(
-										get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_date_field' ), true )
+										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
 									); ?></h3>
 								</div>
 							</div>
@@ -183,7 +246,7 @@ get_header(); ?>
 			$the_query = new WP_Query( array(
 				'tax_query' => array(
 					array(
-						'taxonomy' => get_theme_mod( 'featured_post_type_taxonomy' ),
+						'taxonomy' => get_theme_mod( 'newsevents_post_type_taxonomy' ),
 						'field'    => 'slug',
 						'terms'    => get_theme_mod( 'events_category' ),
 					),
@@ -198,13 +261,13 @@ get_header(); ?>
 					<?php while ( $the_query->have_posts() ) :
 						$the_query->the_post(); ?>
 						<a href="<?php echo esc_url(
-							get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_link_field' ), true )
+							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 						); ?>" class="events-card mfhomepage-card">
 							<div class="card-heading">
 								<div class="card-icon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
 								<div class="card-title">
 									<h3><?php echo esc_textarea(
-										get_post_meta( get_the_ID(), get_theme_mod( 'featured_post_type_date_field' ), true )
+										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
 									); ?></h3>
 								</div>
 							</div>

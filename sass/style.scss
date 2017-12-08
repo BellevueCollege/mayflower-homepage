@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower
- Version:          1.4.2
+ Version:          1.4.3
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -132,7 +132,7 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 }
 
 
-/// New
+/* 2017 Homepage Redesign */
 #main-wrap.bchome {
 	padding: 0;
 	margin: 0;
@@ -203,32 +203,39 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 } 
 
 #homeslider {
-	margin-top: .75em;
+	margin-top: .75rem;
+	margin-bottom: 2rem;
 }
+#mfhomepage-content {
+	border: 1px solid #e6e5e5;
+	background: #fff;
 
-#mfhomepage-content .mfhomepage-row {
+	margin-top: 2rem;
+	padding: 1rem;
+
+	h2:first-child {
+		margin-top: 0;
+	}
+
+}
+#mfhomepage-modules {
 	display: flex;
 	flex-direction: column-reverse;
 
-	margin-top: 1em;
+	margin-top: 1rem;
 
 	&:last-child {
 		margin-top: 0;
 	}
 
 	&:first-child {
-		margin-top: 1em;
+		margin-top: 1rem;
 	}
 	
 	& .mfhomepage-content-module {
+		margin-bottom: 1rem;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-		margin-bottom: 1em;
-
-		padding: 1em;
+		padding: 1rem;
 
 		flex: 1 0 auto;
 
@@ -256,6 +263,10 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 	}
 	& a.mfhomepage-content-module {
 
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
 		min-height: 12rem;
 
 		text-decoration: none;
@@ -270,6 +281,7 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 		div {
 			background: $bg-transparent;
 			text-align: center;
+			transition: background-color .25s ease-out;
 		}
 
 		p {
@@ -291,18 +303,39 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 			}
 		}
 
-		&.mfhomepage-button {
+		&.mfhomepage-content-module-btn {
+
+			p {
+				margin: 0 .5rem;
+			}
+			p:first-child {
+				margin-top: .25rem;
+				padding-top: .25rem;
+			}
+			p:last-child {
+				margin-bottom: .25rem;
+				padding-bottom: .25rem;
+			}
 
 			strong {
-				padding: .25em .75em;
-				margin: .5em;
+				padding: .25rem .75rem;
 				
 				display: inline-block;
 				border-radius: 5px;
-				border: 1px solid #e6e5e5;
-				background: $bg-transparent;
+				border: 1px solid #ffffff;
+				background: #000000;
+			}
+			&:hover,
+			&:active,
+			&:focus {
+				strong {
+					box-shadow: 0px 0px 5px #fff;
+				}
+				
 			}
 		}
+
+		
 	}
 }
 
@@ -331,6 +364,8 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 // Homepage Card Design
 a.mfhomepage-card {
 	background: #fff;
+	transition: background-color .25s ease-out;
+
 	color: #000;
 
 	// Flex for children
@@ -407,6 +442,7 @@ a.mfhomepage-card:focus {
 
 		h3 {
 			background: $bg-transparent;
+			transition: background-color .25s ease-out;
 			display: block;
 			padding: 1em;
 			color: #fff;
@@ -415,6 +451,14 @@ a.mfhomepage-card:focus {
 
 		.card-content {
 			padding: 1em;
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			h3 {
+				background: #000;
+			}
 		}
 	}
 }
@@ -513,27 +557,34 @@ a.mfhomepage-card:focus {
 
 	}
 
-	#mfhomepage-content .mfhomepage-row {
+	#mfhomepage-modules {
 		margin-top: 1em;
 		margin-bottom: 1em;
 		flex-direction: row;
+
+		flex-wrap: wrap;
 
 		&:last-child {
 			margin-bottom: 0;
 		}
 		
 		& .mfhomepage-content-module {
-
 			flex-basis: calc(33% - 1em);
 
 			margin-right: 1em;
 
 			border: 1px solid #e6e5e5;
 
-			margin-bottom: 0;
-
 			&:last-child {
 				margin-right: 0;
+			}
+
+			&.mfhomepage-content-module-2 {
+				flex-basis: calc(66% - 1em);
+			}
+
+			&.mfhomepage-content-module-3 {
+				flex-basis: 100%;
 			}
 		}
 	}
@@ -608,4 +659,3 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
-
