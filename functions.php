@@ -7,7 +7,7 @@ add_action( 'wp_enqueue_scripts', 'mayflower_homepage_enqueue_styles' );
 function mayflower_homepage_enqueue_styles() {
 
 	// Enqueue parent theme stylesheet
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array('globals'));
 
 	// Degregister default stylesheet
 	wp_deregister_style( 'mayflower' );
