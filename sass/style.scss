@@ -256,7 +256,7 @@ $bg-transparent: rgba( 0, 0, 0, .54 );
 			font-size: 1.1em;
 
 			li {
-				line-height: 1.5em;
+				line-height: 1.2em;
 			}
 			
 		}
@@ -686,7 +686,6 @@ a.mfhomepage-card:focus {
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 4px;
 	position: static;
 
 	h1 {
@@ -825,8 +824,7 @@ a.list-group-item:hover {
 
 @media (min-width: 48em) { /*768px*/
 	.carousel-caption {
-		max-width: 40%;
-		min-height: 16em;
+		max-width: 50%;
 
 		h1 {
 			font-size: 2em;
@@ -956,21 +954,11 @@ a.list-group-item:hover {
 }
 
 @media (min-width: 75em) { /*1200px*/
-	.item {
-		min-height: 500px;
-	}
-
-	.caption-container{
-		-webkit-transform: translate(0, 50%);
-		-ms-transform: translate(0, 50%); 
-		transform: translate(0, 50%); 
-	}
-
 	.carousel-caption {
 		max-width: 40%;
 
 		h1 {
-			font-size: 2.5em; 
+			font-size: 2.5em;
 		}
 	}
 
@@ -978,7 +966,7 @@ a.list-group-item:hover {
 		max-height: none; 
 
 		p {
-			font-size:1.25em; 
+			font-size:1.2em; 
 		}
 	} 
 	
@@ -989,7 +977,7 @@ a.list-group-item:hover {
 	
 	.carousel-control {
 		min-height: none;
-		font-size: 1.5em; 
+		font-size: 1.2em; 
 		padding: 18px;
 		line-height: 0.5em;  
 		max-width: 100%;
@@ -1009,7 +997,7 @@ a.list-group-item:hover {
 		position: absolute;
 		right: 0;
 		bottom: 10px;
-		font-size: 1.5em;
+		font-size: 1.2em;
 	}
 	
 	a.list-group-item:hover {
