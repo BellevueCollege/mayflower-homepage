@@ -35,11 +35,11 @@
 										// If a post class has input, sanitize it and add it to the post class array.
 										$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 										if ( !empty( $slider_ext_url ) ) { ?>
-										<div class="carousel-header" data-title="<?php the_title(); ?>">
+										<div class="carousel-header">
 											<h1><a href="<?php echo esc_url($slider_ext_url);?>"><?php the_title(); ?></a></h1>
 										</div>
 										<?php } else { ?>
-											<div class="carousel-header" data-title="<?php the_title(); ?>">
+											<div class="carousel-header">
 												<h1><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h1>
 											</div>
 										<?php } //end else ?>
@@ -100,7 +100,7 @@
 						<a class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
 							<i class="glyphicon glyphicon-th-list"></i>
 						</a>
-						<div class="list-group-col list-group collapse"> <!-- title list group -->
+						<div class="list-group collapse"> <!-- title list group -->
 							<?php 
 							$number = 0;
 							$the_query = new WP_Query(array(

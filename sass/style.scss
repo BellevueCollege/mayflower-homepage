@@ -736,24 +736,30 @@ a.mfhomepage-card:focus {
 	background: transparent;
 	z-index: 15;
 	position: relative;
-} 
+	margin: 5px 5px 0 5px;
+}
+
+
 
 
 .carousel-control {
-	width: auto;
-	max-width: 260px;
+	width: 84%;
+	// max-width: 260px;
 	height: auto;
-	min-height: 47px;
+	// min-height: 47px;
 	bottom: auto;
 	font-size: 1.05em;
 	padding: 15px;
 	top: 0;
 	opacity: 1.0;
 	background-color: #003d79;
-	white-space: normal;
+	// white-space: normal;
 	line-height: 1em;
 	border: 1px solid #fff;
 	border-radius: 4px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 
 	&.next-slide {
 		right: 0;
@@ -770,6 +776,10 @@ a.carousel-control:focus {
 	border-radius: 4px;
 }
 
+// .list-container {
+// 	width: 15%;
+// 	background: red;
+// }
 
 .list-indicators {
 	z-index: 15;
@@ -815,7 +825,14 @@ a.list-group-item:hover {
 
 .list-group-icon {
 	border-radius: 4px;
-	max-width: 53px;
+	max-width: 15%;
+	height: 47px;
+	font-size: 2em;
+	padding: 0;
+}
+
+.list-group-icon > .glyphicon-th-list {
+	top: 5px;
 }
 
 .list-group-icon:hover {
@@ -845,7 +862,10 @@ a.list-group-item:hover {
 	} 
 
 	.carousel-control {
-		min-height: none;
+		width: auto;
+		max-width: none;
+		height: auto;
+		min-height: 47px;
 		font-size: 1.2em; 
 		padding: 18px;
 		line-height: 0.5em;  
@@ -877,10 +897,19 @@ a.list-group-item:hover {
 	.list-group {
 		margin-bottom: 0px;
 		width: auto;
+		height: auto;
 	}
 
 	.list-group-icon {
-		max-width: 100%;
+		border-radius: 4px;
+		padding: 5px;
+		height: auto;
+		max-width: none;
+		font-size: 1.75em;
+	}
+
+	.list-group-icon > .glyphicon-th-list {
+		top: 0;
 	}
 
 	.list-group-item {
@@ -942,10 +971,7 @@ a.list-group-item:hover {
 	.list-group {
 		margin-bottom: 0px;
 		width: auto;
-	}
-
-	.list-group-icon {
-		max-width: 100%;
+		height: auto;
 	}
 
 	.list-group-item {
@@ -1007,10 +1033,6 @@ a.list-group-item:hover {
 	.list-group {
 		margin-bottom: 0px;
 		width: auto;
-	}
-
-	.list-group-icon {
-		max-width: 100%;
 	}
 
 	.list-group-item {
