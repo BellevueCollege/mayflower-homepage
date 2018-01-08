@@ -728,8 +728,6 @@ a.mfhomepage-card:focus {
 	}
 }
 
-
-
 .carousel-controls {
 	width: auto;
 	height: auto;
@@ -738,9 +736,6 @@ a.mfhomepage-card:focus {
 	position: relative;
 	margin: 5px 5px 0 5px;
 }
-
-
-
 
 .carousel-control {
 	width: 84%;
@@ -775,11 +770,6 @@ a.mfhomepage-card:focus {
 a.carousel-control:focus {
 	border-radius: 4px;
 }
-
-// .list-container {
-// 	width: 15%;
-// 	background: red;
-// }
 
 .list-indicators {
 	z-index: 15;
@@ -840,6 +830,11 @@ a.list-group-item:hover {
 }
 
 @media (min-width: 48em) { /*768px*/
+	.carousel-controls {
+		position: relative;
+		bottom: 60px;
+	} 
+
 	.carousel-caption {
 		max-width: 50%;
 
@@ -856,11 +851,6 @@ a.list-group-item:hover {
 		}
 	} 
 	
-	.carousel-controls {
-		position: relative;
-		bottom: 60px;
-	} 
-
 	.carousel-control {
 		width: auto;
 		max-width: none;
@@ -892,7 +882,6 @@ a.list-group-item:hover {
 	a.list-group-item:hover {
 		background-color: rgba(0, 0, 0, 0.75);
 	}
-
 
 	.list-group {
 		margin-bottom: 0px;
@@ -926,116 +915,15 @@ a.list-group-item:hover {
 		}
 	}
 
-	.carousel-excerpt { 
-		max-height: none; 
-
-		p {
-			font-size:1.2em;
-		}
-	} 
-	
-	.carousel-controls {
-		position: relative;
-		bottom: 60px;
-	} 
-
 	.carousel-control {
 		min-height: none;
-		font-size: 1.2em; 
-		padding: 18px;
-		line-height: 0.5em;  
-		max-width: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.75);
-		}
-
-		&.next-slide {
-			right: 0;
-			left: auto;
-		}
-	}
-
-	.list-indicators {
-		position: absolute;
-		right: 0;
-		bottom: 10px;
-		font-size: 1.2em;
-	}
-	
-	a.list-group-item:hover {
-		background-color: rgba(0, 0, 0, 0.75);
-	}
-
-	.list-group {
-		margin-bottom: 0px;
-		width: auto;
-		height: auto;
-	}
-
-	.list-group-item {
-		background-color: rgba(0, 0, 0, 0.5);
 	}
 }
 
 @media (min-width: 75em) { /*1200px*/
 	.carousel-caption {
-		max-width: 40%;
-
 		h1 {
 			font-size: 2.5em;
 		}
-	}
-
-	.carousel-excerpt { 
-		max-height: none; 
-
-		p {
-			font-size:1.2em; 
-		}
-	} 
-	
-	.carousel-controls {
-		position: relative;
-		bottom: 60px;
-	} 
-	
-	.carousel-control {
-		min-height: none;
-		font-size: 1.2em; 
-		padding: 18px;
-		line-height: 0.5em;  
-		max-width: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.75);
-		}
-
-		&.next-slide {
-			right: 0;
-			left: auto;
-		}
-	}
-
-	.list-indicators {
-		position: absolute;
-		right: 0;
-		bottom: 10px;
-		font-size: 1.2em;
-	}
-	
-	a.list-group-item:hover {
-		background-color: rgba(0, 0, 0, 0.75);
-	}
-
-	.list-group {
-		margin-bottom: 0px;
-		width: auto;
-	}
-
-	.list-group-item {
-		background-color: rgba(0, 0, 0, 0.5);
 	}
 }

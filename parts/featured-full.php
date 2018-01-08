@@ -96,7 +96,7 @@
 
 			<div class="container no-padding">
 				<div class="carousel-controls"> <!-- Carousel list and button -->
-					<div class="list-container list-group list-group-tree list-indicators"> <!-- Carousel list -->
+					<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->
 						<a class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
 							<i class="glyphicon glyphicon-th-list"></i>
 						</a>
@@ -112,7 +112,7 @@
 							while ( $the_query->have_posts() ) :
 								$the_query->the_post(); ?>
 									<?php if ( $the_query->current_post == 0 ) { ?>
-										<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>" class="active"><?php the_title(); ?></a>
+										<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
 									<?php } else { ?>
 										<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
 									<?php } ?>
