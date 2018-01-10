@@ -100,7 +100,7 @@
 						<a class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
 							<i class="glyphicon glyphicon-th-list"></i>
 						</a>
-						<div class="list-group collapse"> <!-- title list group -->
+						<div class="list-group-col list-group collapse"> <!-- title list group -->
 							<?php 
 							$number = 0;
 							$the_query = new WP_Query(array(

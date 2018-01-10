@@ -787,6 +787,7 @@ a.carousel-control:focus {
 .list-group-item {
 	opacity: 1.0;
 	background-color: #003D79;
+	border: 1px solid #fff;
 
 	&:first-child {
 		border-top-right-radius: 4px;
@@ -867,7 +868,7 @@ a.list-group-item:hover {
 		}
 
 		&.next-slide {
-			right: 0;
+			right: 49px;
 			left: auto;
 		}
 	}
@@ -875,7 +876,6 @@ a.list-group-item:hover {
 	.list-indicators {
 		position: absolute;
 		right: 0;
-		bottom: 10px;
 		font-size: 1.2em;
 	}
 	
@@ -889,16 +889,23 @@ a.list-group-item:hover {
 		height: auto;
 	}
 
+	.list-group-col {
+		bottom: 45px; 
+		position: absolute;
+		right: 0;
+		margin-bottom: 5px;
+		width: 250px;
+	}
+
 	.list-group-icon {
 		border-radius: 4px;
 		padding: 5px;
-		height: auto;
 		max-width: none;
 		font-size: 1.75em;
 	}
 
 	.list-group-icon > .glyphicon-th-list {
-		top: 0;
+		top: 1px;
 	}
 
 	.list-group-item {
