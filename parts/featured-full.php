@@ -98,7 +98,7 @@
 				<div class="carousel-controls"> <!-- Carousel list and button -->
 					<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->
 						<a class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
-							<i id="list-group-glyph" class="glyphicon glyphicon-th-list"></i>
+							<i id="list-group-glyph" class="glyphicon glyphicon-list"></i>
 						</a>
 						<div class="list-group-col list-group collapse"> <!-- title list group -->
 							<?php 
