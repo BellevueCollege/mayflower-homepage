@@ -817,14 +817,14 @@ a.list-group-item:hover {
 .list-group-icon {
 	border-radius: 4px;
 	max-width: 15%;
-	height: 47px;
+	height: auto; //47px
 	font-size: 2em;
-	padding: 0;
+	padding: 6px 0 6px 0;
 }
 
-.list-group-icon > .glyphicon-th-list {
-	top: 5px;
-}
+// .list-group-icon > .glyphicon-th-list, .list-group-icon > .glyphicon-remove {
+// 	top: 5px;
+// }
 
 .list-group-icon:hover {
 	border-radius: 4px;
@@ -904,9 +904,9 @@ a.list-group-item:hover {
 		font-size: 1.75em;
 	}
 
-	.list-group-icon > .glyphicon-th-list {
-		top: 1px;
-	}
+	// .list-group-icon > .glyphicon-th-list, .list-group-icon > .glyphicon-remove {
+	// 	top: 1px;
+	// }
 
 	.list-group-item {
 		background-color: rgba(0, 0, 0, 0.5);
