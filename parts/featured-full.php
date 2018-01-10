@@ -1,7 +1,7 @@
 <?php if ( is_front_page() ) :
 	$mayflower_options = mayflower_get_options();
 	?>
-		<div id="carousel-featured-full" class="carousel slide full" data-ride="carousel">
+		<div id="carousel-featured-full" class="carousel slide full" data-interval="false">
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<?php $the_query = new WP_Query(array(
