@@ -94,6 +94,17 @@
 			wp_add_inline_script( 'mhcarousel-button-script','$carousel_posts_array', 'before' ); ?>
 			<!-- end title array script -->
 
+			<!-- Script hides carousel control interface if only 1 slide is published -->
+			<script>
+			<?php
+			$slide_count = "";
+			echo $slide_count = "var carousel_slide_count = '" . wp_count_posts('mhcarousel')->publish . "';";
+			?>
+			</script>
+		
+			<?php wp_add_inline_script( 'mhcarousel-interface-script','$slide-count', 'before' ); ?>
+			<!-- end carousel interface hide script -->
+
 			<div class="container no-padding">
 				<div class="carousel-controls"> <!-- Carousel list and button -->
 					<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->

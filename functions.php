@@ -18,10 +18,10 @@ function mayflower_homepage_enqueue_styles() {
 	// enqueue it again
 	wp_enqueue_style( 'mayflower' );
 	
-	//https://stackoverflow.com/questions/28248113/jquery-is-not-defined-in-wordpress-but-my-script-is-enqueued-properly
-	if (is_front_page()) { //check to make sure get_stylesheet_directory_uri() is correct, could use other functions?
+	if (is_front_page()) {
 		wp_enqueue_script( 'mhcarousel-toggle-script', get_stylesheet_directory_uri() . '/js/mhcarousel-toggle-list.js', array('jquery') ); //added jquery because jquery was called after the scripts
 		wp_enqueue_script( 'mhcarousel-button-script', get_stylesheet_directory_uri() . '/js/mhcarousel-button-title.js' );
+		wp_enqueue_script( 'mhcarousel-interface-script', get_stylesheet_directory_uri() . '/js/mhcarousel-hide-interface.js' );
 	}
 }
 
