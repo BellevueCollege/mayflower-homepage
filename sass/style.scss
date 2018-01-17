@@ -42,6 +42,7 @@ $breakpoint-bs-md: 62em;
 $breakpoint-bs-lg: 75em;
 
 $bg-transparent: rgba( 0, 0, 0, .54 );
+$bg-transparent-hover: rgba( 0, 0, 0, .75 );
 
 /* ###################################### */
 /* ----- BC Home Page only          ----- */
@@ -736,179 +737,179 @@ a.mfhomepage-card:focus {
 	z-index: 15;
 	position: relative;
 	margin: 5px 5px 0 5px;
-}
 
-.carousel-control {
-	width: 84%;
-	height: auto;
-	bottom: auto;
-	font-size: 1.05em;
-	padding: 15px;
-	top: 0;
-	opacity: 1.0;
-	background-color: $brand-primary;
-	line-height: 1em;
-	border: 1px solid #fff;
-	border-radius: 4px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+	.carousel-control {
+		width: 84%;
+		height: auto;
+		bottom: auto;
+		font-size: 1.05em;
+		padding: 15px;
+		top: 0;
+		opacity: 1.0;
+		background-color: $brand-primary;
+		line-height: 1em;
+		border: 1px solid #fff;
+		border-radius: 4px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	
+		&.next-slide {
+			right: 0;
+			left: auto;
+		}
 
-	&.next-slide {
-		right: 0;
-		left: auto;
-	}
-}
-
-.carousel-control:hover {
-	background-color: $brand-primary-hover;
-	opacity: 1.0;
-}
-
-a.carousel-control:focus {
-	border-radius: 4px;
-}
-
-.list-indicators {
-	z-index: 15;
-	text-align: center;
-	list-style: none;
-	opacity: 1.0;
-	font-size: 1.05em; 
-}
-
-.list-group {
-	margin-bottom: 0px;
-	width: 100%;
-}
-
-.list-group-item {
-	opacity: 1.0;
-	background-color: $brand-primary;
-	border: 1px solid #fff;
-
-	&:first-child {
-		border-top-right-radius: 4px;
-		border-top-left-radius: 4px;
+		&:focus {
+			opacity: 1.0;
+		}
 	}
 
-	&:last-child {
-		border-bottom-right-radius: 4px;
-		border-bottom-left-radius: 4px;
+	.carousel-control:hover {
+		background-color: $brand-primary-hover;
+		opacity: 1.0;
 	}
-}
+	
+	a.carousel-control:focus {
+		border-radius: 4px;
+	}
 
-.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
-	z-index: 2;
-	color: #fff;
-}
-
-a.list-group-item, a.list-group-item:hover {
-	color: #fff;
-	opacity: 1.0;
-}
-
-a.list-group-item:hover {
-	background-color: $brand-primary-hover;
-}
-
-.list-group-icon {
-	border-radius: 4px;
-	max-width: 15%;
-	height: auto;
-	font-size: 1em;
-}
-
-.list-group-icon:hover {
-	border-radius: 4px;
-}
-
-.list-item-active {
-	background-color: $brand-primary-hover;
-	font-weight: bold;
+	.list-indicators {
+		z-index: 15;
+		text-align: center;
+		list-style: none;
+		opacity: 1.0;
+		font-size: 1.05em; 
+	}
+	
+	.list-group {
+		margin-bottom: 0px;
+		width: 100%;
+	}
+	
+	.list-group-item {
+		opacity: 1.0;
+		background-color: $brand-primary;
+		border: 1px solid #fff;
+	
+		&:first-child {
+			border-top-right-radius: 4px;
+			border-top-left-radius: 4px;
+		}
+	
+		&:last-child {
+			border-bottom-right-radius: 4px;
+			border-bottom-left-radius: 4px;
+		}
+	}
+	
+	.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+		z-index: 2;
+		color: #fff;
+	}
+	
+	a.list-group-item, a.list-group-item:hover {
+		color: #fff;
+		opacity: 1.0;
+	}
+	
+	a.list-group-item:hover {
+		background-color: $brand-primary-hover;
+	}
+	
+	.list-group-icon {
+		border-radius: 4px;
+		max-width: 15%;
+		height: auto;
+		font-size: 1em;
+	}
+	
+	.list-item-active {
+		background-color: $brand-primary-hover;
+		font-weight: bold;
+	}
 }
 
 @media (min-width: $breakpoint-bs-sm) {
-	.carousel-controls {
-		position: relative;
-		bottom: 60px;
-		margin: 0;
-	} 
-
 	.carousel-caption {
 		max-width: 50%;
 
 		h1 {
 			font-size: 2em;
 		}
-	}
 
-	.carousel-excerpt { 
-		max-height: none; 
-
-		p {
-			font-size:1.2em;
-		}
-	} 
+		.carousel-excerpt { 
+			max-height: none; 
 	
-	.carousel-control {
-		width: auto;
-		max-width: none;
-		height: auto;
-		min-height: 47px;
-		font-size: 1.2em; 
-		padding: 18px;
-		line-height: 0.5em;  
-		max-width: 100%;
-		background-color: $bg-transparent;
-
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.75);
-		}
-
-		&.next-slide {
-			right: 57px;
-			left: auto;
-		}
-	}
-
-	.list-indicators {
-		position: absolute;
-		right: 0;
-		font-size: 1.2em;
+			p {
+				font-size:1.2em;
+			}
+		} 
 	}
 	
-	a.list-group-item:hover {
-		background-color: rgba(0, 0, 0, 0.75);
-	}
+	.carousel-controls {
+		position: relative;
+		bottom: 60px;
+		margin: 0;
 
-	.list-group {
-		margin-bottom: 0px;
-		width: auto;
-		height: auto;
-	}
-
-	.list-group-col {
-		bottom: 45px; 
-		position: absolute;
-		right: 0;
-		margin-bottom: 5px;
-		width: 250px;
-	}
-
-	.list-group-icon {
-		border-radius: 4px;
-		max-width: none;
-		font-size: 1.1em;
-	}
-
-	.list-group-item {
-		background-color: $bg-transparent;
-	}
-
-	.list-item-active {
-		background-color: rgba(0, 0, 0, 0.75);
-		font-weight: bold;
+		.carousel-control {
+			width: auto;
+			max-width: none;
+			height: auto;
+			min-height: 47px;
+			font-size: 1.2em; 
+			padding: 18px;
+			line-height: 0.5em;  
+			max-width: 100%;
+			background-color: $bg-transparent;
+	
+			&:hover {
+				background-color: $bg-transparent-hover;
+			}
+	
+			&.next-slide {
+				right: 57px;
+				left: auto;
+			}
+		}
+	
+		.list-indicators {
+			position: absolute;
+			right: 0;
+			font-size: 1.2em;
+		}
+		
+		a.list-group-item:hover {
+			background-color: $bg-transparent-hover;
+		}
+	
+		.list-group {
+			margin-bottom: 0px;
+			width: auto;
+			height: auto;
+		}
+	
+		.list-group-col {
+			bottom: 45px; 
+			position: absolute;
+			right: 0;
+			margin-bottom: 5px;
+			width: 250px;
+		}
+	
+		.list-group-icon {
+			border-radius: 4px;
+			max-width: none;
+			font-size: 1.1em;
+		}
+	
+		.list-group-item {
+			background-color: $bg-transparent;
+		}
+	
+		.list-item-active {
+			background-color: $bg-transparent-hover;
+			font-weight: bold;
+		}
 	}
 }
 
@@ -921,8 +922,10 @@ a.list-group-item:hover {
 		}
 	}
 
-	.carousel-control {
-		min-height: none;
+	.carousel-controls {
+		.carousel-control {
+			min-height: none;
+		}
 	}
 }
 

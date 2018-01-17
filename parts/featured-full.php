@@ -29,15 +29,15 @@
 						<?php //should we show title & excerpt?
 						$mayflower_options = mayflower_get_options();
 						if ($mayflower_options['slider_title'] == 'true' || $mayflower_options['slider_excerpt'] == 'true' ) { ?>
-							<div class="container no-padding caption-container"> <!--test-->
+							<div class="container no-padding caption-container">
 								<div class="carousel-caption">
 									<?php if ($mayflower_options['slider_title'] == 'true') {
 										// If a post class has input, sanitize it and add it to the post class array.
 										$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 										if ( !empty( $slider_ext_url ) ) { ?>
-										<div class="carousel-header">
-											<h1><a href="<?php echo esc_url($slider_ext_url);?>"><?php the_title(); ?></a></h1>
-										</div>
+											<div class="carousel-header">
+												<h1><a href="<?php echo esc_url($slider_ext_url);?>"><?php the_title(); ?></a></h1>
+											</div>
 										<?php } else { ?>
 											<div class="carousel-header">
 												<h1><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h1>
@@ -59,51 +59,44 @@
 								</div><!-- carousel-caption -->
 							</div>
 						<?php } else  { } ?>
-
 					</div><!-- item -->
-
 				<?php endwhile; wp_reset_postdata(); ?>
-
 			</div><!-- carousel-inner -->
 
 			<!-- Carousel Controls -->
-
-			<!-- Script creates arrays to hold carousel titles for next button -->
+			<!-- Script creates title array to hold carousel titles for next button -->
 			<script>
-			<?php 
-			// the query
-			$the_query = new WP_Query(array(
-				'post_type'=>'mhcarousel',
-				'orderby'=> 'menu_order',
-				'order'=> 'ASC',
-				'posts_per_page' => $mayflower_options['slider_number_slides'],
-			));
+				<?php 
+				// the query
+				$the_query = new WP_Query(array(
+					'post_type'=>'mhcarousel',
+					'orderby'=> 'menu_order',
+					'order'=> 'ASC',
+					'posts_per_page' => $mayflower_options['slider_number_slides'],
+				));
 
-			$carousel_posts_array = '';
-			if ($the_query->have_posts()) :	
-				echo $carousel_posts_array = "var carousel_posts = [";
-				while ($the_query->have_posts()) : $the_query->the_post(); 
-					echo $carousel_posts_array = "'" . get_the_title( get_the_ID() ) . "', ";
-				endwhile;
-				echo $carousel_posts_array =  "];";
-			endif;
-			?>
+				$carousel_posts_array = '';
+				if ($the_query->have_posts()) :	
+					echo $carousel_posts_array = "var carousel_posts = [";
+					while ($the_query->have_posts()) : $the_query->the_post(); 
+						echo $carousel_posts_array = "'" . get_the_title( get_the_ID() ) . "', ";
+					endwhile;
+					echo $carousel_posts_array =  "];";
+				endif;
+				?>
 			</script>
-
-			<?php 
-			wp_add_inline_script( 'mhcarousel-button-script','$carousel_posts_array', 'before' ); ?>
+			<?php wp_add_inline_script( 'mhcarousel-button-script','$carousel_posts_array', 'before' ); ?>
 			<!-- end title array script -->
 
 			<!-- Script hides carousel control interface if only 1 slide is published -->
 			<script>
-			<?php
-			$slide_count = "";
-			echo $slide_count = "var carousel_slide_count = '" . wp_count_posts('mhcarousel')->publish . "';";
-			?>
+				<?php
+				$slide_count = "";
+				echo $slide_count = "var carousel_slide_count = '" . wp_count_posts('mhcarousel')->publish . "';";
+				?>
 			</script>
-		
 			<?php wp_add_inline_script( 'mhcarousel-interface-script','$slide-count', 'before' ); ?>
-			<!-- end carousel interface hide script -->
+			<!-- end hide carousel interface  script -->
 
 			<div class="container no-padding">
 				<div class="carousel-controls"> <!-- Carousel list and button -->
@@ -122,15 +115,16 @@
 							));
 							while ( $the_query->have_posts() ) :
 								$the_query->the_post(); ?>
-									<?php if ( $the_query->current_post == 0 ) { ?>
-										<a id="list-item" class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
-									<?php } else { ?>
-										<a id="list-item" class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
-									<?php } ?>
+								<?php if ( $the_query->current_post == 0 ) { ?>
+									<a class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+								<?php } else { ?>
+									<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+								<?php } ?>
 							<?php endwhile; wp_reset_postdata(); ?>
 						</div> <!-- end list-group-col list-group collapse -->
-					</div> <!-- end list-container list-group list-group-tree list-indicators -->
-					<a class="carousel-control next-slide" href="#carousel-featured-full" role="button" data-slide="next"> <!-- Carousel button -->
+					</div> <!-- end list-group list-group-tree list-indicators -->
+					<!-- Carousel button -->
+					<a class="carousel-control next-slide" href="#carousel-featured-full" role="button" data-slide="next">
 							Next: <span id="slide-title"></span> >
 					</a>
 				</div> <!-- end carousel-controls -->
