@@ -123,9 +123,9 @@
 							while ( $the_query->have_posts() ) :
 								$the_query->the_post(); ?>
 									<?php if ( $the_query->current_post == 0 ) { ?>
-										<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+										<a id="list-item" class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
 									<?php } else { ?>
-										<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+										<a id="list-item" class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
 									<?php } ?>
 							<?php endwhile; wp_reset_postdata(); ?>
 						</div> <!-- end list-group-col list-group collapse -->

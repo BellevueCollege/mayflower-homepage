@@ -15,6 +15,7 @@
 
 /* Colors */
 $brand-primary: #003D79; // BC Brand Primary Blue
+$brand-primary-hover: #00274d;
 $brand-success: #317131; // Darkened to meet a11y AA requirements
 $brand-info: #afd7ff; // Lightened BC Brand Blue to meet a11y requirements
 $brand-warning: #F2C01E; // BC Brand Yellow
@@ -745,7 +746,7 @@ a.mfhomepage-card:focus {
 	padding: 15px;
 	top: 0;
 	opacity: 1.0;
-	background-color: #003d79;
+	background-color: $brand-primary;
 	line-height: 1em;
 	border: 1px solid #fff;
 	border-radius: 4px;
@@ -760,7 +761,7 @@ a.mfhomepage-card:focus {
 }
 
 .carousel-control:hover {
-	background-color: #001c37;
+	background-color: $brand-primary-hover;
 	opacity: 1.0;
 }
 
@@ -808,7 +809,7 @@ a.list-group-item, a.list-group-item:hover {
 }
 
 a.list-group-item:hover {
-	background-color: #001c37;
+	background-color: $brand-primary-hover;
 }
 
 .list-group-icon {
@@ -820,6 +821,11 @@ a.list-group-item:hover {
 
 .list-group-icon:hover {
 	border-radius: 4px;
+}
+
+.list-item-active {
+	background-color: $brand-primary-hover;
+	font-weight: bold;
 }
 
 @media (min-width: $breakpoint-bs-sm) {
@@ -898,6 +904,11 @@ a.list-group-item:hover {
 
 	.list-group-item {
 		background-color: $bg-transparent;
+	}
+
+	.list-item-active {
+		background-color: rgba(0, 0, 0, 0.75);
+		font-weight: bold;
 	}
 }
 
