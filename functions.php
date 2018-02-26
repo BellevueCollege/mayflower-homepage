@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Enqueue Child Theme Stylesheet
  */
@@ -6,7 +7,7 @@ add_action( 'wp_enqueue_scripts', 'mayflower_homepage_enqueue_styles' );
 function mayflower_homepage_enqueue_styles() {
 
 	// Enqueue parent theme stylesheet
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array('globals'));
 
 	// Degregister default stylesheet
 	wp_deregister_style( 'mayflower' );
@@ -16,8 +17,21 @@ function mayflower_homepage_enqueue_styles() {
 
 	// enqueue it again
 	wp_enqueue_style( 'mayflower' );
-
+	
+	if (is_front_page()) {
+		wp_enqueue_script( 'mhcarousel-toggle-script', get_stylesheet_directory_uri() . '/js/mhcarousel-toggle-list.js', array('jquery') ); //added jquery because jquery was called after the scripts
+		wp_enqueue_script( 'mhcarousel-button-script', get_stylesheet_directory_uri() . '/js/mhcarousel-button-title.js' );
+		wp_enqueue_script( 'mhcarousel-interface-script', get_stylesheet_directory_uri() . '/js/mhcarousel-hide-interface.js' );
+		wp_enqueue_script( 'mhcarousel-list-script', get_stylesheet_directory_uri() . '/js/mhcarousel-list-active.js' );
+	}
 }
+
+/*
+ * Define Image Sizes
+ */
+
+add_image_size( 'mfhomepage-card-background', 760, 260, true );
+add_image_size( 'mfhomepage-module-background', 750, 180, true );
 
 /**
  * Override bc_footer function to add additional footer element
@@ -91,28 +105,80 @@ add_filter( 'body_class','mayflower_body_class_ia' );
 function register_mayflower_homepage_menus() {
 	register_nav_menus(
 		array(
-			'front_page_legal' => __( 'Front Page Legal Links' ),
+			'mfhomepage_menus_for' => __( 'Front Page - Top Left' ),
+			'mfhomepage_resources' => __( 'Front Page - Top Center' ),
+			'mfhomepage_contact'   => __( 'Front Page - Top Right' ),
+			'front_page_legal'     => __( 'Front Page - Legal Links' ),
 		)
 	);
 }
 add_action( 'init', 'register_mayflower_homepage_menus' );
 
-/**
- * Register our sidebars and widgetized areas on Homepage
- *
- */
-function mayflower_homepage_widgets_init() {
+//////////
+// Front Page Menu Walker - Button Groups!
+/////////
+class MFHomepage_Walker extends Walker_Nav_Menu {
 
-	register_sidebar( array(
-		'name'          => 'Homepage Menus Area',
-		'id'            => 'home_menus_area',
-		'before_widget' => '<section class="col-xs-12 box-shadow">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>',
-	) );
+	// Displays start of an element. E.g '<li> Item Name'
+	// @see Walker::start_el()
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$object = $item->object;
+		$type = $item->type;
+		$title = $item->title;
+		$description = $item->description;
+		$permalink = $item->url;
+		//$output .= '<pre>' . print_r($item, true) . '</pre>';
+
+		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
+			$output .= "<a class='btn btn-default " . implode( ' ', $item->classes ) . "' href='$permalink'>";
+			$output .= $title;
+
+		} elseif ( $depth > 0 ) {
+			$output .= "<li><a href='$permalink'>$title";
+		} else {
+			$output .= '<div class="btn-group " role="group">';
+			$output .= '<a class="btn btn-default dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			$output .= $title;
+			$output .= ' <span class="caret"></span>';
+			$output .= '</a>';
+		}
+
+	}
+
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
+
+		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
+			$output .= '</a>';
+
+		} elseif ( $depth > 0 ) {
+			$output .= '</a></li>';
+		} else {
+			$output .= '</div>';
+		}
+	}
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$output .= '<ul class="dropdown-menu dropdown-menu-right">';
+	}
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
+		$output .= '</ul>';
+	}
+
 }
-add_action( 'widgets_init', 'mayflower_homepage_widgets_init' );
+
+function mfhomepage_get_menu_name( $location ) {
+	$menu_name = $location;
+	$locations = get_nav_menu_locations();
+	$menu_id = $locations[ $menu_name ] ;
+	$menu_object = wp_get_nav_menu_object( $menu_id );
+	return $menu_object->name;
+}
+
+
+
+
+
+
+
 
 
 /**
@@ -129,10 +195,38 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	 * Inspired by http://josephfitzsimmons.com/adding-a-select-box-with-categories-into-wordpress-theme-customizer/
 	 * but modified to use foreach loop for simplicity
 	 */
-	function get_categories_select() {
+	function get_categories_select( $taxonomy = 'category' ) {
 		$results;
-		foreach ( get_categories() as $cat ) {
+		$categories;
+		if ( '' == $taxonomy ) {
+			$categories = get_categories();
+		} else {
+			$categories = get_categories( array(
+				'taxonomy' => $taxonomy,
+			) );
+		}
+		foreach ( $categories as $cat ) {
 			$results[ $cat->slug ] = $cat->name;
+		}
+		return $results;
+	}
+
+	function get_taxonomy_select() {
+		$results;
+		$taxonomies = get_taxonomies();
+
+		foreach ( $taxonomies as $taxonomy ) {
+			$results[ $taxonomy ] = $taxonomy;
+		}
+		return $results;
+	}
+
+	function get_cpt_select() {
+		$results;
+		$cpts = get_post_types();
+
+		foreach ( $cpts as $cpt ) {
+			$results[ $cpt ] = $cpt;
 		}
 		return $results;
 	}
@@ -149,13 +243,48 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'title'      => __( 'Mayflower Homepage ', 'mayflower-homepage' ),
 		'priority'   => 300,
 	) );
-	$wp_customize->add_setting( 'news_site_id' , array(
-		'default'           => '63',
+
+	$wp_customize->add_setting( 'modules_post_type' , array(
+		'default'           => '',
 		'transport'         => 'refresh',
-		'sanitize_callback' => 'sanitize_int',
+		'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_setting( 'news_category_name' , array(
-		'default'           => 'BC Homepage',
+
+	$wp_customize->add_setting( 'module_type_field' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+
+	$wp_customize->add_setting( 'module_width_field' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+
+	$wp_customize->add_setting( 'newsevents_post_type' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_setting( 'newsevents_post_type_taxonomy' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_setting( 'newsevents_post_type_date_field' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_setting( 'newsevents_post_type_link_field' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+
+	$wp_customize->add_setting( 'news_category' , array(
+		'default'           => '',
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
@@ -164,38 +293,112 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_setting( 'apply_btn_html' , array(
-		'default'           => '<a href="//www.bellevuecollege.edu/admissions/?utm_source=bchomepage&utm_medium=button&utm_campaign=applybtn" class="btn btn-block btn-success"><strong>Apply</strong>for admission</a>',
+	$wp_customize->add_setting( 'deadlines_category' , array(
+		'default'           => '',
 		'transport'         => 'refresh',
-		'sanitize_callback' => 'wp_kses_post',
+		'sanitize_callback' => 'sanitize_text_field',
 	) );
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_site_id', array(
-		'label'        => __( 'News Site ID', 'mayflower-homepage' ),
-		'description'  => __( 'ID of site from which to draw homepage news section', 'mayflower-homepage' ),
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'modules_post_type', array(
+		'label'        => __( 'Homepage Modules', 'mayflower-homepage' ),
+		'description'  => __( 'Custom Post Type from which to pull featured items', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
-		'settings'     => 'news_site_id',
-		'type'         => 'number',
+		'settings'     => 'modules_post_type',
+		'type'         => 'select',
+		'choices'      => get_cpt_select(),
 	) ) );
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_category_name', array(
-		'label'        => __( 'News Category Name', 'mayflower-homepage' ),
-		'description'  => __( 'Category from which to draw homepage news section', 'mayflower-homepage' ),
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'module_type_field', array(
+		'label'        => __( 'Module Type Custom Field', 'mayflower-homepage' ),
+		'description'  => __( 'Custom field to be used to select module type', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
-		'settings'     => 'news_category_name',
+		'settings'     => 'module_type_field',
+		'type'         => 'text',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'module_width_field', array(
+		'label'        => __( 'Module Width Custom Field', 'mayflower-homepage' ),
+		'description'  => __( 'Custom field to be used to select module width', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'module_width_field',
+		'type'         => 'text',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'newsevents_post_type', array(
+		'label'        => __( 'Around Campus Post Type', 'mayflower-homepage' ),
+		'description'  => __( 'Custom Post Type from which to pull featured news/events', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'newsevents_post_type',
+		'type'         => 'select',
+		'choices'      => get_cpt_select(),
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'newsevents_post_type_taxonomy', array(
+		'label'        => __( 'Around Campus Post Taxonomy', 'mayflower-homepage' ),
+		'description'  => __( 'Taxonomy to be used to choose where things are featured', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'newsevents_post_type_taxonomy',
+		'type'         => 'select',
+		'choices'      => get_taxonomy_select(),
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'newsevents_post_type_date_field', array(
+		'label'        => __( 'Date Field', 'mayflower-homepage' ),
+		'description'  => __( 'Custom field to be used for feature dates', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'newsevents_post_type_date_field',
+		'type'         => 'text',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'newsevents_post_type_link_field', array(
+		'label'        => __( 'URL field', 'mayflower-homepage' ),
+		'description'  => __( 'Custom field to be used for featured item URLs', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'newsevents_post_type_link_field',
+		'type'         => 'text',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'news_category', array(
+		'label'        => __( 'News Category', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage events. Select and save taxonomy selection first.', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'news_category',
+		'type'         => 'select',
+		'choices'      => get_categories_select( get_theme_mod( 'newsevents_post_type_taxonomy' ) ),
+		''
 	) ) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'events_category', array(
 		'label'        => __( 'Events Category', 'mayflower-homepage' ),
-		'description'  => __( 'Category from which to draw homepage events', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage events. Select and save taxonomy selection first.', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
 		'settings'     => 'events_category',
 		'type'         => 'select',
-		'choices'  => get_categories_select( ),
+		'choices'      => get_categories_select( get_theme_mod( 'newsevents_post_type_taxonomy' ) ),
 	) ) );
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'apply_btn_html', array(
-		'label'        => __( 'Apply Button HTML', 'mayflower-homepage' ),
-		'description'  => __( 'HTML for Homepage Apply Button', 'mayflower-homepage' ),
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'deadlines_category', array(
+		'label'        => __( 'Deadlines Category', 'mayflower-homepage' ),
+		'description'  => __( 'Category from which to draw homepage upcoming deadlines. Select and save taxonomy selection first.', 'mayflower-homepage' ),
 		'section'      => 'mayflower_homepage_options',
-		'settings'     => 'apply_btn_html',
-		'type'         => 'textarea',
+		'settings'     => 'deadlines_category',
+		'type'         => 'select',
+		'choices'      => get_categories_select( get_theme_mod( 'newsevents_post_type_taxonomy' ) ),
 	) ) );
 }
 add_action( 'customize_register', 'mayflower_homepage_customize_register' );
+
+
+
+/* Shortcodes for boxes on homepage */
+function mfhomepage_content_module_shortcode( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'link_url'       => '#',
+		'background_img' => 'none',
+		'button'         => false,
+
+	), $atts );
+	return '<a href="' . esc_url( $a['link_url'] ) .
+		   '" class="mfhomepage-content-module ' .
+		   ( $a['button'] ? 'mfhomepage-button' : '' ) . '" style="background-image: url(' .
+		   esc_url( $a['background_img'] ) . ')"><div>' . $content . '</div></a>';
+}
+add_shortcode( 'mfhomepage-content-module', 'mfhomepage_content_module_shortcode' );
