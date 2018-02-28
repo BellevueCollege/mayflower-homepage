@@ -14,15 +14,12 @@
 				while ( $the_query->have_posts() ) :
 					$the_query->the_post(); ?>
 					<?php if ( $the_query->current_post == 0 ) { ?>
-						<div class="item active" data-slide-number="<?php echo $slide_number; $slide_number++; ?>" style="background-image: url('<?php the_post_thumbnail_url('mhcarousel-featured-size');?>');">
+						<div class="item active" data-slide-number="<?php echo $slide_number; $slide_number++; ?>" style="background-image: url('<?php the_post_thumbnail_url('mfhomepage-carousel');?>');">
 					<?php } else { ?>
-						<div class="item" data-slide-number="<?php echo $slide_number; $slide_number++; ?>" style="background-image: url('<?php the_post_thumbnail_url('mhcarousel-featured-size');?>');">
+						<div class="item" data-slide-number="<?php echo $slide_number; $slide_number++; ?>" style="background-image: url('<?php the_post_thumbnail_url('mfhomepage-carousel');?>');">
 					<?php } ?>
-
 						<?php // If url field has content, add the URL to the post thumbnail.
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
-						
-						
 						$mayflower_options = mayflower_get_options(); ?>
 						<div class="container no-padding caption-container">
 							<div class="carousel-caption">
