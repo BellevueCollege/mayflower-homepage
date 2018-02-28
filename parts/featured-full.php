@@ -21,12 +21,8 @@
 
 						<?php // If url field has content, add the URL to the post thumbnail.
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
-						if ( !empty( $slider_ext_url ) ) { ?>
-							<a href="<?php echo esc_url($slider_ext_url);?>"><!-- <?php the_post_thumbnail('featured-full'); ?> --></a>
-						<?php } else { ?>
-							<a href="<?php echo the_permalink(); ?>"><!-- <?php the_post_thumbnail('featured-full'); ?> --></a>
-						<?php } //end else ?>
-						<?php //should we show title & excerpt?
+						
+						
 						$mayflower_options = mayflower_get_options();
 						if ($mayflower_options['slider_title'] == 'true' || $mayflower_options['slider_excerpt'] == 'true' ) { ?>
 							<div class="container no-padding caption-container">
