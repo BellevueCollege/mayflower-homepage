@@ -89,8 +89,8 @@
 			<div class="container no-padding">
 				<div class="carousel-controls"> <!-- Carousel list and button -->
 					<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->
-						<a class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
-							<i id="list-group-glyph" class="glyphicon glyphicon-list"></i>
+						<a href="#" class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
+							<span id="list-group-glyph" class="glyphicon glyphicon-list"  aria-hidden="true"></span>
 						</a>
 						<div class="list-group-col list-group collapse"> <!-- title list group -->
 							<?php 
@@ -104,16 +104,16 @@
 							while ( $the_query->have_posts() ) :
 								$the_query->the_post(); ?>
 								<?php if ( $the_query->current_post == 0 ) { ?>
-									<a class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+									<a href="#" class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
 								<?php } else { ?>
-									<a class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+									<a href="#" class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
 								<?php } ?>
 							<?php endwhile; wp_reset_postdata(); ?>
 						</div> <!-- end list-group-col list-group collapse -->
 					</div> <!-- end list-group list-group-tree list-indicators -->
 					<!-- Carousel button -->
-					<a class="carousel-control next-slide" href="#carousel-featured-full" role="button" data-slide="next">
-							Next: <span id="slide-title"></span> >
+					<a class="carousel-control next-slide btn btn-lg btn-primary-outline" href="#carousel-featured-full" role="button" data-slide="next">
+							Next: <span id="slide-title"></span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 					</a>
 				</div> <!-- end carousel-controls -->
 			</div><!-- end container no-padding -->

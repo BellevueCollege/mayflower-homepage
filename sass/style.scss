@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower
- Version:          1.4.3
+ Version:          1.4.4
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -675,18 +675,26 @@ a.mfhomepage-card:focus {
 	min-height: 350px;
 }
 
-.caption-container {
-	-webkit-transform: translate(0, 25%);
-	-ms-transform: translate(0, 25%); 
-	transform: translate(0, 25%); 
+.btn-primary-outline {
+	background-color: transparent;
+	border: 1px #fff solid;
+}
+
+.btn-primary-outline:hover {
+	color: #fff;
+	background-color: $bg-transparent;
+	text-decoration: none;
+}
+
+
+.carousel:hover .carousel-caption {
+	background-color: $bg-transparent;
 }
 
 .carousel-caption {
-	padding: 20px;
+	margin: 2em 0;
+	padding: 1.5em;
 	text-align: left;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	background-color: $bg-transparent;
 	position: static;
 
@@ -695,20 +703,6 @@ a.mfhomepage-card:focus {
 		font-family: $font-body;
 		font-weight: bold;
 		margin: 0;
-	}
-
-	button {
-		width: 35%;
-	}
-
-	button:hover {
-		color: #fff;
-		background-color: $bg-transparent;
-	}
-
-	.btn-primary-outline {
-		background-color: transparent;
-		border: 1px #fff solid;
 	}
 
 	.carousel-header {
@@ -739,17 +733,10 @@ a.mfhomepage-card:focus {
 	margin: 5px 5px 0 5px;
 
 	.carousel-control {
-		width: 85%;
-		height: auto;
-		bottom: auto;
-		font-size: 1.05em;
-		padding: 15px;
-		top: 0;
+		
 		opacity: 1.0;
-		background-color: $brand-primary;
-		line-height: 1em;
-		border: 1px solid #fff;
-		border-radius: 4px;
+		
+		border-radius: 6px;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
@@ -762,15 +749,21 @@ a.mfhomepage-card:focus {
 		&:focus {
 			opacity: 1.0;
 		}
+
+		& span.glyphicon {
+			margin-left: auto;
+			margin-right:auto;
+			font-size: inherit;
+		}
 	}
 
 	.carousel-control:hover {
-		background-color: $brand-primary-hover;
+		background-color: $bg-transparent-hover;
 		opacity: 1.0;
 	}
 	
 	a.carousel-control:focus {
-		border-radius: 4px;
+		border-radius: 6px;
 	}
 
 	.list-indicators {
@@ -788,7 +781,7 @@ a.mfhomepage-card:focus {
 	
 	.list-group-item {
 		opacity: 1.0;
-		background-color: $brand-primary;
+		background-color: $bg-transparent;
 		border: 1px solid #fff;
 	
 		&:first-child {
@@ -802,7 +795,9 @@ a.mfhomepage-card:focus {
 		}
 	}
 	
-	.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+	.list-group-item.active,
+	.list-group-item.active:focus,
+	.list-group-item.active:hover {
 		z-index: 2;
 		color: #fff;
 	}
@@ -812,8 +807,10 @@ a.mfhomepage-card:focus {
 		opacity: 1.0;
 	}
 	
-	a.list-group-item:hover {
-		background-color: $brand-primary-hover;
+	a.list-group-item:hover,
+	a.list-group-item:focus,
+	a.list-group-item:active {
+		background-color: $bg-transparent-hover;
 	}
 	
 	.list-group-icon {
