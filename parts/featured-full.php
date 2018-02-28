@@ -23,40 +23,33 @@
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 						
 						
-						$mayflower_options = mayflower_get_options();
-						if ($mayflower_options['slider_title'] == 'true' || $mayflower_options['slider_excerpt'] == 'true' ) { ?>
-							<div class="container no-padding caption-container">
-								<div class="carousel-caption">
-									<?php if ($mayflower_options['slider_title'] == 'true') {
-										// If a post class has input, sanitize it and add it to the post class array.
-										$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
-										if ( !empty( $slider_ext_url ) ) { ?>
-											<div class="carousel-header">
-												<h1><a href="<?php echo esc_url($slider_ext_url);?>"><?php the_title(); ?></a></h1>
-											</div>
-										<?php } else { ?>
-											<div class="carousel-header">
-												<h1><?php the_title();?></h1>
-											</div>
-										<?php } //end else ?>
-									<?php } else {
-										echo '<!-- No Title -->';
-									} ?>
-									<?php if ($mayflower_options['slider_excerpt'] == 'true' ) { ?>
-										<div class="carousel-excerpt">
-											<p><?php echo wp_trim_words( get_the_excerpt(), 20, '...' );?></p>
-										</div>
-										<?php if ( !empty( $slider_ext_url ) ) { ?>
-											<div class="carousel-more">
-												<a href="<?php echo esc_url( $slider_ext_url );?>" class="btn btn-primary-outline">More<span class="sr-only"> about <?php the_title(); ?></span></a>
-											</div>
-										<?php } ?>
-									<?php } else {
-										echo '<!-- No Excerpt -->';
-									} ?>
-								</div><!-- carousel-caption -->
-							</div>
-						<?php } else  { } ?>
+						$mayflower_options = mayflower_get_options(); ?>
+						<div class="container no-padding caption-container">
+							<div class="carousel-caption">
+								<?php
+									// If a post class has input, sanitize it and add it to the post class array.
+								$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
+								if ( !empty( $slider_ext_url ) ) { ?>
+									<div class="carousel-header">
+										<h1><a href="<?php echo esc_url( $slider_ext_url );?>"><?php the_title(); ?></a></h1>
+									</div>
+								<?php } else { ?>
+									<div class="carousel-header">
+										<h1><?php the_title();?></h1>
+									</div>
+								<?php } //end else ?>
+								
+								<div class="carousel-excerpt">
+									<p><?php echo wp_trim_words( get_the_excerpt(), 20, '...' );?></p>
+								</div>
+								<?php if ( !empty( $slider_ext_url ) ) { ?>
+									<div class="carousel-more">
+										<a href="<?php echo esc_url( $slider_ext_url );?>" class="btn btn-primary-outline">More<span class="sr-only"> about <?php the_title(); ?></span></a>
+									</div>
+								<?php } ?>
+								
+							</div><!-- carousel-caption -->
+						</div>
 					</div><!-- item -->
 				<?php endwhile; wp_reset_postdata(); ?>
 			</div><!-- carousel-inner -->
