@@ -36,7 +36,7 @@
 											</div>
 										<?php } else { ?>
 											<div class="carousel-header">
-												<h1><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h1>
+												<h1><?php the_title();?></h1>
 											</div>
 										<?php } //end else ?>
 									<?php } else {
@@ -46,9 +46,11 @@
 										<div class="carousel-excerpt">
 											<p><?php echo wp_trim_words( get_the_excerpt(), 20, '...' );?></p>
 										</div>
-										<div class="carousel-more">
-											<a href="<?php echo esc_url($slider_ext_url);?>"><button class="btn btn-lg btn-primary-outline">More</button></a>
-										</div>
+										<?php if ( !empty( $slider_ext_url ) ) { ?>
+											<div class="carousel-more">
+												<a href="<?php echo esc_url( $slider_ext_url );?>" class="btn btn-primary-outline">More<span class="sr-only"> about <?php the_title(); ?></span></a>
+											</div>
+										<?php } ?>
 									<?php } else {
 										echo '<!-- No Excerpt -->';
 									} ?>
