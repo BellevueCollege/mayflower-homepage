@@ -176,7 +176,7 @@ wp_reset_postdata();
 									<?php echo esc_textarea(
 										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
 									); ?>&ndash;
-									<?php echo esc_textarea( $mfhomepage_content_trimmed ); ?>
+									<?php echo $mfhomepage_content_trimmed; ?>
 								</p>
 							<?php } ?>
 						</div>
@@ -228,7 +228,7 @@ wp_reset_postdata();
 
 								if ( ! empty( $mfhomepage_post_content ) ) { ?>
 									<p>
-										<?php echo esc_textarea( $mfhomepage_content_trimmed ); ?>
+										<?php echo $mfhomepage_content_trimmed; ?>
 									</p>
 								<?php } ?>
 							</div>
