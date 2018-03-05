@@ -9,11 +9,16 @@ get_header(); ?>
 <div id = "bc-home-front-page" >
 	<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
 	<div class="row">
-		<?php if ( is_active_sidebar( 'home_menus_area' ) ) : ?>
-			<div id class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
-				<?php dynamic_sidebar( 'home_menus_area' ); ?>
-			</div>
-		<?php endif; ?>
+		<div id="" class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
+				<section class="col-xs-12 box-shadow"><h2>Menus for</h2><div class="menu-menus-for-container"><ul id="menu-menus-for" class="menu"><li id="menu-item-1892" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1892"><a href="https://www.bellevuecollege.edu/students/">Students</a></li>
+<li id="menu-item-1893" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1893"><a href="https://www.bellevuecollege.edu/future/">Future Students</a></li>
+<li id="menu-item-1894" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1894"><a href="https://www.bellevuecollege.edu/international/">International Students</a></li>
+<li id="menu-item-1895" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1895"><a href="https://www.bellevuecollege.edu/employees/">Faculty &amp; Staff</a></li>
+<li id="menu-item-1897" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1897"><a href="https://www.bellevuecollege.edu/visitors/">Visitors &amp; Community</a></li>
+</ul></div></section><section class="col-xs-12 box-shadow"><h2>Featured areas</h2><div class="menu-featured-areas-container"><ul id="menu-featured-areas" class="menu"><li id="menu-item-1898" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1898"><a href="https://www.bellevuecollege.edu/ce/">Continuing Education</a></li>
+<li id="menu-item-1899" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1899"><a href="https://www.bellevuecollege.edu/lmc/">Library</a></li>
+<li id="menu-item-1900" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1900"><a href="https://www.bellevuecollege.edu/athletics/">Athletics</a></li>
+</ul></div></section>			</div>
 		<div class="col-xs-5 col-sm-4" id="mobilelinks">
 			<section>
 				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/maps/" class="btn btn-info"><?php esc_html_e( 'Maps', 'mayflower-homepage' ); ?></a>
