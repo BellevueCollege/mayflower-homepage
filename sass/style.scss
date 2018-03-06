@@ -763,6 +763,10 @@ a.mfhomepage-card:focus {
 			margin-right:auto;
 			font-size: inherit;
 		}
+
+		& .glyphicon-menu-right {
+			top: 3px;
+		}
 	}
 
 	.carousel-control:hover {
@@ -899,14 +903,19 @@ a.mfhomepage-card:focus {
 			bottom: 45px; 
 			position: absolute;
 			right: 0;
-			margin-bottom: 5px;
+			margin-bottom: 8px;
 			width: 250px;
+		}
+
+		#list-group-glyph {
+			top: 3px;
 		}
 	
 		.list-group-icon {
 			border-radius: 4px;
 			max-width: none;
 			font-size: 1.1em;
+			min-height: 49px;
 		}
 	
 		.list-group-item {

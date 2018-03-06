@@ -89,10 +89,10 @@
 			<div class="container no-padding">
 				<div class="carousel-controls"> <!-- Carousel list and button -->
 					<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->
-						<a href="#" class="list-group-icon list-group-item" data-toggle="collapse"> <!-- list group icon -->
-							<span id="list-group-glyph" class="glyphicon glyphicon-list"  aria-hidden="true"></span>
+						<a href="#" class="list-group-icon list-group-item" aria-label="Open Slide List"> <!-- list group icon -->
+							<span id="list-group-glyph" class="glyphicon glyphicon-list" aria-hidden="true"></span>
 						</a>
-						<div class="list-group-col list-group collapse"> <!-- title list group -->
+						<div class="list-group-col list-group"> <!-- title list group -->
 							<?php 
 							$number = 0;
 							$the_query = new WP_Query(array(
