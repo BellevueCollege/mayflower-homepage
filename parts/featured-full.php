@@ -50,72 +50,38 @@
 					</div><!-- item -->
 				<?php endwhile; wp_reset_postdata(); ?>
 			</div><!-- carousel-inner -->
-
-			<!-- Carousel Controls -->
-			<!-- Script creates title array to hold carousel titles for next button -->
-			<script>
-				<?php 
-				// the query
-				$the_query = new WP_Query(array(
-					'post_type'=>'mhcarousel',
-					'orderby'=> 'menu_order',
-					'order'=> 'ASC',
-					'posts_per_page' => $mayflower_options['slider_number_slides'],
-				));
-
-				$carousel_posts_array = '';
-				if ($the_query->have_posts()) :	
-					echo $carousel_posts_array = "var carousel_posts = [";
-					while ($the_query->have_posts()) : $the_query->the_post(); 
-						echo $carousel_posts_array = "'" . get_the_title( get_the_ID() ) . "', ";
-					endwhile;
-					echo $carousel_posts_array =  "];";
-				endif;
-				?>
-			</script>
-			<?php wp_add_inline_script( 'mhcarousel-button-script','$carousel_posts_array', 'before' ); ?>
-			<!-- end title array script -->
-
-			<!-- Script hides carousel control interface if only 1 slide is published -->
-			<script>
-				<?php
-				$slide_count = "";
-				echo $slide_count = "var carousel_slide_count = '" . wp_count_posts('mhcarousel')->publish . "';";
-				?>
-			</script>
-			<?php wp_add_inline_script( 'mhcarousel-interface-script','$slide-count', 'before' ); ?>
-			<!-- end hide carousel interface  script -->
-
 			<div class="container no-padding">
-				<div class="carousel-controls"> <!-- Carousel list and button -->
-					<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->
-						<a href="#" class="list-group-icon list-group-item" aria-label="Open Slide List"> <!-- list group icon -->
-							<span id="list-group-glyph" class="glyphicon glyphicon-list" aria-hidden="true"></span>
+				<?php if ( wp_count_posts( 'mhcarousel' )->publish > 1 ) : // Hide controls if only one post ?>
+					<div class="carousel-controls"> <!-- Carousel list and button -->
+						<div class="list-group list-group-tree list-indicators"> <!-- Carousel list -->
+							<a href="#" class="list-group-icon list-group-item" aria-label="Open Slide List"> <!-- list group icon -->
+								<span id="list-group-glyph" class="glyphicon glyphicon-list" aria-hidden="true"></span>
+							</a>
+							<div class="list-group-col list-group" style="display:none"> <!-- title list group -->
+								<?php 
+								$number = 0;
+								$the_query = new WP_Query(array(
+									'post_type'=>'mhcarousel',
+									'orderby'=> 'menu_order',
+									'order'=> 'ASC',
+									'posts_per_page' => $mayflower_options['slider_number_slides']
+								));
+								while ( $the_query->have_posts() ) :
+									$the_query->the_post(); ?>
+									<?php if ( $the_query->current_post == 0 ) { ?>
+										<a href="#" class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+									<?php } else { ?>
+										<a href="#" class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+									<?php } ?>
+								<?php endwhile; wp_reset_postdata(); ?>
+							</div> <!-- end list-group-col list-group collapse -->
+						</div> <!-- end list-group list-group-tree list-indicators -->
+						<!-- Carousel button -->
+						<a class="carousel-control next-slide btn btn-lg btn-primary-outline" href="#carousel-featured-full" role="button" data-slide="next">
+								Next: <span id="slide-title"></span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 						</a>
-						<div class="list-group-col list-group"> <!-- title list group -->
-							<?php 
-							$number = 0;
-							$the_query = new WP_Query(array(
-								'post_type'=>'mhcarousel',
-								'orderby'=> 'menu_order',
-								'order'=> 'ASC',
-								'posts_per_page' => $mayflower_options['slider_number_slides']
-							));
-							while ( $the_query->have_posts() ) :
-								$the_query->the_post(); ?>
-								<?php if ( $the_query->current_post == 0 ) { ?>
-									<a href="#" class="list-group-item list-item-active" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
-								<?php } else { ?>
-									<a href="#" class="list-group-item" data-target="#carousel-featured-full" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
-								<?php } ?>
-							<?php endwhile; wp_reset_postdata(); ?>
-						</div> <!-- end list-group-col list-group collapse -->
-					</div> <!-- end list-group list-group-tree list-indicators -->
-					<!-- Carousel button -->
-					<a class="carousel-control next-slide btn btn-lg btn-primary-outline" href="#carousel-featured-full" role="button" data-slide="next">
-							Next: <span id="slide-title"></span> <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-					</a>
-				</div> <!-- end carousel-controls -->
+					</div> <!-- end carousel-controls -->
+				<?php endif; ?>
 			</div><!-- end container no-padding -->
 			
 		</div><!-- end carousel-featured-full -->

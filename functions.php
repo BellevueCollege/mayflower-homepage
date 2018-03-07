@@ -18,11 +18,29 @@ function mayflower_homepage_enqueue_styles() {
 	// enqueue it again
 	wp_enqueue_style( 'mayflower' );
 	
-	if (is_front_page()) {
-		wp_enqueue_script( 'mhcarousel-toggle-script', get_stylesheet_directory_uri() . '/js/mhcarousel-toggle-list.js', array('jquery') ); //added jquery because jquery was called after the scripts
-		wp_enqueue_script( 'mhcarousel-button-script', get_stylesheet_directory_uri() . '/js/mhcarousel-button-title.js' );
-		wp_enqueue_script( 'mhcarousel-interface-script', get_stylesheet_directory_uri() . '/js/mhcarousel-hide-interface.js' );
-		wp_enqueue_script( 'mhcarousel-list-script', get_stylesheet_directory_uri() . '/js/mhcarousel-list-active.js' );
+	if ( is_front_page() ) {
+
+		// Script creates title array to hold carousel titles for next button
+		$the_query = new WP_Query( array(
+			'post_type'=>'mhcarousel',
+			'orderby'=> 'menu_order',
+			'order'=> 'ASC',
+			'posts_per_page' => mayflower_get_option( 'slider_number_slides' ),
+		));
+
+		// Build inline script
+		$carousel_posts_array = '';
+		if ( $the_query->have_posts() ) {
+			$carousel_posts_array .= 'var carousel_posts = [';
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post(); 
+				$carousel_posts_array .= "'" . get_the_title( get_the_ID() ) . "', ";
+			}
+			$carousel_posts_array .=  "];";
+		}
+
+		wp_enqueue_script( 'mhcarousel-script', get_stylesheet_directory_uri() . '/js/mhcarousel.js', array('jquery') ); //added jquery because jquery was called after the scripts
+		wp_add_inline_script( 'mhcarousel-script', $carousel_posts_array, 'before' );
 	}
 }
 
