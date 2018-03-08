@@ -60,31 +60,29 @@ jQuery(document).ready(function ($) {
 	
 });
 
-/* Thanks to https://aclaes.com/responsive-background-images-with-srcset-and-sizes/ */
-class ResponsiveBackgroundImage {
-
-	constructor(element) {
+/*
+Thanks to https://aclaes.com/responsive-background-images-with-srcset-and-sizes/
+Transpiled using typescript from https://es6console.com/
+*/
+var ResponsiveBackgroundImage = (function () {
+	function ResponsiveBackgroundImage(element) {
+		var _this = this;
 		this.element = element;
 		this.img = element.querySelector('img');
 		this.src = '';
-
-		this.img.addEventListener('load', () => {
-			this.update();
+		this.img.addEventListener('load', function () {
+			_this.update();
 		});
-
 		if (this.img.complete) {
 			this.update();
 		}
 	}
-
-	update() {
-		
+	ResponsiveBackgroundImage.prototype.update = function () {
 		var src = typeof this.img.currentSrc !== 'undefined' ? this.img.currentSrc : this.img.src;
 		if (this.src !== src) {
 			this.src = src;
 			this.element.style.backgroundImage = 'url("' + this.src + '")';
-
 		}
-	}
-}
-
+	};
+	return ResponsiveBackgroundImage;
+})();
