@@ -52,7 +52,9 @@ jQuery(document).ready(function ($) {
 
 	var elements = document.getElementsByClassName('responsive-bg-img');
 	for (var i = 0; i < elements.length; i++) {
-		new ResponsiveBackgroundImage(elements[i]);
+		if ( elements[i].getElementsByTagName('img').length > 0 ) {
+			new ResponsiveBackgroundImage(elements[i]);
+		}
 	}
 
 	

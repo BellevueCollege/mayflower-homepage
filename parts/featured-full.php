@@ -23,15 +23,19 @@
 					<?php } ?>
 						<?php // If url field has content, add the URL to the post thumbnail.
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
-						$mayflower_options = mayflower_get_options(); ?>
+						$mayflower_options = mayflower_get_options();
+						
+						if ( has_post_thumbnail( ) ) { ?>
 
-						<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-carousel-sm' ); ?> 475w,
-								<?php the_post_thumbnail_url( 'mfhomepage-carousel-md' ); ?> 992w,
-								<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?> 1680w,"
-						sizes="(max-width: 475px) 475px,
-								(max-width: 992px) 992px,
-								1680px"
-						src="<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?>" alt="background image (hidden)">
+							<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-carousel-sm' ); ?> 475w,
+									<?php the_post_thumbnail_url( 'mfhomepage-carousel-md' ); ?> 992w,
+									<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?> 1680w,"
+							sizes="(max-width: 475px) 475px,
+									(max-width: 992px) 992px,
+									1680px"
+							src="<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?>" alt="background image (hidden)">
+
+						<?php } ?>
 
 						<div class="container no-padding caption-container">
 							<div class="carousel-caption">
