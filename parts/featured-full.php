@@ -14,13 +14,22 @@
 				while ( $the_query->have_posts() ) :
 					$the_query->the_post(); ?>
 					<?php if ( $the_query->current_post == 0 ) { ?>
-						<div class="item active" data-slide-number="<?php echo $slide_number; $slide_number++; ?>" style="background-image: url('<?php the_post_thumbnail_url('mfhomepage-carousel');?>');">
+						<div class="responsive-bg-img item active" data-slide-number="<?php echo $slide_number; $slide_number++; ?>">
 					<?php } else { ?>
-						<div class="item" data-slide-number="<?php echo $slide_number; $slide_number++; ?>" style="background-image: url('<?php the_post_thumbnail_url('mfhomepage-carousel');?>');">
+						<div class="responsive-bg-img item" data-slide-number="<?php echo $slide_number; $slide_number++; ?>">
 					<?php } ?>
 						<?php // If url field has content, add the URL to the post thumbnail.
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 						$mayflower_options = mayflower_get_options(); ?>
+
+						<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-carousel-sm' ); ?> 475w,
+								<?php the_post_thumbnail_url( 'mfhomepage-carousel-md' ); ?> 992w,
+								<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?> 1680w,"
+						sizes="(max-width: 475px) 475px,
+								(max-width: 992px) 992px,
+								1680px"
+						src="<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?>" alt="background image (hidden)">
+
 						<div class="container no-padding caption-container">
 							<div class="carousel-caption">
 								<?php

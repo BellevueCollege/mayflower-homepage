@@ -114,13 +114,29 @@ if ( $the_query->have_posts() ) : ?>
 
 			<?php elseif ( 'Image Link' === $module_type ) : ?>
 
-				<a href="<?php echo esc_url( $module_link ) ?>" class="<?php echo esc_attr( $module_classes ) ?>" style="background-image: url( '<?php echo esc_url( $module_background ) ?>' );">
+				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?>">
+					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
+						sizes="(max-width: 380x) 380px,
+								(max-width: 768px) 768px,
+								380px"
+						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="background image (hidden)">
+
 					<div><?php the_content() ?></div>
 				</a>
 				
 			<?php elseif ( 'Image Link with Button' === $module_type ) : ?>
 
-				<a href="<?php echo esc_url( $module_link ) ?>" class="<?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn" style="background-image: url( '<?php echo esc_url( $module_background ) ?>' );">
+				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn">
+					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
+						sizes="(max-width: 380x) 380px,
+								(max-width: 768px) 768px,
+								380px"
+						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="background image (hidden)">
+
 					<div><?php the_content() ?></div>
 				</a>
 
@@ -160,7 +176,15 @@ wp_reset_postdata();
 					<a href="<?php echo esc_url(
 						get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 					); ?>" class="news-card mfhomepage-card">
-						<div class="card-heading" style="background-image: url('<?php the_post_thumbnail_url( 'mfhomepage-card-background' ) ?>')">
+						<div class="responsive-bg-img card-heading">
+							<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-card-sm' ); ?> 380w,
+										<?php the_post_thumbnail_url( 'mfhomepage-card-lg' ); ?> 768w,
+										<?php the_post_thumbnail_url( 'mfhomepage-card-sm' ); ?> 380w"
+								sizes="(max-width: 380x) 380px,
+										(max-width: 991px) 768px,
+										380px"
+								src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="background image (hidden)">
+
 							<div class="card-title">
 								<h3><?php the_title(); ?></h3>
 							</div>

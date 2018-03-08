@@ -51,9 +51,16 @@ function mayflower_homepage_enqueue_styles() {
 
 add_action( 'after_setup_theme', 'mfhomepage_theme_setup' );
 function mfhomepage_theme_setup() {
-	add_image_size( 'mfhomepage-card-background', 760, 260, true );
-	add_image_size( 'mfhomepage-module-background', 750, 180, true );
-	add_image_size( 'mfhomepage-carousel', 1680, 500, true );
+	add_image_size( 'mfhomepage-card-sm', 380, 250, true );
+	add_image_size( 'mfhomepage-card-lg', 768, 250, true );
+
+	add_image_size( 'mfhomepage-module-sm', 380, 180, true );
+	add_image_size( 'mfhomepage-module-lg', 768, 180, true );
+
+
+	add_image_size( 'mfhomepage-carousel-lg', 1680, 500, true );
+	add_image_size( 'mfhomepage-carousel-md', 992, 350, true );
+	add_image_size( 'mfhomepage-carousel-sm', 475, 350, true );
 }
 /**
  * Override bc_footer function to add additional footer element
