@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower
- Version:          1.4.3.3
+ Version:          1.4.3.4
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -88,7 +88,8 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 		color: #666;
 	}
 	a:active,
-	a:hover{
+	a:hover,
+	a:focus {
 		color: #003d79;
 	}
 	ul li:first-child a {
@@ -112,26 +113,6 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 	}
 }
 
-
-/* ##################################### */
-/* Slider bc home page override */
-/* ###################################### */
-.bchome .carousel-inner {
-	box-shadow: 0 2px 8px #cdcdcd;
-}
-.bchome .carousel-caption h2 {
-	display: inline;
-	font-size: 1em;
-	font-weight: bold;
-	font-family: Helvetica,​Arial,​sans-serif;}
-.bchome .carousel-caption p {
-	//display: none;
-}
-@media screen and (min-width: 60em) {
-	.bchome .carousel-caption p {
-		display: inline;
-	}
-}
 
 
 /* 2017 Homepage Redesign */
@@ -681,14 +662,16 @@ a.mfhomepage-card:focus {
 	border: 1px #fff solid;
 }
 
-.btn-primary-outline:hover {
+.btn-primary-outline:hover,
+.btn-primary-outline:focus  {
 	color: #fff;
 	background-color: $bg-transparent;
 	text-decoration: none;
 }
 
 
-.carousel:hover .carousel-caption {
+.carousel:hover .carousel-caption,
+.carousel:focus .carousel-caption  {
 	background-color: $bg-transparent;
 }
 
@@ -699,8 +682,9 @@ a.mfhomepage-card:focus {
 	background-color: $bg-transparent;
 	position: static;
 
-	h1 {
-		font-size: 1.75em; 
+	h2 {
+		font-size: 1.75em;
+		line-height: 1.25em;
 		font-family: $font-body;
 		font-weight: bold;
 		margin: 0;
@@ -769,7 +753,9 @@ a.mfhomepage-card:focus {
 		}
 	}
 
-	.carousel-control:hover {
+	.carousel-control:hover,
+	.carousel-control:focus,
+	.carousel-control:active {
 		background-color: $brand-primary-hover;
 		opacity: 1.0;
 	}
@@ -814,7 +800,9 @@ a.mfhomepage-card:focus {
 		color: #fff;
 	}
 	
-	a.list-group-item, a.list-group-item:hover {
+	a.list-group-item,
+	a.list-group-item:hover,
+	a.list-group-item:active {
 		color: #fff;
 		opacity: 1.0;
 	}
@@ -842,7 +830,7 @@ a.mfhomepage-card:focus {
 	.carousel-caption {
 		max-width: 50%;
 
-		h1 {
+		h2 {
 			font-size: 2em;
 		}
 
@@ -871,7 +859,8 @@ a.mfhomepage-card:focus {
 			max-width: 100%;
 			background-color: $bg-transparent;
 	
-			&:hover {
+			&:hover,
+			&:focus {
 				background-color: $bg-transparent-hover;
 			}
 	
@@ -933,7 +922,7 @@ a.mfhomepage-card:focus {
 	.carousel-caption {
 		max-width: 40%;
 
-		h1 {
+		h2 {
 			font-size: 2.25em;
 		}
 	}
@@ -947,8 +936,14 @@ a.mfhomepage-card:focus {
 
 @media (min-width: $breakpoint-bs-lg) {
 	.carousel-caption {
-		h1 {
+		h2 {
 			font-size: 2.5em;
 		}
 	}
 }
+
+.responsive-bg-img img,
+.item.responsive-bg-img img  {
+	display: none;
+}
+
