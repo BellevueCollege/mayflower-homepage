@@ -115,13 +115,17 @@ if ( $the_query->have_posts() ) : ?>
 			<?php elseif ( 'Image Link' === $module_type ) : ?>
 
 				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?>">
+					<?php
+					$img_id = get_post_thumbnail_id(get_the_ID());
+					$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+					?>
 					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
 								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
 								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
 						sizes="(max-width: 380x) 380px,
 								(max-width: 768px) 768px,
 								380px"
-						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="background image (hidden)">
+						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
 
 					<div><?php the_content() ?></div>
 				</a>
@@ -129,13 +133,17 @@ if ( $the_query->have_posts() ) : ?>
 			<?php elseif ( 'Image Link with Button' === $module_type ) : ?>
 
 				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn">
+					<?php
+					$img_id = get_post_thumbnail_id(get_the_ID());
+					$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+					?>
 					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
 								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
 								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
 						sizes="(max-width: 380x) 380px,
 								(max-width: 768px) 768px,
 								380px"
-						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="background image (hidden)">
+						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
 
 					<div><?php the_content() ?></div>
 				</a>
@@ -177,13 +185,17 @@ wp_reset_postdata();
 						get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 					); ?>" class="news-card mfhomepage-card">
 						<div class="responsive-bg-img card-heading">
+							<?php
+							$img_id = get_post_thumbnail_id(get_the_ID());
+							$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+							?>
 							<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-card-sm' ); ?> 380w,
 										<?php the_post_thumbnail_url( 'mfhomepage-card-lg' ); ?> 768w,
 										<?php the_post_thumbnail_url( 'mfhomepage-card-sm' ); ?> 380w"
 								sizes="(max-width: 380x) 380px,
 										(max-width: 991px) 768px,
 										380px"
-								src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="background image (hidden)">
+								src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
 
 							<div class="card-title">
 								<h3><?php the_title(); ?></h3>

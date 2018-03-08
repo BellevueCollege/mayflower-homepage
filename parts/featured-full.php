@@ -24,16 +24,18 @@
 						<?php // If url field has content, add the URL to the post thumbnail.
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 						$mayflower_options = mayflower_get_options();
+
+						$img_id = get_post_thumbnail_id(get_the_ID());
+						$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
 						
 						if ( has_post_thumbnail( ) ) { ?>
-
 							<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-carousel-sm' ); ?> 475w,
 									<?php the_post_thumbnail_url( 'mfhomepage-carousel-md' ); ?> 992w,
 									<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?> 1680w,"
 							sizes="(max-width: 475px) 475px,
 									(max-width: 992px) 992px,
 									1680px"
-							src="<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?>" alt="background image (hidden)">
+							src="<?php the_post_thumbnail_url( 'mfhomepage-carousel-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
 
 						<?php } ?>
 
@@ -54,6 +56,9 @@
 								
 								<div class="carousel-excerpt">
 									<p><?php echo wp_trim_words( get_the_excerpt(), 20, '...' );?></p>
+									<?php if ( has_post_thumbnail() ) { ?>
+										<p class="sr-only">Background Image: <?php echo esc_attr( $img_alt ); ?></p>
+									<?php } ?>
 								</div>
 								<?php if ( !empty( $slider_ext_url ) ) { ?>
 									<div class="carousel-more">
