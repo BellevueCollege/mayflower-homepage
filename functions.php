@@ -166,7 +166,7 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 			$output .= "<li><a href='$permalink'>$title";
 		} else {
 			$output .= '<div class="btn-group " role="group">';
-			$output .= '<a class="btn btn-default dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			$output .= '<a href="#" class="btn btn-default dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			$output .= $title;
 			$output .= ' <span class="caret"></span>';
 			$output .= '</a>';
