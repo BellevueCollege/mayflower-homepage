@@ -78,21 +78,6 @@ function bc_footer() {
 }
 add_action( 'mayflower_footer', 'bc_footer', 50 );
 
-
-/**
- * Load Small Add Custom Post Type
- *
- * Note that this uses get_stylesheet_directory()
- * instead of get_template_directory(). This is needed
- * as this is a child theme.
- *
- */
-if ( current_user_can( 'manage_network' ) ) {
-	if ( file_exists( get_stylesheet_directory() . '/inc/mayflower-bc-home/bc-home.php' ) ) {
-		require( get_stylesheet_directory() . '/inc/mayflower-bc-home/bc-home.php' );
-	}
-}
-
 /* Adds a box to the main column on the Post and Page edit screens */
 function add_global_section_meta_box() {
 	global $post;
@@ -201,13 +186,6 @@ function mfhomepage_get_menu_name( $location ) {
 	$menu_object = wp_get_nav_menu_object( $menu_id );
 	return $menu_object->name;
 }
-
-
-
-
-
-
-
 
 
 /**
@@ -414,20 +392,3 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	) ) );
 }
 add_action( 'customize_register', 'mayflower_homepage_customize_register' );
-
-
-
-/* Shortcodes for boxes on homepage */
-function mfhomepage_content_module_shortcode( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'link_url'       => '#',
-		'background_img' => 'none',
-		'button'         => false,
-
-	), $atts );
-	return '<a href="' . esc_url( $a['link_url'] ) .
-		   '" class="mfhomepage-content-module ' .
-		   ( $a['button'] ? 'mfhomepage-button' : '' ) . '" style="background-image: url(' .
-		   esc_url( $a['background_img'] ) . ')"><div>' . $content . '</div></a>';
-}
-add_shortcode( 'mfhomepage-content-module', 'mfhomepage_content_module_shortcode' );
