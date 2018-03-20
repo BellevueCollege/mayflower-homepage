@@ -109,7 +109,9 @@ if ( $the_query->have_posts() ) : ?>
 
 				<div class="<?php echo esc_attr( $module_classes ) ?>">
 					<h2><?php the_title() ?></h2>
-					<?php the_content(); ?>
+					<div class="content-module-text">
+						<?php the_content(); ?>
+					</div>
 				</div>
 
 			<?php elseif ( 'Image Link' === $module_type ) : ?>
