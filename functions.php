@@ -392,3 +392,13 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 	) ) );
 }
 add_action( 'customize_register', 'mayflower_homepage_customize_register' );
+
+/* Add Gutenberg Support for All Taxonomies */
+function sb_add_taxes_to_api() {
+	$taxonomies = get_taxonomies( '', 'objects' );
+
+	foreach( $taxonomies as $taxonomy ) {
+		$taxonomy->show_in_rest = true;
+	}
+}
+add_action( 'init', 'sb_add_taxes_to_api', 30 );

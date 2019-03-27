@@ -142,7 +142,7 @@ $CustomPress_Core->import=array (
       ),
       'query_var' => true,
       'can_export' => true,
-      'show_in_rest' => false,
+      'show_in_rest' => true,
       'rest_base' => 'content_modules',
       'cf_columns' => 
       array (
@@ -231,6 +231,7 @@ $CustomPress_Core->import=array (
         1 => 'Text',
         2 => 'Image Link',
         3 => 'Image Link with Button',
+        4 => 'Full Size Content (Embeds, etc)',
       ),
       'field_date_format' => '',
       'field_message' => 'A type must be selected!',
