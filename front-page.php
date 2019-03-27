@@ -80,87 +80,89 @@ $the_query = new WP_Query( array(
 ));
 
 if ( $the_query->have_posts() ) : ?>
-	<section id="mfhomepage-modules" class="container no-padding">
-		<?php while ( $the_query->have_posts() ) :
-			$the_query->the_post();
+	<section class="container no-padding">
+		<div id="mfhomepage-modules">
+			<?php while ( $the_query->have_posts() ) :
+				$the_query->the_post();
 
-			// Load variables
-			$module_type       = get_post_meta( get_the_ID(), get_theme_mod( 'module_type_field' ), true );
-			$module_link       = ( get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true ) ?: '#' );
-			$module_width      = get_post_meta( get_the_ID(), get_theme_mod( 'module_width_field' ), true );
-			$module_background = get_the_post_thumbnail_url( get_the_ID(), 'mfhomepage-module-background' );
+				// Load variables
+				$module_type       = get_post_meta( get_the_ID(), get_theme_mod( 'module_type_field' ), true );
+				$module_link       = ( get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true ) ?: '#' );
+				$module_width      = get_post_meta( get_the_ID(), get_theme_mod( 'module_width_field' ), true );
+				$module_background = get_the_post_thumbnail_url( get_the_ID(), 'mfhomepage-module-background' );
 
-			// Build module CSS classes
-			$module_classes    = 'mfhomepage-content-module ';
-			switch ( $module_width ) {
-				case 'one-third':
-					$module_classes .= 'mfhomepage-content-module-1 ';
-					break;
-				case 'two-thirds':
-					$module_classes .= 'mfhomepage-content-module-2 ';
-					break;
-				case 'full':
-					$module_classes .= 'mfhomepage-content-module-3 ';
-					break;
-			}
-			?>
+				// Build module CSS classes
+				$module_classes    = 'mfhomepage-content-module ';
+				switch ( $module_width ) {
+					case 'one-third':
+						$module_classes .= 'mfhomepage-content-module-1 ';
+						break;
+					case 'two-thirds':
+						$module_classes .= 'mfhomepage-content-module-2 ';
+						break;
+					case 'full':
+						$module_classes .= 'mfhomepage-content-module-3 ';
+						break;
+				}
+				?>
 
-			<?php if ( 'Text' === $module_type ) : ?>
+				<?php if ( 'Text' === $module_type ) : ?>
 
-				<div class="<?php echo esc_attr( $module_classes ) ?>">
-					<h2><?php the_title() ?></h2>
-					<div class="content-module-text">
+					<div class="<?php echo esc_attr( $module_classes ) ?>">
+						<h2><?php the_title() ?></h2>
+						<div class="content-module-text">
+							<?php the_content(); ?>
+						</div>
+					</div>
+
+				<?php elseif ( 'Image Link' === $module_type ) : ?>
+
+					<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?>">
+						<?php
+						$img_id = get_post_thumbnail_id(get_the_ID());
+						$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+						?>
+						<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
+									<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
+									<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
+							sizes="(max-width: 380x) 380px,
+									(max-width: 768px) 768px,
+									380px"
+							src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+
+						<div><?php the_content() ?></div>
+					</a>
+					
+				<?php elseif ( 'Image Link with Button' === $module_type ) : ?>
+
+					<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn">
+						<?php
+						$img_id = get_post_thumbnail_id(get_the_ID());
+						$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+						?>
+						<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
+									<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
+									<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
+							sizes="(max-width: 380x) 380px,
+									(max-width: 768px) 768px,
+									380px"
+							src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+
+						<div><?php the_content() ?></div>
+					</a>
+
+				<?php elseif ( 'Full Size Content (Embeds, etc)' === $module_type ) : ?>
+
+					<div class="<?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-embed">
 						<?php the_content(); ?>
 					</div>
-				</div>
 
-			<?php elseif ( 'Image Link' === $module_type ) : ?>
+				<?php else : ?>
+					<!-- Error: Missing post type! -->
+				<?php endif; ?>
 
-				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?>">
-					<?php
-					$img_id = get_post_thumbnail_id(get_the_ID());
-					$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
-					?>
-					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
-								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
-								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
-						sizes="(max-width: 380x) 380px,
-								(max-width: 768px) 768px,
-								380px"
-						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
-
-					<div><?php the_content() ?></div>
-				</a>
-				
-			<?php elseif ( 'Image Link with Button' === $module_type ) : ?>
-
-				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn">
-					<?php
-					$img_id = get_post_thumbnail_id(get_the_ID());
-					$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
-					?>
-					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
-								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
-								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
-						sizes="(max-width: 380x) 380px,
-								(max-width: 768px) 768px,
-								380px"
-						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
-
-					<div><?php the_content() ?></div>
-				</a>
-
-			<?php elseif ( 'Full Size Content (Embeds, etc)' === $module_type ) : ?>
-
-				<div class="<?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-embed">
-					<?php the_content(); ?>
-				</div>
-
-			<?php else : ?>
-				<!-- Error: Missing post type! -->
-			<?php endif; ?>
-
-		<?php endwhile; ?>
+			<?php endwhile; ?>
+		</div>
 	</section>
 <?php
 endif;
@@ -340,7 +342,7 @@ wp_reset_postdata();
 
 			<div class="mfhomepage-more-btn-group text-right">
 				<a class="btn btn-default" href="https://www.bellevuecollege.edu/studentcentral/calendar/">Academic Calendar</a> 
-				<a class="btn btn-default" href="https://www.bellevuecollege.edu/events/">All Campus Events</a>
+				<a class="btn btn-default" href="https://www.bellevuecollege.edu/events/">Events Calendar</a>
 			</div>
 		</section>
 	</div>

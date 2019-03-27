@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower
- Version:          2
+ Version:          2.0.1
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -559,8 +559,8 @@ a.mfhomepage-card:focus {
 	}
 
 	#mfhomepage-modules {
-		margin-top: 1em;
-		margin-bottom: 1em;
+		margin: 1em -0.5em;
+
 		flex-direction: row;
 
 		flex-wrap: wrap;
@@ -572,13 +572,10 @@ a.mfhomepage-card:focus {
 		& .mfhomepage-content-module {
 			flex-basis: calc(32% - 1em);
 
-			margin-right: 1em;
+			margin-left: 0.5em;
+			margin-right: 0.5em;
 
 			border: 1px solid #e6e5e5;
-
-			&:last-child {
-				margin-right: 0;
-			}
 
 			&.mfhomepage-content-module-2 {
 				flex-basis: calc(66% - 1em);
