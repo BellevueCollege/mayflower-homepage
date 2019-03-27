@@ -1,11 +1,11 @@
 // Dependencies
 var gulp         = require('gulp');
-var sass         = require('gulp-sass');
-var notify       = require('gulp-notify');
-var sourcemaps   = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var uglify       = require('gulp-uglify');
-var saveLicense  = require('uglify-save-license');
+    sass         = require('gulp-sass');
+    notify       = require('gulp-notify');
+    sourcemaps   = require('gulp-sourcemaps');
+    autoprefixer = require('gulp-autoprefixer');
+    uglify       = require('gulp-uglify');
+    saveLicense  = require('uglify-save-license');
 
 
 // Path Configs
@@ -66,8 +66,7 @@ var uglifyOptions = {
  * Dev and Prod compilers
  *
  **/
-
-gulp.task('sass-dev', function() {
+function sassDev() {
   return gulp
       .src(config.sassPath + '/style.scss')
       .pipe(sourcemaps.init())
@@ -77,9 +76,9 @@ gulp.task('sass-dev', function() {
       .pipe(autoprefixer())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(config.cssPath));
-});
+}
 
-gulp.task('sass', function() {
+function sassProd() {
   return gulp
       .src(config.sassPath + '/style.scss')
       .pipe(sass(sassOptions).on('error', notify.onError(function (error) {
@@ -87,22 +86,24 @@ gulp.task('sass', function() {
       })))
       .pipe(autoprefixer())
       .pipe(gulp.dest(config.cssPath));
-});
+}
 
-// Watch function (sass) - dev use only
-gulp.task('watch',function() {
-  gulp
-    .watch(config.sassPath + '/**/*.scss', ['sass-dev']);
-});
+
+function watch() {
+  sassDev();
+  gulp.watch(config.sassPath + '/**/*.scss', sassDev)
+}
 
 
 
 // Dev - full dev build
-gulp.task('dev', [
-            'sass-dev'
-          ]);
+const dev = gulp.series(sassDev);
 
 // Default - full production build
-gulp.task('default', [
-            'sass'
-          ]);
+const prod = gulp.series(sassProd);
+
+
+// Export Tasks for Use
+exports.dev = dev;
+exports.default = prod;
+exports.watch = watch;

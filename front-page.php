@@ -6,200 +6,344 @@
  *
  */
 get_header(); ?>
-<div id = "bc-home-front-page" >
-	<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
-	<div class="row">
-		<div id="" class="col-xs-7 col-sm-8 col-md-3 col-xl-2 resources-menu">
-				<section class="col-xs-12 box-shadow"><h2>Menus for</h2><div class="menu-menus-for-container"><ul id="menu-menus-for" class="menu"><li id="menu-item-1892" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1892"><a href="https://www.bellevuecollege.edu/students/">Students</a></li>
-<li id="menu-item-1893" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1893"><a href="https://www.bellevuecollege.edu/future/">Future Students</a></li>
-<li id="menu-item-1894" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1894"><a href="https://www.bellevuecollege.edu/international/">International Students</a></li>
-<li id="menu-item-1895" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1895"><a href="https://www.bellevuecollege.edu/employees/">Faculty &amp; Staff</a></li>
-<li id="menu-item-1897" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1897"><a href="https://www.bellevuecollege.edu/visitors/">Visitors &amp; Community</a></li>
-</ul></div></section><section class="col-xs-12 box-shadow"><h2>Featured areas</h2><div class="menu-featured-areas-container"><ul id="menu-featured-areas" class="menu"><li id="menu-item-1898" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1898"><a href="https://www.bellevuecollege.edu/ce/">Continuing Education</a></li>
-<li id="menu-item-1899" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1899"><a href="https://www.bellevuecollege.edu/lmc/">Library</a></li>
-<li id="menu-item-1900" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1900"><a href="https://www.bellevuecollege.edu/athletics/">Athletics</a></li>
-</ul></div></section>			</div>
-		<div class="col-xs-5 col-sm-4" id="mobilelinks">
-			<section>
-				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/maps/" class="btn btn-info"><?php esc_html_e( 'Maps', 'mayflower-homepage' ); ?></a>
-				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/location/directions/" class="btn btn-info"><?php esc_html_e( 'Directions', 'mayflower-homepage' ); ?></a>
-				<a class="btn btn-info btn-block" href="//www.bellevuecollege.edu/contacts/" class="btn btn-info"><?php esc_html_e( 'Contact Us', 'mayflower-homepage' ); ?></a>
-			</section>
-		</div>
-		<?php /* Expand slideshow to full-width if no widgets are present in Menus area */
-		if ( is_active_sidebar( 'home_menus_area' ) ) { ?>
-			<div class="col-xs-12 col-md-9 col-xl-10">
-		<?php } else { ?>
-			<div class="col-xs-12">
-		<?php } ?>
-			<section id="homeslider">
-				<?php
-				//display featured slider
-				get_template_part( 'parts/featured-full' ); ?>
-			</section><!--#homeslider-->
-		</div><!--#content .row-->
+
+<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
+<section id="mfhomepage-top-menus" class="container no-padding">
+	<div id="mfhomepage-menus-for">
+		<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'mfhomepage_menus_for',
+			'menu_class'     => 'mfhomepage-menus-for',
+			'container'      => false,
+			'depth'          => 2,
+			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'         => new MFHomepage_Walker(),
+		) );
+		?>
 	</div>
-	<div class="row row-padding">
-		<div class="col-md-8 col-lg-9">
-			<section class="col-md-6 col-no-padding" id="home-news">
-				<header class="content-padding">
-					<h2><?php esc_html_e( 'News &amp; Announcements', 'mayflower-homepage' ); ?></h2>
-				</header>
-				<div class="content-padding">
-					<ul>
-						<?php
-						if ( is_multisite() ) {
-							global $switched;
-							$news_category_name = get_theme_mod( 'news_category_name' );
-							switch_to_blog( get_theme_mod( 'news_site_id' ) ); //switched to the news site
-							$the_query = new WP_Query( array(
-								'post_type'      => 'post',
-								'category_name'  => $news_category_name,
-								'orderby'        => 'date',
-								'order'          => 'DESC',
-								'posts_per_page' => 3,
-							));
-							while ( $the_query->have_posts() ) :
-								$the_query->the_post(); ?>
-								<li><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></li>
-							<?php endwhile;
-							restore_current_blog();
-						}
-						?>
-						<li><a class="more" href="//www.bellevuecollege.edu/news/"><strong>More news...</strong><span class="arrow"></span></a></li>
-					</ul>
-				</div><!--.content-padding-->
+	<div id="mfhomepage-resources">
+		<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_resources' ) ); ?></h2>
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'mfhomepage_resources',
+			'menu_class'     => 'mfhomepage-resources',
+			'container'      => false,
+			'depth'          => 2,
+			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'         => new MFHomepage_Walker(),
+		) );
+		?>
+	</div>
+	<div id="mfhomepage-contact">
+		<h2 class="top-menu-title sr-only"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_contact' ) ); ?></h2>
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'mfhomepage_contact',
+			'menu_class'     => 'mfhomepage-contact',
+			'container'      => false,
+			'depth'          => 2,
+			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'walker'         => new MFHomepage_Walker(),
+		) );
+		?>
+	</div>
+</section>
+
+	
+<section id="homeslider" class="container-fluid no-padding">
+	<?php get_template_part( 'parts/featured-full' ); ?>
+</section><!--#homeslider-->
+
+
+<?php if ( 'page' == get_option( 'show_on_front' ) && have_posts() ) :
+	while ( have_posts() ) : the_post(); ?>
+		<?php
+		/**
+		* Prevent Empty Container from loading if there is no content
+		*/
+		if ( '' !== $post->post_content ) : ?>
+			<section id="mfhomepage-content" class="container">
+				<?php the_content(); ?>
 			</section>
-			<section class="col-md-6 col-no-padding"  id="home-events">
-				<header class="content-padding">
-					<h2><?php esc_html_e( 'Events', 'mayflower-homepage' ); ?></h2>
-				</header>
-				<div class="content-padding">
-					<ul>
-						<?php
-						$the_query = new WP_Query( array(
-							'post_type'     => 'post',
-							'category_name' => get_theme_mod( 'events_category' ),
-							'orderby'       => 'date',
-							'order'         => 'ASC',
-						));
-						while ( $the_query->have_posts() ) :
-							$the_query->the_post(); ?>
-							<!-- begin event listing -->
-							<li><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></li>
-							<!-- end event listing -->
-						<?php
-						endwhile;
-						wp_reset_postdata();
-						?>
+		<?php endif; ?>
+	
+	<?php endwhile; ?>
+<?php endif; ?>
 
-						<li><a class="more" href="//www.bellevuecollege.edu/events"><strong><?php esc_html_e( 'More events...', 'mayflower-homepage' ); ?></strong></a></li>
-						<li><a id="calendar" href="//www.bellevuecollege.edu/enrollment/calendar/"><?php esc_html_e( 'Academic Calendar', 'mayflower-homepage' ); ?><strong></strong></a> </li>
-					</ul>
-				</div><!--.content-padding-->
-			</section><!--#home-events-->
-		</div> 
-		<!--
-			========
-			Small Ad 
-			========
-		-->
-		<div class="col-md-4 col-lg-3">
-			<p id="apply" >
-				<?php echo get_theme_mod( 'apply_btn_html' ); ?>
-			</p>
-			<?php  $number = 0; // small ad
-				$the_query = new WP_Query(array(
-					'post_type'=>'small_ad',
-					'orderby'=> 'ID',
-					'order'=> 'ASC',
-					'posts_per_page' => $number,
-				));
-				?>
-				<div id="smallAd">
-					<div id="smallAd-carousel" class="carousel slide" data-ride="carousel" data-wrap="true" data-interval="false"> 
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner center-block" role="listbox"  id="smallAdImages"  style="display:none">
-							<?php							
-							while ( $the_query->have_posts() ) :
-								$the_query->the_post();
+<?php
+$the_query = new WP_Query( array(
+	'post_type'      => get_theme_mod( 'modules_post_type' ),
+	'orderby'        => 'menu_order',
+	'order'          => 'ASC',
+	'posts_per_page' => 6,
+));
 
-								// If url field has content, add the URL to the post thumbnail.
-								$small_ad_ext_url = get_post_meta( $post->ID, '_small_ad_url', true );
-								
-									if ( $the_query->current_post == 0 ) { ?>
-									<div class="item active">
-								<?php }  else { ?>
-									<div class="item">
-								<?php } 	
-									if( $small_ad_ext_url ) { ?>					
-										<a href="<?php echo esc_url( $small_ad_ext_url );?>"><?php the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );?></a>
-									<?php }  else {
-										the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) );
-									} ?>
-									</div>
-							<?php // }  //end if ?>
-							<?php endwhile; ?>
-						</div>				
+if ( $the_query->have_posts() ) : ?>
+	<section id="mfhomepage-modules" class="container no-padding">
+		<?php while ( $the_query->have_posts() ) :
+			$the_query->the_post();
 
-					<!-- Indicators -->
+			// Load variables
+			$module_type       = get_post_meta( get_the_ID(), get_theme_mod( 'module_type_field' ), true );
+			$module_link       = ( get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true ) ?: '#' );
+			$module_width      = get_post_meta( get_the_ID(), get_theme_mod( 'module_width_field' ), true );
+			$module_background = get_the_post_thumbnail_url( get_the_ID(), 'mfhomepage-module-background' );
+
+			// Build module CSS classes
+			$module_classes    = 'mfhomepage-content-module ';
+			switch ( $module_width ) {
+				case 'one-third':
+					$module_classes .= 'mfhomepage-content-module-1 ';
+					break;
+				case 'two-thirds':
+					$module_classes .= 'mfhomepage-content-module-2 ';
+					break;
+				case 'full':
+					$module_classes .= 'mfhomepage-content-module-3 ';
+					break;
+			}
+			?>
+
+			<?php if ( 'Text' === $module_type ) : ?>
+
+				<div class="<?php echo esc_attr( $module_classes ) ?>">
+					<h2><?php the_title() ?></h2>
+					<div class="content-module-text">
+						<?php the_content(); ?>
+					</div>
+				</div>
+
+			<?php elseif ( 'Image Link' === $module_type ) : ?>
+
+				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?>">
 					<?php
-					if( $the_query->post_count > 1 ) { ?>
-					<ol class="carousel-indicators">
+					$img_id = get_post_thumbnail_id(get_the_ID());
+					$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+					?>
+					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
+						sizes="(max-width: 380x) 380px,
+								(max-width: 768px) 768px,
+								380px"
+						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+
+					<div><?php the_content() ?></div>
+				</a>
+				
+			<?php elseif ( 'Image Link with Button' === $module_type ) : ?>
+
+				<a href="<?php echo esc_url( $module_link ) ?>" class="responsive-bg-img <?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-btn">
 					<?php
-					while ( $the_query->have_posts() > 0 ) : $the_query->the_post();
-						$number = $the_query->current_post;
-						if( $number >= 0 || $number <= 5 ) {
-							if ( 0 === $number ) { ?>
-								<li data-target="#smallAd-carousel" data-slide-to="<?php echo intval( $number ); ?>" class="active"></li>
-							<?php } else { ?>
-								<li data-target="#smallAd-carousel" data-slide-to="<?php echo intval( $number ); ?>"></li>
-							<?php }
-						}
+					$img_id = get_post_thumbnail_id(get_the_ID());
+					$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+					?>
+					<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?> 768w,
+								<?php the_post_thumbnail_url( 'mfhomepage-module-sm' ); ?> 380w"
+						sizes="(max-width: 380x) 380px,
+								(max-width: 768px) 768px,
+								380px"
+						src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+
+					<div><?php the_content() ?></div>
+				</a>
+
+			<?php elseif ( 'Full Size Content (Embeds, etc)' === $module_type ) : ?>
+
+				<div class="<?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-embed">
+					<?php the_content(); ?>
+				</div>
+
+			<?php else : ?>
+				<!-- Error: Missing post type! -->
+			<?php endif; ?>
+
+		<?php endwhile; ?>
+	</section>
+<?php
+endif;
+wp_reset_postdata();
+?>
+
+<section id="mfhomepage-news-events-container">
+	<div id="mfhomepage-news-events" class="container no-padding">
+		<?php $the_query = new WP_Query( array(
+			'post_type'      => get_theme_mod( 'newsevents_post_type' ),
+			'tax_query' => array(
+				array(
+					'taxonomy' => get_theme_mod( 'newsevents_post_type_taxonomy' ),
+					'field'    => 'slug',
+					'terms'    => get_theme_mod( 'news_category' ),
+				),
+			),
+			'orderby'        => 'menu_order',
+			'order'          => 'DSC',
+			'posts_per_page' => 1,
+		) ); ?>
+		<section id="mfhomepage-news">
+			<h2>In the news</h2>
+			
+			<?php while ( $the_query->have_posts() ) :
+				$the_query->the_post();
+
+				if ( has_post_thumbnail() ) : ?>
+					<a href="<?php echo esc_url(
+						get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
+					); ?>" class="news-card mfhomepage-card">
+						<div class="responsive-bg-img card-heading">
+							<?php
+							$img_id = get_post_thumbnail_id(get_the_ID());
+							$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+							?>
+							<img srcset="<?php the_post_thumbnail_url( 'mfhomepage-card-sm' ); ?> 380w,
+										<?php the_post_thumbnail_url( 'mfhomepage-card-lg' ); ?> 768w,
+										<?php the_post_thumbnail_url( 'mfhomepage-card-sm' ); ?> 380w"
+								sizes="(max-width: 380x) 380px,
+										(max-width: 991px) 768px,
+										380px"
+								src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+
+							<div class="card-title">
+								<h3><?php the_title(); ?></h3>
+							</div>
+						</div>
+						<div class="card-content">
+							<?php
+							$mfhomepage_post_content        = get_the_content( '' );
+							$mfhomepage_remove_content_tags = wp_strip_all_tags( $mfhomepage_post_content, true );
+							$mfhomepage_content_trimmed     = wp_trim_words( $mfhomepage_remove_content_tags, 25, '...' );
+
+							if ( ! empty( $mfhomepage_post_content ) ) { ?>
+								<p>
+									<?php echo esc_textarea(
+										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
+									); ?>&ndash;
+									<?php echo $mfhomepage_content_trimmed; ?>
+								</p>
+							<?php } ?>
+						</div>
+					</a>
+				<?php endif; ?>
+			<?php endwhile; ?>
+			<div class="mfhomepage-more-btn-group text-right">
+				<a class="btn btn-default" href="https://www.bellevuecollege.edu/news/">More on BC Today</a>
+			</div>
+		</section>
+		<section id="mfhomepage-events-deadlines">
+			<h2>Happening around campus</h2>
+			<?php
+			$the_query = new WP_Query( array(
+				'post_type'      => get_theme_mod( 'newsevents_post_type' ),
+				'tax_query' => array(
+					array(
+						'taxonomy' => get_theme_mod( 'newsevents_post_type_taxonomy' ),
+						'field'    => 'slug',
+						'terms'    => get_theme_mod( 'deadlines_category' ),
+					),
+				),
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'posts_per_page' => 3,
+			));
+
+			if ( $the_query->have_posts() ) : ?>
+				<div id="mfhomepage-deadlines">
+					<?php while ( $the_query->have_posts() ) :
+						$the_query->the_post(); ?>
+						<a href="<?php echo esc_url(
+							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
+						); ?>" class="deadlines-card mfhomepage-card">
+							<div class="card-heading">
+								<div class="card-icon"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></div>
+								<div class="card-title">
+									<h3><?php echo esc_textarea(
+										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
+									); ?></h3>
+								</div>
+							</div>
+							<div class="card-content">
+								<h4><?php the_title(); ?></h4>
+								<?php
+								$mfhomepage_post_content        = get_the_content( '' );
+								$mfhomepage_remove_content_tags = wp_strip_all_tags( $mfhomepage_post_content, true );
+								$mfhomepage_content_trimmed     = wp_trim_words( $mfhomepage_remove_content_tags, 25, '...' );
+
+								if ( ! empty( $mfhomepage_post_content ) ) { ?>
+									<p>
+										<?php echo $mfhomepage_content_trimmed; ?>
+									</p>
+								<?php } ?>
+							</div>
+						</a>
+						<!-- end event listing -->
+					<?php
 					endwhile; ?>
-					</ol>
-						<!-- Controls -->
-						<a class="left carousel-control" href="#smallAd-carousel" role="button" data-slide="prev">
-							<span class="glyphicon glyphicon-triangle-left" aria-hidden="true" value="left"></span>
+				</div>
+			<?php
+			endif;
+			wp_reset_postdata();
+			?>
+			
+			<?php
+			$the_query = new WP_Query( array(
+				'tax_query' => array(
+					array(
+						'taxonomy' => get_theme_mod( 'newsevents_post_type_taxonomy' ),
+						'field'    => 'slug',
+						'terms'    => get_theme_mod( 'events_category' ),
+					),
+				),
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'posts_per_page' => 3,
+			));
+
+			if ( $the_query->have_posts() ) : ?>
+				<div id="mfhomepage-events">
+					<?php while ( $the_query->have_posts() ) :
+						$the_query->the_post(); ?>
+						<a href="<?php echo esc_url(
+							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
+						); ?>" class="events-card mfhomepage-card">
+							<div class="card-heading">
+								<div class="card-icon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
+								<div class="card-title">
+									<h3><?php echo esc_textarea(
+										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
+									); ?></h3>
+								</div>
+							</div>
+							<div class="card-content">
+								<h4><?php the_title(); ?></h4>
+								<?php
+								$mfhomepage_post_content        = get_the_content( '' );
+								$mfhomepage_remove_content_tags = wp_strip_all_tags( $mfhomepage_post_content, true );
+								$mfhomepage_content_trimmed     = wp_trim_words( $mfhomepage_remove_content_tags, 25, '...' );
+
+								if ( ! empty( $mfhomepage_post_content ) ) { ?>
+									<p>
+										<?php echo esc_textarea( $mfhomepage_content_trimmed ); ?>
+									</p>
+								<?php } ?>
+							</div>
 						</a>
-						<a class="right carousel-control" href="#smallAd-carousel" role="button" data-slide="next">
-							<span class="glyphicon glyphicon-triangle-right" aria-hidden="true" value="right"></span>
-						</a>
-					<?php } ?> 
-					<?php wp_reset_postdata(); ?>
-				</div><!-- smallAd-carousel-->
-			</div><!-- small Ad -->	
-		</div><!--#home-sidelinks-->
-	</div><!-- .content-row -->
-</div>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	/* store images in a variable object */
-	var images = $( "#smallAdImages" ).children();
+						<!-- end event listing -->
+					<?php
+					endwhile; ?>
+				</div>
+			<?php
+			endif;
+			wp_reset_postdata();
+			?>
 
-	function shuffle(array) {
-		/* https://github.com/Daplie/knuth-shuffle */
-		var currentSlide = array.length,
-			rand, temp;
-		while ( 0 !== currentSlide ) {
-			rand = Math.floor( Math.random() * currentSlide );
-			currentSlide -= 1;
+			<div class="mfhomepage-more-btn-group text-right">
+				<a class="btn btn-default" href="https://www.bellevuecollege.edu/studentcentral/calendar/">Academic Calendar</a> 
+				<a class="btn btn-default" href="https://www.bellevuecollege.edu/events/">All Campus Events</a>
+			</div>
+		</section>
+	</div>
+</section>
 
-			temp = array[currentSlide];
-			array[currentSlide] = array[rand];
-			array[rand] = temp;
-		}
-		return array;
-	}
-		/* shuffle array */
-	var shufImg = shuffle( images );
-	shufImg.each( function() {
-		$( this ).removeClass( "active" ).attr('aria-selected', 'false' ).attr('tabindex', '-1' );
-	});
-	/* add class to first shuffled object */
-	$( "#smallAdImages" ).html(shufImg).show();
-	$( "#smallAdImages" ).children().first().addClass( "active" ).attr('aria-selected', 'true' ).attr('tabindex', '0' );
-
-});
-</script>
 <?php get_footer(); ?>

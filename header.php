@@ -74,133 +74,42 @@
 	  ?>>
 
 	<?php
-	##############################################
-	### Branded or Lite versions of the header
-	##############################################
+	###############################
+	### --- Branded version --- ###
+	###############################
 
-	if( $mayflower_brand == 'branded' ) {
-		###############################
-		### --- Branded version --- ###
-		###############################
+	bc_tophead_big();
 
-		bc_tophead_big();
+	//display site title on branded version
+	/* BEGIN MAYFLOWER HOMEPAGE SPECIFIC CODE */
 
-		//display site title on branded version
-		/* BEGIN MAYFLOWER HOMEPAGE SPECIFIC CODE */
-		if ( !(is_404()) && is_front_page() ) { ?>
-			<div id="main-wrap" class="<?php echo $mayflower_brand_css; ?> bchome">
-				<div id="main" class="container no-padding">
-		<?php } else if ( is_404() ) { ?>
-			<div id="main-wrap" class="<?php echo $mayflower_brand_css; ?>">
-				<div id="main" class="container no-padding">
-		<?php } else { ?>
-			<div id="main-wrap" class="<?php echo $mayflower_brand_css; ?>">
-				<div id="main" class="container no-padding">
-					<div class="content-padding">
-						<div id="site-header">
-							<h1 class="site-title">
-								<?php if ( $post_top_parent_id == 0 ){
-									the_title();
-								} else {
-									echo '<a href="'.get_permalink($post_top_parent_id).'">'.get_the_title($post_top_parent_id).'</a>';
-								} ?>
-							</h1>
-						</div><!-- container header -->
-					</div><!-- content-padding -->
-		<?php } /* END MAYFLOWER HOMEPAGE SPECIFIC CODE */
-	} else {
-		############################
-		### --- Lite version --- ###
-		############################
+	/* Front Page Specific Code */
+	if ( ! ( is_404() ) && is_front_page() ) { ?>
+		<div id="main-wrap" class="<?php echo $mayflower_brand_css; ?> bchome">
+			<div id="main">
 
-		bc_tophead(); ?>
+
+	<?php } else if ( is_404() ) { ?>
 		<div id="main-wrap" class="<?php echo $mayflower_brand_css; ?>">
 			<div id="main" class="container no-padding">
-				<div class="container" id="top">
-					<div id="site-header" class="row">
-						<div class="col-md-8">
-							<div class="content-padding">
-								<?php $header_image = get_header_image();
-								if ( ! empty( $header_image ) ) : ?>
-									<div class="header-image">
-										<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-											<img src="<?php header_image(); ?>" class="header-image"  alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> : <?php bloginfo('description'); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
-										</a>
-									</div><!-- header-image -->
-								<?php else : ?>
-									<h1 class="site-title">
-										<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-									</h1>
-									<p class="site-description"><?php bloginfo('description'); ?></p>
-								<?php endif; ?>
-							</div><!-- .content-padding -->
-						</div><!-- col-md-8 -->
-						<div class="col-md-4">
-							<div class="header-search content-padding
-								<?php if ( get_bloginfo('description') ) {
-									echo 'header-search-w-description ';
-								}
-								if(get_bloginfo('description') <> '') {
-									echo 'header-social-links-no-margin ';
-								} ?>">
-								<div class="social-media">
-									<ul>
-										<?php if (!empty($mayflower_options['facebook'])) {
-											$facebook = esc_url($mayflower_options['facebook'] ); ?>
-											<li><a href="<?php echo $mayflower_options['facebook']; ?>" title="facebook"><img src="<?php echo $globals_url; ?>i/facebook.png" alt="facebook" /></a></li>
-										<?php } ?>
+	<?php } else { ?>
+		<div id="main-wrap" class="<?php echo $mayflower_brand_css; ?>">
+			<div id="main" class="container no-padding">
+				<div class="content-padding">
+					<div id="site-header">
+						<h1 class="site-title">
+							<?php if ( $post_top_parent_id == 0 ){
+								the_title();
+							} else {
+								echo '<a href="'.get_permalink($post_top_parent_id).'">'.get_the_title($post_top_parent_id).'</a>';
+							} ?>
+						</h1>
+					</div><!-- container header -->
+				</div><!-- content-padding -->
+	<?php } /* END MAYFLOWER HOMEPAGE SPECIFIC CODE */
 
-										<?php if (!empty($mayflower_options['twitter'])) { ?>
-											<li><a href="<?php echo $mayflower_options['twitter']; ?>" title="twitter"><img src="<?php echo $globals_url; ?>i/twitter.png" alt="twitter" /></a></li>
-										<?php } ?>
 
-										<?php if (!empty($mayflower_options['flickr'])) { ?>
-											<li><a href="<?php echo $mayflower_options['flickr']; ?>" title="flickr"><img src="<?php echo $globals_url; ?>i/flickr.png" alt="flickr" /></a></li>
-										<?php } ?>
-
-										<?php if (!empty($mayflower_options['youtube'])) { ?>
-											<li><a href="<?php echo $mayflower_options['youtube']; ?>" title="youtube"><img src="<?php echo $globals_url; ?>i/youtube.png" alt="youtube" /></a></li>
-										<?php } ?>
-
-										<?php if (!empty($mayflower_options['linkedin'])) { ?>
-											<li><a href="<?php echo $mayflower_options['linkedin']; ?>" title="linkedin"><img src="<?php echo $globals_url; ?>i/linkedin.png" alt="facebook" /></a></li>
-										<?php } ?>
-									</ul>
-								</div><!-- social-media -->
-
-								<?php $mayflower_adminonly_options = get_option( 'mayflower_admin_theme_general_options' ); ?>
-
-								<?php if( empty( $mayflower_adminonly_options['hide_searchform'] ) ) { ?>
-									<div class="row">
-										<div id="main-nav-link" class="col-xs-4">
-											<a href="#college-navbar" title="Navigation Menu" class="btn btn-default btn-block">Menu</a>
-										</div><!-- main-nav-link -->
-										<div class="col-xs-8 col-sm-12">
-											<?php get_search_form(); ?>
-										</div>
-									</div><!-- row -->
-
-								<?php } else { ?>
-									<div class="row">
-										<div id="main-nav-link" class="col-xs-12">
-											<a href="#college-navbar" title="Navigation Menu" class="btn btn-default btn-block">Menu</a>
-										</div><!-- main-nav-link -->
-									</div><!-- row -->
-
-								<?php } ?>
-
-							</div> <!--content-padding -->
-						</div><!-- col-md-4 -->
-					</div> <!--#site-header .row-->
-				</div><!-- container -->
-
-	<?php } //end lite ?>
-
-	<div class="row">
-		<div class="col-md-12">
-
-			<?php //add flexwrap if we are in the lite version
-			global $mayflower_brand;
-			if( $mayflower_brand == 'lite') { ?>
-				<div class="flexwrap">
-			<?php }
+	if ( ! is_front_page() ) { ?>
+		<div class="row">
+			<div class="col-md-12">
+	<?php } ?>
