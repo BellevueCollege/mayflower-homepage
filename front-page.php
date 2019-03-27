@@ -150,6 +150,12 @@ if ( $the_query->have_posts() ) : ?>
 					<div><?php the_content() ?></div>
 				</a>
 
+			<?php elseif ( 'Full Size Content (Embeds, etc)' === $module_type ) : ?>
+
+				<div class="<?php echo esc_attr( $module_classes ) ?> mfhomepage-content-module-embed">
+					<?php the_content(); ?>
+				</div>
+
 			<?php else : ?>
 				<!-- Error: Missing post type! -->
 			<?php endif; ?>

@@ -248,6 +248,22 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 			
 		}
 	}
+	& .mfhomepage-content-module-embed {
+		padding: 0;
+		background: $brand-primary;
+
+		iframe.youvisit-embed {
+			margin-bottom: -7px;
+		}
+
+		& > a {
+			text-align: center;
+			margin: 3em 1em;
+			display: block;
+			color: #fff;
+			
+		}
+	}
 	& a.mfhomepage-content-module {
 
 		display: flex;
@@ -321,8 +337,6 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 				
 			}
 		}
-
-		
 	}
 }
 
@@ -692,6 +706,22 @@ a.mfhomepage-card:focus {
 		font-family: $font-body;
 		font-weight: bold;
 		margin: 0;
+	}
+
+	.btn {
+		width: 35%;
+	}
+
+	.btn:hover,
+	.btn:focus {
+		color: #fff;
+		background-color: $bg-transparent;
+		text-decoration: none;
+	}
+
+	.btn-primary-outline {
+		background-color: transparent;
+		border: 1px #fff solid;
 	}
 
 	.carousel-header {
