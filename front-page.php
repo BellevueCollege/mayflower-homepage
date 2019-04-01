@@ -1,4 +1,13 @@
 <?php
+
+$mfhomepage_allowed_tags = array(
+	'p' => array(),
+	'br' => array(),
+	'ol' => array(),
+	'ul' => array(),
+	'li' => array(),
+);
+
 /**
  * Front Page Template File
  *
@@ -269,13 +278,9 @@ wp_reset_postdata();
 								<h4><?php the_title(); ?></h4>
 								<?php
 								$mfhomepage_post_content        = get_the_content( '' );
-								$mfhomepage_remove_content_tags = wp_strip_all_tags( $mfhomepage_post_content, true );
-								$mfhomepage_content_trimmed     = wp_trim_words( $mfhomepage_remove_content_tags, 25, '...' );
-
+								$mfhomepage_remove_content_tags = wp_kses( $mfhomepage_post_content, $mfhomepage_allowed_tags );
 								if ( ! empty( $mfhomepage_post_content ) ) { ?>
-									<p>
-										<?php echo $mfhomepage_content_trimmed; ?>
-									</p>
+									<?php echo $mfhomepage_remove_content_tags; ?>
 								<?php } ?>
 							</div>
 						</a>
@@ -321,13 +326,9 @@ wp_reset_postdata();
 								<h4><?php the_title(); ?></h4>
 								<?php
 								$mfhomepage_post_content        = get_the_content( '' );
-								$mfhomepage_remove_content_tags = wp_strip_all_tags( $mfhomepage_post_content, true );
-								$mfhomepage_content_trimmed     = wp_trim_words( $mfhomepage_remove_content_tags, 25, '...' );
-
+								$mfhomepage_remove_content_tags = wp_kses( $mfhomepage_post_content, $mfhomepage_allowed_tags );
 								if ( ! empty( $mfhomepage_post_content ) ) { ?>
-									<p>
-										<?php echo esc_textarea( $mfhomepage_content_trimmed ); ?>
-									</p>
+									<?php echo $mfhomepage_remove_content_tags ?>
 								<?php } ?>
 							</div>
 						</a>
