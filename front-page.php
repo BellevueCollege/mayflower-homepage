@@ -243,7 +243,7 @@ wp_reset_postdata();
 			</div>
 		</section>
 		<section id="mfhomepage-events-deadlines">
-			<h2>Happening around campus</h2>
+			<h2>Online Resources for Students</h2>
 			<?php
 			$the_query = new WP_Query( array(
 				'post_type'      => get_theme_mod( 'newsevents_post_type' ),
