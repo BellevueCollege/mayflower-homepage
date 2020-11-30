@@ -239,7 +239,7 @@ wp_reset_postdata();
 				<?php endif; ?>
 			<?php endwhile; ?>
 			<div class="mfhomepage-more-btn-group text-right">
-				<a class="btn btn-default" href="https://www.bellevuecollege.edu/news/">More on BC Today</a>
+				<a class="btn btn-default" href="https://www.bellevuecollege.edu/news/">More BC News</a>
 			</div>
 		</section>
 		<section id="mfhomepage-events-deadlines">
