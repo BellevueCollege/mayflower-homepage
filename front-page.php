@@ -85,7 +85,7 @@ $the_query = new WP_Query( array(
 	'post_type'      => get_theme_mod( 'modules_post_type' ),
 	'orderby'        => 'menu_order',
 	'order'          => 'ASC',
-	'posts_per_page' => 6,
+	'posts_per_page' => 9,
 ));
 
 if ( $the_query->have_posts() ) : ?>
