@@ -66,15 +66,11 @@ function mfhomepage_theme_setup() {
  * Override bc_footer function to add additional footer element
  */
 function bc_footer() {
-	global $bc_globals_html_filepath,
-		$bc_globals_bfoot_filename,
-		$bc_globals_legal_filename;
+	$globals = new Globals();
 
-	$bc_footer = $bc_globals_html_filepath . $bc_globals_bfoot_filename;
-	$bc_footerlegal = $bc_globals_html_filepath . $bc_globals_legal_filename;
-	include_once( $bc_footer );
+	$globals->footer();
 	get_template_part( 'part-front-page-legal' );
-	include_once( $bc_footerlegal );
+	$globals->footer_legal();
 }
 add_action( 'mayflower_footer', 'bc_footer', 50 );
 
