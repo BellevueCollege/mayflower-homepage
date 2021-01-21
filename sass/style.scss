@@ -158,7 +158,7 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 	
 	& .mfhomepage-content-module {
 		margin-bottom: 1rem;
-
+		
 		padding: 1rem;
 
 		flex: 1 0 auto;
@@ -192,9 +192,14 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 	& .mfhomepage-content-module-embed {
 		padding: 0;
 		background: $brand-primary;
+		overflow: hidden;
 
 		iframe.youvisit-embed {
 			margin-bottom: -7px;
+		}
+
+		figure {
+			margin: 0;
 		}
 
 		& > a {
@@ -211,7 +216,7 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 		flex-direction: column;
 		justify-content: center;
 
-		min-height: 12rem;
+		min-height: 180px;
 
 		text-decoration: none;
 
@@ -633,124 +638,34 @@ a.mfhomepage-card:focus {
 	}
 }
 
-.carousel-controls {
-	width: auto;
-	height: auto;
-	background: transparent;
-	z-index: 15;
-	position: relative;
-	margin: 5px 5px 0 5px;
-
-	.carousel-control {
-		width: 85%;
-		height: auto;
-		bottom: auto;
-		font-size: 1.05em;
-		padding: 15px;
-		top: 0;
-		opacity: 1.0;
-		background-color: $brand-primary;
-		line-height: 1em;
-		border: 1px solid #fff;
-		border-radius: 4px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	
-		&.next-slide {
-			right: 0;
-			left: auto;
-		}
-
-		&:focus {
-			opacity: 1.0;
-		}
-
-		& span.glyphicon {
-			margin-left: auto;
-			margin-right:auto;
-			font-size: inherit;
-		}
-
-		& .glyphicon-menu-right {
-			top: 3px;
-		}
-	}
-
-	.carousel-control:hover,
-	.carousel-control:focus,
-	.carousel-control:active {
+.btn-carousel {
+	background-color: $brand-primary;
+	&:hover,
+	&:focus,
+	&:active {
 		background-color: $brand-primary-hover;
-		opacity: 1.0;
-	}
-	
-	a.carousel-control:focus {
-		border-radius: 6px;
-	}
-
-	.list-indicators {
-		z-index: 15;
-		text-align: center;
-		list-style: none;
-		opacity: 1.0;
-		font-size: 1.05em; 
-	}
-	
-	.list-group {
-		margin-bottom: 0px;
-		width: 100%;
-	}
-	
-	.list-group-item {
-		opacity: 1.0;
-		background-color: $brand-primary;
-		border: 1px solid #fff;
-	
-		&:first-child {
-			border-top-right-radius: 4px;
-			border-top-left-radius: 4px;
-		}
-	
-		&:last-child {
-			border-bottom-right-radius: 4px;
-			border-bottom-left-radius: 4px;
-		}
-	}
-	
-	.list-group-item.active,
-	.list-group-item.active:focus,
-	.list-group-item.active:hover {
-		z-index: 2;
 		color: #fff;
+		
 	}
-	
-	a.list-group-item,
-	a.list-group-item:hover,
-	a.list-group-item:active {
-		color: #fff;
-		opacity: 1.0;
-	}
-	
-	a.list-group-item:hover,
-	a.list-group-item:focus,
-	a.list-group-item:active  {
-		background-color: $brand-primary-hover;
-	}
-	
-	.list-group-icon {
-		border-radius: 4px;
-		max-width: 15%;
-		height: auto;
-		font-size: 1em;
-	}
-	
-	.list-item-active {
-		background-color: $brand-primary-hover;
-		font-weight: bold;
-	}
+
 }
 
 @media (min-width: $breakpoint-bs-sm) {
+	#homeslider {
+		margin-bottom: -3em; // offset buttons that are position: relative
+	}
+
+	.btn-carousel {
+		background-color: $bg-transparent;
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $bg-transparent-hover;
+			color: #fff;
+			
+		}
+	
+	}
 	.carousel-caption {
 		max-width: 50%;
 
@@ -771,74 +686,6 @@ a.mfhomepage-card:focus {
 		position: relative;
 		bottom: 60px;
 		margin: 0;
-
-		.carousel-control {
-			width: auto;
-			max-width: none;
-			height: auto;
-			min-height: 47px;
-			font-size: 1.2em; 
-			padding: 18px;
-			line-height: 0.5em;  
-			max-width: 100%;
-			background-color: $bg-transparent;
-	
-			&:hover,
-			&:focus {
-				background-color: $bg-transparent-hover;
-			}
-	
-			&.next-slide {
-				right: 57px;
-				left: auto;
-			}
-		}
-	
-		.list-indicators {
-			position: absolute;
-			right: 0;
-			font-size: 1.2em;
-		}
-		
-		a.list-group-item:hover,
-		a.list-group-item:focus,
-		a.list-group-item:active {
-			background-color: $bg-transparent-hover;
-		}
-	
-		.list-group {
-			margin-bottom: 0px;
-			width: auto;
-			height: auto;
-		}
-	
-		.list-group-col {
-			bottom: 45px; 
-			position: absolute;
-			right: 0;
-			margin-bottom: 8px;
-			width: 250px;
-		}
-
-		#list-group-glyph {
-			top: 3px;
-		}
-	
-		.list-group-icon {
-			border-radius: 4px;
-			max-width: none;
-			font-size: 1.1em;
-			min-height: 49px;
-		}
-	
-		.list-group-item {
-			background-color: $bg-transparent;
-		}
-	
-		.list-item-active {
-			background-color: $bg-transparent-hover;
-			font-weight: bold;
-		}
 	}
 }
 
@@ -851,11 +698,6 @@ a.mfhomepage-card:focus {
 		}
 	}
 
-	.carousel-controls {
-		.carousel-control {
-			min-height: none;
-		}
-	}
 }
 
 @media (min-width: $breakpoint-bs-lg) {

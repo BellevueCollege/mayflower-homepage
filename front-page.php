@@ -91,7 +91,7 @@ $the_query = new WP_Query( array(
 ));
 
 if ( $the_query->have_posts() ) : ?>
-	<section class="container no-padding">
+	<section class="container px-0">
 		<div id="mfhomepage-modules">
 			<?php while ( $the_query->have_posts() ) :
 				$the_query->the_post();
@@ -181,7 +181,7 @@ wp_reset_postdata();
 ?>
 
 <section id="mfhomepage-news-events-container">
-	<div id="mfhomepage-news-events" class="container no-padding">
+	<div id="mfhomepage-news-events" class="container px-0">
 		<?php $the_query = new WP_Query( array(
 			'post_type'      => get_theme_mod( 'newsevents_post_type' ),
 			'tax_query' => array(
