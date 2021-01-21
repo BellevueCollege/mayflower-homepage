@@ -68,7 +68,7 @@ function mfhomepage_theme_setup() {
 function bc_footer() {
 	$globals = new Globals();
 
-	$globals->footer();
+	$globals->big_footer();
 	get_template_part( 'part-front-page-legal' );
 	$globals->footer_legal();
 }
