@@ -205,7 +205,7 @@ wp_reset_postdata();
 					<a href="<?php echo esc_url(
 						get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 					); ?>" class="news-card mfhomepage-card">
-						<div class="responsive-bg-img card-heading">
+						<div class="responsive-bg-img mfhp-card-heading">
 							<?php
 							$img_id = get_post_thumbnail_id(get_the_ID());
 							$img_alt = get_post_meta($img_id , '_wp_attachment_image_alt', true);
@@ -218,11 +218,11 @@ wp_reset_postdata();
 										380px"
 								src="<?php the_post_thumbnail_url( 'mfhomepage-module-lg' ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
 
-							<div class="card-title">
+							<div class="mfhp-card-title">
 								<h3><?php the_title(); ?></h3>
 							</div>
 						</div>
-						<div class="card-content">
+						<div class="mfhp-card-content">
 							<?php
 							$mfhomepage_post_content        = get_the_content( '' );
 							$mfhomepage_remove_content_tags = wp_strip_all_tags( $mfhomepage_post_content, true );
@@ -268,15 +268,15 @@ wp_reset_postdata();
 						<a href="<?php echo esc_url(
 							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 						); ?>" class="deadlines-card mfhomepage-card">
-							<div class="card-heading">
-								<div class="card-icon"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></div>
-								<div class="card-title">
+							<div class="mfhp-card-heading">
+								<div class="mfhp-card-icon"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></div>
+								<div class="mfhp-card-title">
 									<h3><?php echo esc_textarea(
 										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
 									); ?></h3>
 								</div>
 							</div>
-							<div class="card-content">
+							<div class="mfhp-card-content">
 								<h4><?php the_title(); ?></h4>
 								<?php
 								$mfhomepage_post_content        = get_the_content( '' );
@@ -316,15 +316,15 @@ wp_reset_postdata();
 						<a href="<?php echo esc_url(
 							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 						); ?>" class="events-card mfhomepage-card">
-							<div class="card-heading">
-								<div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
-								<div class="card-title">
+							<div class="mfhp-card-heading">
+								<div class="mfhp-card-icon"><i class="fas fa-calendar-alt"></i></div>
+								<div class="mfhp-card-title">
 									<h3><?php echo esc_textarea(
 										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
 									); ?></h3>
 								</div>
 							</div>
-							<div class="card-content">
+							<div class="mfhp-card-content">
 								<h4><?php the_title(); ?></h4>
 								<?php
 								$mfhomepage_post_content        = get_the_content( '' );

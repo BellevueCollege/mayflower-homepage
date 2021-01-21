@@ -369,7 +369,7 @@ a.mfhomepage-card:focus {
 	a.mfhomepage-card {
 		padding: 0;
 
-		.card-heading {
+		.mfhp-card-heading {
 			// Background image comes in via inline CSS
 			background-color: $brand-primary;
 			background-repeat: no-repeat;
@@ -395,7 +395,7 @@ a.mfhomepage-card:focus {
 			margin: 0;
 		}
 
-		.card-content {
+		.mfhp-card-content {
 			padding: 1em;
 		}
 
@@ -424,13 +424,13 @@ a.mfhomepage-card:focus {
 	
 	a.mfhomepage-card {
 
-		.card-heading {
+		.mfhp-card-heading {
 			margin-bottom: 1rem;
 			display: flex;
 			align-items: baseline;
 		}
 
-		.card-icon {
+		.mfhp-card-icon {
 			font-size: 2em;
 			margin-right: 1rem;
 		}
