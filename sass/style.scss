@@ -101,10 +101,6 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 }
 
 
-#homeslider {
-	margin-top: 2em;
-}
-
 
 @media screen and (min-width: 768px) {
 	.row-padding {
@@ -123,67 +119,7 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 .bchome .container.no-padding {
 	padding: 0;
 }
-#mfhomepage-top-menus {
-	margin-top: 1em;
-	justify-content: space-between;
 
-	& > div > div {
-		display: block;
-	}
-
-	h2 {
-		display: block;
-		clear: none;
-		margin: 0;
-		vertical-align: middle;
-		font-size: 1.2rem;
-		line-height: 1.75em;
-		padding-right: .25em;
-	}
-
-	#mfhomepage-menus-for {
-		padding-left: 1em;
-		padding-right: .25em;
-	}
-
-	#mfhomepage-menus-for,
-	#mfhomepage-resources,
-	#mfhomepage-contact {
-		float: left;
-		width: 50%;
-
-		.btn-group > .btn {
-			width: 100%;
-		}
-
-		& > div {
-			display: flex;
-			flex-direction: column;
-		}
-
-	}
-
-	#mfhomepage-resources {
-		float: right;
-		padding-left: .25em;
-		padding-right: 1em;
-	}
-
-	#mfhomepage-contact {
-		padding-left: .25em;
-		padding-right: 1em;
-
-		& > div {
-			display: flex;
-			flex-direction: row;
-
-			& > .btn,
-			& > .btn-group {
-				flex: 1 0 auto;
-			}
-		}
-	}
-} 
 
 #homeslider {
 	margin-top: .5rem;
@@ -543,25 +479,6 @@ a.mfhomepage-card:focus {
 	}
 
 
-
-	#mfhomepage-top-menus {
-		h2 {
-			flex: 0 0 auto;
-		}
-
-		#mfhomepage-menus-for {
-			padding: 0;
-			padding-right: .25em;
-		}
-		#mfhomepage-resources,
-		#mfhomepage-contact {
-			padding: 0;
-			padding-left: .25em;
-			
-		}
-
-	}
-
 	#mfhomepage-modules {
 		margin: 1em -0.5em;
 
@@ -632,50 +549,6 @@ a.mfhomepage-card:focus {
 
 		margin-left: .5em;
 	}
-
-	#mfhomepage-top-menus {
-
-	}
-	#mfhomepage-top-menus {
-
-		display: flex;
-		justify-content: space-between;
-
-		margin-top: .5em;
-		
-		h2 {
-			display: inline-block;
-			padding-right: .75rem;
-
-			font-size: 1rem;
-		}
-
-		#mfhomepage-menus-for,
-		#mfhomepage-resources,
-		#mfhomepage-contact {
-			flex: 0 1 auto;
-
-			display: flex;
-			align-items: center;
-
-			width: auto;
-
-			& > div {
-				display: flex;
-				flex-direction: row;
-			}
-		}
-		#mfhomepage-menus-for {
-		}
-		#mfhomepage-resources {
-			flex: 1 1 auto;
-			margin: 0 1em;
-		}
-		#mfhomepage-contact {
-			text-align: right;
-			
-		}
-	}
 }
 
 
@@ -684,7 +557,7 @@ a.mfhomepage-card:focus {
 /* ###################################### */
 
 
-.item {
+.carousel-item {
 	background-color: #162F57;
 	background-position: center center;
 	background-repeat: no-repeat; 

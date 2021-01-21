@@ -17,50 +17,52 @@ $mfhomepage_allowed_tags = array(
 get_header(); ?>
 
 <h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
-<section id="mfhomepage-top-menus" class="container no-padding">
-	<div id="mfhomepage-menus-for">
-		<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>
+<section id="mfhomepage-top-menus" class="container px-lg-0 my-3 my-lg-2 d-flex flex-row">
+	<div id="mfhomepage-menus-for" class="d-flex flex-fill flex-column flex-lg-row align-items-lg-center">
+		<h2 class="h6 top-menu-title my-lg-0 text-nowrap pr-2"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>
 		<?php
 		wp_nav_menu( array(
 			'theme_location' => 'mfhomepage_menus_for',
 			'menu_class'     => 'mfhomepage-menus-for',
 			'container'      => false,
 			'depth'          => 2,
-			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
+			'items_wrap'     => '<div id="%1$s" class="%2$s align-self-center d-flex flex-column flex-lg-row w-100" role="group">%3$s</div>',
 			'walker'         => new MFHomepage_Walker(),
 		) );
 		?>
 	</div>
-	<div id="mfhomepage-resources">
-		<h2 class="top-menu-title"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_resources' ) ); ?></h2>
-		<?php
-		wp_nav_menu( array(
-			'theme_location' => 'mfhomepage_resources',
-			'menu_class'     => 'mfhomepage-resources',
-			'container'      => false,
-			'depth'          => 2,
-			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
-			'walker'         => new MFHomepage_Walker(),
-		) );
-		?>
-	</div>
-	<div id="mfhomepage-contact">
-		<h2 class="top-menu-title sr-only"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_contact' ) ); ?></h2>
-		<?php
-		wp_nav_menu( array(
-			'theme_location' => 'mfhomepage_contact',
-			'menu_class'     => 'mfhomepage-contact',
-			'container'      => false,
-			'depth'          => 2,
-			'items_wrap'     => '<div id="%1$s" class="%2$s">%3$s</div>',
-			'walker'         => new MFHomepage_Walker(),
-		) );
-		?>
+	<div class="d-flex flex-fill flex-column flex-lg-row">
+		<div id="mfhomepage-resources" class="d-flex flex-fill flex-column flex-lg-row align-items-lg-center">
+			<h2 class=" h6 top-menu-title my-lg-0 text-nowrap pr-2"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_resources' ) ); ?></h2>
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'mfhomepage_resources',
+				'menu_class'     => 'mfhomepage-resources',
+				'container'      => false,
+				'depth'          => 2,
+				'items_wrap'     => '<div id="%1$s" class="%2$s align-self-center d-flex flex-column flex-lg-row w-100" role="group">%3$s</div>',
+				'walker'         => new MFHomepage_Walker(),
+			) );
+			?>
+		</div>
+		<div id="mfhomepage-contact" class="d-flex flex-column flex-lg-row align-items-lg-center">
+			<h2 class="top-menu-title sr-only"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_contact' ) ); ?></h2>
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'mfhomepage_contact',
+				'menu_class'     => 'mfhomepage-contact',
+				'container'      => false,
+				'depth'          => 2,
+				'items_wrap'     => '<div id="%1$s" class="%2$s btn-group  w-100" role="group">%3$s</div>',
+				'walker'         => new MFHomepage_Walker(),
+			) );
+			?>
+		</div>
 	</div>
 </section>
 
 	
-<section id="homeslider" class="container-fluid no-padding">
+<section id="homeslider" class="container-fluid px-0">
 	<?php get_template_part( 'parts/featured-full' ); ?>
 </section><!--#homeslider-->
 
@@ -239,7 +241,7 @@ wp_reset_postdata();
 				<?php endif; ?>
 			<?php endwhile; ?>
 			<div class="mfhomepage-more-btn-group text-right">
-				<a class="btn btn-default" href="https://www.bellevuecollege.edu/news/">More BC News</a>
+				<a class="btn btn-light" href="https://www.bellevuecollege.edu/news/">More BC News</a>
 			</div>
 		</section>
 		<section id="mfhomepage-events-deadlines">
@@ -315,7 +317,7 @@ wp_reset_postdata();
 							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 						); ?>" class="events-card mfhomepage-card">
 							<div class="card-heading">
-								<div class="card-icon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>
+								<div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
 								<div class="card-title">
 									<h3><?php echo esc_textarea(
 										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
@@ -342,8 +344,8 @@ wp_reset_postdata();
 			?>
 
 			<div class="mfhomepage-more-btn-group text-right">
-				<a class="btn btn-default" href="https://www.bellevuecollege.edu/studentcentral/calendar/">Academic Calendar</a> 
-				<a class="btn btn-default" href="https://www.bellevuecollege.edu/events/">Events Calendar</a>
+				<a class="btn btn-light" href="https://www.bellevuecollege.edu/studentcentral/calendar/">Academic Calendar</a> 
+				<a class="btn btn-light" href="https://www.bellevuecollege.edu/events/">Events Calendar</a>
 			</div>
 		</section>
 	</div>
