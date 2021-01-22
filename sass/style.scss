@@ -651,8 +651,9 @@ a.mfhomepage-card:focus {
 }
 
 @media (min-width: $breakpoint-bs-sm) {
-	#homeslider {
-		margin-bottom: -3em; // offset buttons that are position: relative
+	#homeslider,
+	#home-carousel-featured-full {
+		max-height: 350px;
 	}
 
 	.btn-carousel {
@@ -685,7 +686,6 @@ a.mfhomepage-card:focus {
 	.carousel-controls {
 		position: relative;
 		bottom: 60px;
-		margin: 0;
 	}
 }
 
@@ -707,6 +707,23 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
+
+@media (max-width: $breakpoint-bs-md - 1) {
+	#mfhomepage-top-menus > div,
+	#menu-our-campus > div,
+	#menu-our-campus > a {
+		width: 50%;
+	}
+
+	.mfhomepage-menu {
+		width: 100%;
+		
+		.btn {
+			border-radius: 4px !important;
+		}
+	}
+}
+
 
 .responsive-bg-img img,
 .item.responsive-bg-img img  {

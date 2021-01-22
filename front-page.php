@@ -26,7 +26,7 @@ get_header(); ?>
 			'menu_class'     => 'mfhomepage-menus-for',
 			'container'      => false,
 			'depth'          => 2,
-			'items_wrap'     => '<div id="%1$s" class="%2$s align-self-center d-flex flex-column flex-lg-row w-100" role="group">%3$s</div>',
+			'items_wrap'     => '<div id="%1$s" class="%2$s align-self-center d-flex flex-column flex-lg-row btn-group mfhomepage-menu" role="group">%3$s</div>',
 			'walker'         => new MFHomepage_Walker(),
 		) );
 		?>
@@ -40,7 +40,7 @@ get_header(); ?>
 				'menu_class'     => 'mfhomepage-resources',
 				'container'      => false,
 				'depth'          => 2,
-				'items_wrap'     => '<div id="%1$s" class="%2$s align-self-center d-flex flex-column flex-lg-row w-100" role="group">%3$s</div>',
+				'items_wrap'     => '<div id="%1$s" class="%2$s align-self-center d-flex flex-column flex-lg-row btn-group mfhomepage-menu" role="group">%3$s</div>',
 				'walker'         => new MFHomepage_Walker(),
 			) );
 			?>
@@ -53,7 +53,7 @@ get_header(); ?>
 				'menu_class'     => 'mfhomepage-contact',
 				'container'      => false,
 				'depth'          => 2,
-				'items_wrap'     => '<div id="%1$s" class="%2$s btn-group  w-100" role="group">%3$s</div>',
+				'items_wrap'     => '<div id="%1$s" class="%2$s btn-group  w-100 mfhomepage-menu" role="group">%3$s</div>',
 				'walker'         => new MFHomepage_Walker(),
 			) );
 			?>

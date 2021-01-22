@@ -71,39 +71,37 @@
 					</div><!-- item -->
 				<?php endwhile; wp_reset_postdata(); ?>
 			</div><!-- carousel-inner -->
-			<div class="container px-0">
-				<?php if ( wp_count_posts( 'mhcarousel' )->publish > 1 ) : // Hide controls if only one post ?>
-					<div class="carousel-controls d-flex justify-md-content-start flex-md-row-reverse align-items-start"> <!-- Carousel list and button -->
-						<div class="btn-group" role="group">
-							<button class="btn btn-lg btn-outline-light btn-carousel dropdown-toggle" id="open-slide-list-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Open Slide List" > <!-- list group icon -->
-								<i id="list-group-glyph" class="fas fa-list" aria-hidden="true"></i>
-							</button>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="open-slide-list-btn"> <!-- title list group -->
-								<?php 
-								$number = 0;
-								$the_query = new WP_Query(array(
-									'post_type'=>'mhcarousel',
-									'orderby'=> 'menu_order',
-									'order'=> 'ASC',
-									'posts_per_page' => $mayflower_options['slider_number_slides']
-								));
-								while ( $the_query->have_posts() ) :
-									$the_query->the_post(); ?>
-									<?php if ( $the_query->current_post == 0 ) { ?>
-										<a href="#home-carousel-featured-full" class="dropdown-item active" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
-									<?php } else { ?>
-										<a href="#home-carousel-featured-full" class="dropdown-item" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
-									<?php } ?>
-								<?php endwhile; wp_reset_postdata(); ?>
-							</div> <!-- end list-group-col list-group collapse -->
-						</div> <!-- end list-group list-group-tree list-indicators -->
-						<!-- Carousel button -->
-						<a id="mhcarousel-next" class="btn btn-lg btn-outline-light btn-carousel flex-grow-1 flex-md-grow-0" href="#home-carousel-featured-full" role="button" aria-live="polite" aria-controls="home-carousel-featured-full" data-slide="next">
-								Next: <span id="slide-title"></span> <i class="fas fa-chevron-right" aria-hidden="true"></i>
-						</a>
-					</div> <!-- end carousel-controls -->
-				<?php endif; ?>
-			</div><!-- end container -->
+			<?php if ( wp_count_posts( 'mhcarousel' )->publish > 1 ) : // Hide controls if only one post ?>
+				<div class="carousel-controls d-flex justify-md-content-start flex-md-row-reverse align-items-start container px-0"> <!-- Carousel list and button -->
+					<div class="btn-group" role="group">
+						<button class="btn btn-lg btn-outline-light btn-carousel dropdown-toggle" id="open-slide-list-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Open Slide List" > <!-- list group icon -->
+							<i id="list-group-glyph" class="fas fa-list" aria-hidden="true"></i>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="open-slide-list-btn"> <!-- title list group -->
+							<?php
+							$number = 0;
+							$the_query = new WP_Query(array(
+								'post_type'=>'mhcarousel',
+								'orderby'=> 'menu_order',
+								'order'=> 'ASC',
+								'posts_per_page' => $mayflower_options['slider_number_slides']
+							));
+							while ( $the_query->have_posts() ) :
+								$the_query->the_post(); ?>
+								<?php if ( $the_query->current_post == 0 ) { ?>
+									<a href="#home-carousel-featured-full" class="dropdown-item active" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+								<?php } else { ?>
+									<a href="#home-carousel-featured-full" class="dropdown-item" data-slide-to="<?php echo $number++; ?>"><?php the_title(); ?></a>
+								<?php } ?>
+							<?php endwhile; wp_reset_postdata(); ?>
+						</div> <!-- end list-group-col list-group collapse -->
+					</div> <!-- end list-group list-group-tree list-indicators -->
+					<!-- Carousel button -->
+					<a id="mhcarousel-next" class="btn btn-lg btn-outline-light btn-carousel flex-grow-1 flex-md-grow-0" href="#home-carousel-featured-full" role="button" aria-live="polite" aria-controls="home-carousel-featured-full" data-slide="next">
+							Next: <span id="slide-title"></span> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+					</a>
+				</div> <!-- end carousel-controls -->
+			<?php endif; ?>
 			
 		</div><!-- end home-carousel-featured-full -->
 <?php endif; //front page ?>
