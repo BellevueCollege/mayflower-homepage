@@ -74,8 +74,9 @@
 			<?php if ( wp_count_posts( 'mhcarousel' )->publish > 1 ) : // Hide controls if only one post ?>
 				<div class="carousel-controls d-flex justify-md-content-start flex-md-row-reverse align-items-start container px-0"> <!-- Carousel list and button -->
 					<div class="btn-group" role="group">
-						<button class="btn btn-lg btn-outline-light btn-carousel dropdown-toggle" id="open-slide-list-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Open Slide List" > <!-- list group icon -->
-							<i id="list-group-glyph" class="fas fa-list" aria-hidden="true"></i>
+						<button class="btn btn-lg btn-outline-light btn-carousel dropdown-toggle" id="open-slide-list-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <!-- list group icon -->
+							<i id="list-group-glyph" class="fas fa-list" aria-hidden="true" title="Other featured stories"></i>
+							<span class="sr-only">Other featured stories</span>
 						</button>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="open-slide-list-btn"> <!-- title list group -->
 							<?php

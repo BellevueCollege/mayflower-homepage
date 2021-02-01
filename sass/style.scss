@@ -605,22 +605,6 @@ a.mfhomepage-card:focus {
 		margin: 0;
 	}
 
-	.btn {
-		width: 35%;
-	}
-
-	.btn:hover,
-	.btn:focus {
-		color: #fff;
-		background-color: $bg-transparent;
-		text-decoration: none;
-	}
-
-	.btn-primary-outline {
-		background-color: transparent;
-		border: 1px #fff solid;
-	}
-
 	.carousel-header {
 		flex-grow: 1;
 	}
