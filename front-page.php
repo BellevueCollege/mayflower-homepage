@@ -317,7 +317,7 @@ wp_reset_postdata();
 							get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_link_field' ), true )
 						); ?>" class="events-card mfhomepage-card">
 							<div class="mfhp-card-heading">
-								<div class="mfhp-card-icon"><i class="fas fa-calendar-alt"></i></div>
+								<div class="mfhp-card-icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
 								<div class="mfhp-card-title">
 									<h3><?php echo esc_textarea(
 										get_post_meta( get_the_ID(), get_theme_mod( 'newsevents_post_type_date_field' ), true )
