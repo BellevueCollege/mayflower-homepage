@@ -1,10 +1,8 @@
 <?php
 if ( ! is_front_page() ) { ?>
-			</div><!-- row -->
-		</div><!-- col-md-12 -->
+		</div>
 <?php } ?>
-	</div><!-- #main .container -->
-</div><!-- #main-wrap -->
+</div><!-- #main .container -->
 
 <?php
 bc_footer();

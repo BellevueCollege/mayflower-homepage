@@ -40,15 +40,9 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/bellevue.ico" />
 
-	<!-- Swiftype meta tags -->
-	<meta class='swiftype' name='popularity' data-type='integer' content='<?php echo is_front_page( $post->ID ?? null ) ? 5 : 1; ?>' />
-	<meta class="swiftype" name="published_at" data-type="date" content="<?php the_modified_date( 'Y-m-d' ); ?>" />
-	<meta class="swiftype" name="site_home_url" data-type="string" content="<?php echo esc_textarea( mayflower_trimmed_url() ); ?>" />
-
 	<?php if ( is_archive( $post->ID ?? null ) ) { ?>
 		<meta name="robots" content="noindex, follow">
 	<?php } ?>
-	<!-- / Swiftype meta tags -->
 
 	<meta class="funnelback" name="fb_site_name" content="<?php echo get_bloginfo( 'name', 'display' ) ?>" />
 	<?php if ( get_the_post_thumbnail_url( get_the_ID(), 'medium' ) ) : ?>
@@ -131,18 +125,20 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 		/* BEGIN MAYFLOWER HOMEPAGE SPECIFIC CODE */
 
 	/* Front Page Specific Code */
-	if ( ! ( is_404() ) && is_front_page() ) { ?>
-
-
-
-	<?php // } elseif ( is_404() ) { ?>
-
-	<?php } else { ?>
+	if ( ! ( is_front_page() ) ) { ?>
 		<div id="site-header" class="container <?php echo esc_attr( $mayflower_brand_css ); ?>">
-			<p class="site-title">
-				<a title="Return to Home Page" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<?php bloginfo( 'name' ); ?>
-				</a>
-			</p>
+			<?php if ( ! is_404() ) : ?>
+				<h1 class="site-title">
+					<?php if ( $post_top_parent_id === 0 ){
+						the_title();
+					} else {
+						echo '<a href="'.get_permalink($post_top_parent_id).'">'.get_the_title($post_top_parent_id).'</a>';
+					} ?>
+				</h1>
+			<?php else : ?>
+				<p class="site-title">404 Error</p>
+			<?php endif; ?>
 		</div>
+		<div id="main" class="<?php echo esc_attr( $mayflower_brand_css ); ?> container <?php echo 'lite' === $mayflower_brand ? 'shadow' : ''; ?>">
+			<div class="row pt-md-4"><!--endnoindex-->
 	<?php } /* END MAYFLOWER HOMEPAGE SPECIFIC CODE */
