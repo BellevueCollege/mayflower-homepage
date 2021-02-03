@@ -39,7 +39,7 @@ function mayflower_homepage_enqueue_styles() {
 			$carousel_posts_array .=  "];";
 		}
 
-		wp_enqueue_script( 'mhcarousel-script', get_stylesheet_directory_uri() . '/js/mhcarousel.js', array('jquery') ); //added jquery because jquery was called after the scripts
+		wp_enqueue_script( 'mhcarousel-script', get_stylesheet_directory_uri() . '/js/mhcarousel.js', array('jquery'), '3.0.1' ); //added jquery because jquery was called after the scripts
 		wp_add_inline_script( 'mhcarousel-script', $carousel_posts_array, 'before' );
 	}
 }
