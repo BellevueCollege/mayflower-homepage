@@ -4,8 +4,8 @@
  Description:      Mayflower Child Theme to provide custom Bellevue College Homepage
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
- Template:         mayflower
- Version:          2.0.7-#{versionStamp}#
+ Template:         mayflower-g4
+ Version:          3-#{versionStamp}#
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -101,10 +101,6 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 }
 
 
-#homeslider {
-	margin-top: 2em;
-}
-
 
 @media screen and (min-width: 768px) {
 	.row-padding {
@@ -123,67 +119,7 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 .bchome .container.no-padding {
 	padding: 0;
 }
-#mfhomepage-top-menus {
-	margin-top: 1em;
-	justify-content: space-between;
 
-	& > div > div {
-		display: block;
-	}
-
-	h2 {
-		display: block;
-		clear: none;
-		margin: 0;
-		vertical-align: middle;
-		font-size: 1.2rem;
-		line-height: 1.75em;
-		padding-right: .25em;
-	}
-
-	#mfhomepage-menus-for {
-		padding-left: 1em;
-		padding-right: .25em;
-	}
-
-	#mfhomepage-menus-for,
-	#mfhomepage-resources,
-	#mfhomepage-contact {
-		float: left;
-		width: 50%;
-
-		.btn-group > .btn {
-			width: 100%;
-		}
-
-		& > div {
-			display: flex;
-			flex-direction: column;
-		}
-
-	}
-
-	#mfhomepage-resources {
-		float: right;
-		padding-left: .25em;
-		padding-right: 1em;
-	}
-
-	#mfhomepage-contact {
-		padding-left: .25em;
-		padding-right: 1em;
-
-		& > div {
-			display: flex;
-			flex-direction: row;
-
-			& > .btn,
-			& > .btn-group {
-				flex: 1 0 auto;
-			}
-		}
-	}
-} 
 
 #homeslider {
 	margin-top: .5rem;
@@ -222,7 +158,7 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 	
 	& .mfhomepage-content-module {
 		margin-bottom: 1rem;
-
+		
 		padding: 1rem;
 
 		flex: 1 0 auto;
@@ -231,6 +167,8 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 
 		font-size: 1.2rem;
 		line-height: 1.75rem;
+
+		overflow: hidden;
 
 		div.content-module-text {
 			margin-top: 1rem;
@@ -256,9 +194,14 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 	& .mfhomepage-content-module-embed {
 		padding: 0;
 		background: $brand-primary;
+		overflow: hidden;
 
 		iframe.youvisit-embed {
 			margin-bottom: -7px;
+		}
+
+		figure {
+			margin: 0;
 		}
 
 		& > a {
@@ -275,7 +218,7 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 		flex-direction: column;
 		justify-content: center;
 
-		min-height: 12rem;
+		min-height: 180px;
 
 		text-decoration: none;
 
@@ -428,7 +371,7 @@ a.mfhomepage-card:focus {
 	a.mfhomepage-card {
 		padding: 0;
 
-		.card-heading {
+		.mfhp-card-heading {
 			// Background image comes in via inline CSS
 			background-color: $brand-primary;
 			background-repeat: no-repeat;
@@ -454,7 +397,7 @@ a.mfhomepage-card:focus {
 			margin: 0;
 		}
 
-		.card-content {
+		.mfhp-card-content {
 			padding: 1em;
 		}
 
@@ -483,13 +426,13 @@ a.mfhomepage-card:focus {
 	
 	a.mfhomepage-card {
 
-		.card-heading {
+		.mfhp-card-heading {
 			margin-bottom: 1rem;
 			display: flex;
 			align-items: baseline;
 		}
 
-		.card-icon {
+		.mfhp-card-icon {
 			font-size: 2em;
 			margin-right: 1rem;
 		}
@@ -542,25 +485,6 @@ a.mfhomepage-card:focus {
 		}
 	}
 
-
-
-	#mfhomepage-top-menus {
-		h2 {
-			flex: 0 0 auto;
-		}
-
-		#mfhomepage-menus-for {
-			padding: 0;
-			padding-right: .25em;
-		}
-		#mfhomepage-resources,
-		#mfhomepage-contact {
-			padding: 0;
-			padding-left: .25em;
-			
-		}
-
-	}
 
 	#mfhomepage-modules {
 		margin: 1em -0.5em;
@@ -632,50 +556,6 @@ a.mfhomepage-card:focus {
 
 		margin-left: .5em;
 	}
-
-	#mfhomepage-top-menus {
-
-	}
-	#mfhomepage-top-menus {
-
-		display: flex;
-		justify-content: space-between;
-
-		margin-top: .5em;
-		
-		h2 {
-			display: inline-block;
-			padding-right: .75rem;
-
-			font-size: 1rem;
-		}
-
-		#mfhomepage-menus-for,
-		#mfhomepage-resources,
-		#mfhomepage-contact {
-			flex: 0 1 auto;
-
-			display: flex;
-			align-items: center;
-
-			width: auto;
-
-			& > div {
-				display: flex;
-				flex-direction: row;
-			}
-		}
-		#mfhomepage-menus-for {
-		}
-		#mfhomepage-resources {
-			flex: 1 1 auto;
-			margin: 0 1em;
-		}
-		#mfhomepage-contact {
-			text-align: right;
-			
-		}
-	}
 }
 
 
@@ -684,7 +564,7 @@ a.mfhomepage-card:focus {
 /* ###################################### */
 
 
-.item {
+.carousel-item {
 	background-color: #162F57;
 	background-position: center center;
 	background-repeat: no-repeat; 
@@ -725,22 +605,6 @@ a.mfhomepage-card:focus {
 		margin: 0;
 	}
 
-	.btn {
-		width: 35%;
-	}
-
-	.btn:hover,
-	.btn:focus {
-		color: #fff;
-		background-color: $bg-transparent;
-		text-decoration: none;
-	}
-
-	.btn-primary-outline {
-		background-color: transparent;
-		border: 1px #fff solid;
-	}
-
 	.carousel-header {
 		flex-grow: 1;
 	}
@@ -760,124 +624,35 @@ a.mfhomepage-card:focus {
 	}
 }
 
-.carousel-controls {
-	width: auto;
-	height: auto;
-	background: transparent;
-	z-index: 15;
-	position: relative;
-	margin: 5px 5px 0 5px;
-
-	.carousel-control {
-		width: 85%;
-		height: auto;
-		bottom: auto;
-		font-size: 1.05em;
-		padding: 15px;
-		top: 0;
-		opacity: 1.0;
-		background-color: $brand-primary;
-		line-height: 1em;
-		border: 1px solid #fff;
-		border-radius: 4px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	
-		&.next-slide {
-			right: 0;
-			left: auto;
-		}
-
-		&:focus {
-			opacity: 1.0;
-		}
-
-		& span.glyphicon {
-			margin-left: auto;
-			margin-right:auto;
-			font-size: inherit;
-		}
-
-		& .glyphicon-menu-right {
-			top: 3px;
-		}
-	}
-
-	.carousel-control:hover,
-	.carousel-control:focus,
-	.carousel-control:active {
+.btn-carousel {
+	background-color: $brand-primary;
+	&:hover,
+	&:focus,
+	&:active {
 		background-color: $brand-primary-hover;
-		opacity: 1.0;
-	}
-	
-	a.carousel-control:focus {
-		border-radius: 6px;
-	}
-
-	.list-indicators {
-		z-index: 15;
-		text-align: center;
-		list-style: none;
-		opacity: 1.0;
-		font-size: 1.05em; 
-	}
-	
-	.list-group {
-		margin-bottom: 0px;
-		width: 100%;
-	}
-	
-	.list-group-item {
-		opacity: 1.0;
-		background-color: $brand-primary;
-		border: 1px solid #fff;
-	
-		&:first-child {
-			border-top-right-radius: 4px;
-			border-top-left-radius: 4px;
-		}
-	
-		&:last-child {
-			border-bottom-right-radius: 4px;
-			border-bottom-left-radius: 4px;
-		}
-	}
-	
-	.list-group-item.active,
-	.list-group-item.active:focus,
-	.list-group-item.active:hover {
-		z-index: 2;
 		color: #fff;
+		
 	}
-	
-	a.list-group-item,
-	a.list-group-item:hover,
-	a.list-group-item:active {
-		color: #fff;
-		opacity: 1.0;
-	}
-	
-	a.list-group-item:hover,
-	a.list-group-item:focus,
-	a.list-group-item:active  {
-		background-color: $brand-primary-hover;
-	}
-	
-	.list-group-icon {
-		border-radius: 4px;
-		max-width: 15%;
-		height: auto;
-		font-size: 1em;
-	}
-	
-	.list-item-active {
-		background-color: $brand-primary-hover;
-		font-weight: bold;
-	}
+
 }
 
 @media (min-width: $breakpoint-bs-sm) {
+	#homeslider,
+	#home-carousel-featured-full {
+		max-height: 350px;
+	}
+
+	.btn-carousel {
+		background-color: $bg-transparent;
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: $bg-transparent-hover;
+			color: #fff;
+			
+		}
+	
+	}
 	.carousel-caption {
 		max-width: 50%;
 
@@ -897,75 +672,6 @@ a.mfhomepage-card:focus {
 	.carousel-controls {
 		position: relative;
 		bottom: 60px;
-		margin: 0;
-
-		.carousel-control {
-			width: auto;
-			max-width: none;
-			height: auto;
-			min-height: 47px;
-			font-size: 1.2em; 
-			padding: 18px;
-			line-height: 0.5em;  
-			max-width: 100%;
-			background-color: $bg-transparent;
-	
-			&:hover,
-			&:focus {
-				background-color: $bg-transparent-hover;
-			}
-	
-			&.next-slide {
-				right: 57px;
-				left: auto;
-			}
-		}
-	
-		.list-indicators {
-			position: absolute;
-			right: 0;
-			font-size: 1.2em;
-		}
-		
-		a.list-group-item:hover,
-		a.list-group-item:focus,
-		a.list-group-item:active {
-			background-color: $bg-transparent-hover;
-		}
-	
-		.list-group {
-			margin-bottom: 0px;
-			width: auto;
-			height: auto;
-		}
-	
-		.list-group-col {
-			bottom: 45px; 
-			position: absolute;
-			right: 0;
-			margin-bottom: 8px;
-			width: 250px;
-		}
-
-		#list-group-glyph {
-			top: 3px;
-		}
-	
-		.list-group-icon {
-			border-radius: 4px;
-			max-width: none;
-			font-size: 1.1em;
-			min-height: 49px;
-		}
-	
-		.list-group-item {
-			background-color: $bg-transparent;
-		}
-	
-		.list-item-active {
-			background-color: $bg-transparent-hover;
-			font-weight: bold;
-		}
 	}
 }
 
@@ -978,11 +684,6 @@ a.mfhomepage-card:focus {
 		}
 	}
 
-	.carousel-controls {
-		.carousel-control {
-			min-height: none;
-		}
-	}
 }
 
 @media (min-width: $breakpoint-bs-lg) {
@@ -992,6 +693,23 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
+
+@media (max-width: $breakpoint-bs-md - 1) {
+	#mfhomepage-top-menus > div,
+	#menu-our-campus > div,
+	#menu-our-campus > a {
+		width: 50%;
+	}
+
+	.mfhomepage-menu {
+		width: 100%;
+		
+		.btn {
+			border-radius: 4px !important;
+		}
+	}
+}
+
 
 .responsive-bg-img img,
 .item.responsive-bg-img img  {

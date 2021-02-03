@@ -66,15 +66,11 @@ function mfhomepage_theme_setup() {
  * Override bc_footer function to add additional footer element
  */
 function bc_footer() {
-	global $bc_globals_html_filepath,
-		$bc_globals_bfoot_filename,
-		$bc_globals_legal_filename;
+	$globals = new Globals();
 
-	$bc_footer = $bc_globals_html_filepath . $bc_globals_bfoot_filename;
-	$bc_footerlegal = $bc_globals_html_filepath . $bc_globals_legal_filename;
-	include_once( $bc_footer );
+	$globals->big_footer();
 	get_template_part( 'part-front-page-legal' );
-	include_once( $bc_footerlegal );
+	$globals->footer_legal();
 }
 add_action( 'mayflower_footer', 'bc_footer', 50 );
 
@@ -144,14 +140,14 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 		//$output .= '<pre>' . print_r($item, true) . '</pre>';
 
 		if ( ! in_array( 'menu-item-has-children', $item->classes ) && 0 == $depth ) {
-			$output .= "<a class='btn btn-default " . implode( ' ', $item->classes ) . "' href='$permalink'>";
+			$output .= "<a class='btn btn-outline-dark " . implode( ' ', $item->classes ) . "' href='$permalink'>";
 			$output .= $title;
 
 		} elseif ( $depth > 0 ) {
-			$output .= "<li><a href='$permalink'>$title";
+			$output .= "<a class='dropdown-item' href='$permalink'>$title";
 		} else {
 			$output .= '<div class="btn-group " role="group">';
-			$output .= '<a href="#" class="btn btn-default dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+			$output .= '<a href="#" class="btn btn-outline-dark dropdown-toggle ' . implode( ' ', $item->classes ) . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			$output .= $title;
 			$output .= ' <span class="caret"></span>';
 			$output .= '</a>';
@@ -165,16 +161,16 @@ class MFHomepage_Walker extends Walker_Nav_Menu {
 			$output .= '</a>';
 
 		} elseif ( $depth > 0 ) {
-			$output .= '</a></li>';
+			$output .= '</a>';
 		} else {
 			$output .= '</div>';
 		}
 	}
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$output .= '<ul class="dropdown-menu dropdown-menu-right">';
+		$output .= '<div class="dropdown-menu dropdown-menu-right">';
 	}
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$output .= '</ul>';
+		$output .= '</div>';
 	}
 
 }
