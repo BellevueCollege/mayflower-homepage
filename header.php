@@ -8,7 +8,7 @@
  */
 
 /* Globally declare variables used in a variety of locations */
-global $post, $mayflower_options, $mayflower_brand, $mayflower_brand_css, $mayflower_theme_version;
+global $post, $mayflower_options, $mayflower_brand, $mayflower_brand_css, $mayflower_theme_version, $globals;
 
 
 if ( ! ( is_array( $mayflower_options ) ) ) {
@@ -71,7 +71,11 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<meta property="og:site_name" content="Bellevue College" />
 
 
-	<?php wp_head();
+	<?php 
+	$globals = new Globals();
+	$globals->hook_analytics();
+	wp_head();
+	wp_head();
 	/* BEGIN MAYFLOWER HOMEPAGE SPECIFIC CODE */
 
 	$post_top_parent_id = 0; //if needed, this ID is set to the top parent of this post
@@ -119,7 +123,6 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	 * Branded Header
 	 */
 
-		$globals = new Globals();
 		$globals->tophead_big();
 
 		/* BEGIN MAYFLOWER HOMEPAGE SPECIFIC CODE */
