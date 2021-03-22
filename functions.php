@@ -58,7 +58,7 @@ function mfhomepage_theme_setup() {
 	add_image_size( 'mfhomepage-module-lg', 768, 180, true );
 
 
-	add_image_size( 'mfhomepage-carousel-lg', 1680, 500, true );
+	add_image_size( 'mfhomepage-carousel-lg', 1680, 350, false );
 	add_image_size( 'mfhomepage-carousel-md', 992, 350, true );
 	add_image_size( 'mfhomepage-carousel-sm', 475, 350, true );
 }

@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower-g4
- Version:          3.0.1-#{versionStamp}#
+ Version:          3.0.2-#{versionStamp}#
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -568,7 +568,7 @@ a.mfhomepage-card:focus {
 	background-color: #162F57;
 	background-position: center center;
 	background-repeat: no-repeat; 
-	background-size: cover;
+	background-size: auto;
 	min-height: 350px;
 }
 
@@ -634,6 +634,12 @@ a.mfhomepage-card:focus {
 		
 	}
 
+}
+
+@media (min-width: 1680px) {
+	.carousel-item {
+		background-size: cover;
+	}
 }
 
 @media (min-width: $breakpoint-bs-sm) {
