@@ -716,10 +716,101 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
+@media (min-width: $breakpoint-bs-md) {
+	#pathways-module {
+		display: grid;
+		grid-template-columns: repeat(3, minmax( 0, 1fr ) );
+		column-gap: 1rem;
+	}
 
+	#pathways-module-about.card {
+		margin-bottom: 0;
+	}
+
+	#pathways-card-zone {
+		grid-column: auto / span 2;
+	}
+}
 
 .responsive-bg-img img,
 .item.responsive-bg-img img  {
 	display: none;
+}
+
+/** Pathways Module Styling */
+.pathways-card {
+	.card-header h3 {
+		clear: none;
+		display: inline;
+	}
+}
+
+#pathways-scrolling-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax( 0, 1fr ) );
+	column-gap: 1rem;
+	row-gap: 1rem;
+	border-bottom: none;
+
+}
+#pathways-tab-scroll-zone ~ #pathways-tab-detail {
+	display: none;
+}
+#pathways-tab-scroll-zone.active ~ #pathways-tab-detail {
+	display: block;
+}
+.pathways-card-tab {
+	text-decoration: none;
+}
+#pathways-tab-scroll-zone.active {
+	overflow-y: hidden;
+	overflow-x: scroll;
+	
+	#pathways-scrolling-grid {
+		display: flex;
+		flex-wrap: nowrap;
+		padding-bottom: 1rem;
+
+		.card {
+			min-width: 40%;
+		}
+		.card:last-child {
+			margin-right: 0rem;
+		}
+		.pathways-card-tab {
+			text-decoration: none;
+			background: #A7A9AC;
+			color: #000;
+
+			img {
+				filter: grayscale(100%);
+			}
+		
+			&:hover, &:focus {
+				color: #003d79;
+				text-decoration: underline;
+
+				img {
+					filter: none;
+				}
+			}
+			
+		}
+		
+		.pathways-card-tab.active {
+			background: #fff;
+			color: #000;
+			text-decoration: none;
+			box-shadow: -2px 2px 2px rgba(0,0,0,0.4), 2px 2px 2px rgba(0,0,0,0.4);
+			
+			&:hover {
+				color: #000;
+				text-decoration: none;
+			}
+			img {
+				filter: none;
+			}
+		}
+	}
 }
 

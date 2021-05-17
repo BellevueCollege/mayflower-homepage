@@ -81,7 +81,7 @@ get_header(); ?>
 	
 	<?php endwhile; ?>
 <?php endif; ?>
-
+<?php get_template_part( 'parts/pathways-module' ); ?>
 <?php
 $the_query = new WP_Query( array(
 	'post_type'      => get_theme_mod( 'modules_post_type' ),
