@@ -23,7 +23,7 @@ foreach ( $pathways as $key => $post ):
 				<button class="btn btn-info btn-sm float-right my-0 ml-0" type="button" data-toggle="collapse" data-target="#card-collapse-body-<?php echo $key; ?>" aria-expanded="false" aria-controls="card-collapse-body-<?php echo $key; ?>"><i class="fas fa-chevron-down"></i><span class="sr-only">More about the <?php the_title(); ?> pathway</span></button>
 			</div>
 			<div class="card-body collapse" id="card-collapse-body-<?php echo $key; ?>">
-				<?php the_content( false, false ); ?>
+				<?php the_excerpt(); ?>
 				
 				<?php
 				$focus_areas = get_field('pathway_focus_area_connection');

@@ -156,137 +156,139 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 		margin-top: 1rem;
 	}
 	
-	& .mfhomepage-content-module {
-		margin-bottom: 1rem;
-		
-		padding: 1rem;
+}
 
-		flex: 1 0 auto;
+.mfhomepage-content-module {
+	margin-bottom: 1rem;
+	
+	padding: 1rem;
 
-		background: #fff;
+	flex: 1 0 auto;
 
-		font-size: 1.2rem;
-		line-height: 1.75rem;
+	background: #fff;
 
-		overflow: hidden;
+	font-size: 1.2rem;
+	line-height: 1.75rem;
 
-		div.content-module-text {
-			margin-top: 1rem;
-		}
+	overflow: hidden;
 
-		h2 {
-			margin: 0;
-			margin-bottom: .25rem;
-			font-size: 1em;  // based on overall font-size
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
-			font-size: 1.1em;
-
-			li {
-				line-height: 1.2em;
-			}
-			
-		}
+	div.content-module-text {
+		margin-top: 1rem;
 	}
-	& .mfhomepage-content-module-embed {
+
+	h2 {
+		margin: 0;
+		margin-bottom: .25rem;
+		font-size: 1em;  // based on overall font-size
+	}
+
+	ul {
+		list-style: none;
 		padding: 0;
-		background: $brand-primary;
-		overflow: hidden;
+		font-size: 1.1em;
 
-		iframe.youvisit-embed {
-			margin-bottom: -7px;
+		li {
+			line-height: 1.2em;
 		}
-
-		figure {
-			margin: 0;
-		}
-
-		& > a {
-			text-align: center;
-			margin: 3em 1em;
-			display: block;
-			color: #fff;
-			
-		}
+		
 	}
-	& a.mfhomepage-content-module {
+}
+.mfhomepage-content-module-embed {
+	padding: 0;
+	background: $brand-primary;
+	overflow: hidden;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+	iframe.youvisit-embed {
+		margin-bottom: -7px;
+	}
 
-		min-height: 180px;
+	figure {
+		margin: 0;
+	}
+
+	& > a {
+		text-align: center;
+		margin: 3em 1em;
+		display: block;
+		color: #fff;
+		
+	}
+}
+a.mfhomepage-content-module {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	min-height: 180px;
+
+	text-decoration: none;
+
+	padding: 1em 0;
+
+	background-color: $brand-primary;
+	background-repeat: no-repeat;
+	background-position: center; 
+	background-size: cover;
+
+	div {
+		background: $bg-transparent;
+		text-align: center;
+		transition: background-color .25s ease-out;
+	}
+
+	p {
+		text-align: center;
+		margin: .5em;
+		padding: .25em .75em;
 
 		text-decoration: none;
+		color: #fff;
 
-		padding: 1em 0;
+	}
 
-		background-color: $brand-primary;
-		background-repeat: no-repeat;
-		background-position: center; 
-		background-size: cover;
-
+	&:hover,
+	&:active,
+	&:focus {
+		box-shadow: 0 0 5px #000;
 		div {
-			background: $bg-transparent;
-			text-align: center;
-			transition: background-color .25s ease-out;
-		}
-
-		p {
-			text-align: center;
-			margin: .5em;
-			padding: .25em .75em;
-
-			text-decoration: none;
-			color: #fff;
-
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			box-shadow: 0 0 5px #000;
-			div {
-				background: #000;
-			}
-		}
-
-		&.mfhomepage-content-module-btn {
-
-			p {
-				margin: 0 .5rem;
-			}
-			p:first-child {
-				margin-top: .25rem;
-				padding-top: .25rem;
-			}
-			p:last-child {
-				margin-bottom: .25rem;
-				padding-bottom: .25rem;
-			}
-
-			strong {
-				padding: .25rem .75rem;
-				
-				display: inline-block;
-				border-radius: 5px;
-				border: 1px solid #ffffff;
-				background: #000000;
-			}
-			&:hover,
-			&:active,
-			&:focus {
-				strong {
-					box-shadow: 0px 0px 5px #fff;
-				}
-				
-			}
+			background: #000;
 		}
 	}
 }
+
+.mfhomepage-content-module-btn {
+
+	p {
+		margin: 0 .5rem;
+	}
+	p:first-child {
+		margin-top: .25rem;
+		padding-top: .25rem;
+	}
+	p:last-child {
+		margin-bottom: .25rem;
+		padding-bottom: .25rem;
+	}
+
+	strong {
+		padding: .25rem .75rem;
+		
+		display: inline-block;
+		border-radius: 5px;
+		border: 1px solid #ffffff;
+		background: #000000;
+	}
+	&:hover,
+	&:active,
+	&:focus {
+		strong {
+			box-shadow: 0px 0px 5px #fff;
+		}
+		
+	}
+}
+
 
 
 //////
@@ -753,64 +755,128 @@ a.mfhomepage-card:focus {
 	border-bottom: none;
 
 }
-#pathways-tab-scroll-zone ~ #pathways-tab-detail {
+#pathways-module #pathways-tab-detail {
 	display: none;
 }
-#pathways-tab-scroll-zone.active ~ #pathways-tab-detail {
-	display: block;
+#pathways-module.active {
+	#pathways-scroll-back,
+	#pathways-scroll-forward {
+		display: block;
+
+	}
+
+	#pathways-tab-detail {
+		display: block;
+		grid-area: content;
+	}
 }
+
 .pathways-card-tab {
 	text-decoration: none;
 }
-#pathways-tab-scroll-zone.active {
+
+#pathways-scroll-back,
+#pathways-scroll-forward {
+	display: none;
+}
+
+.desktop-focus-areas {
+	columns: 2;
+	column-gap: 2rem;
+	column-span: balance;
+}
+
+/* Text Overlay */
+.pathways-card-tab {
+	display: grid;
+	grid-template-areas: "overlay";
+	color: #fff;
+	text-decoration: none;
+
+	& > img {
+		grid-area: overlay;
+	}
+	& > div {
+		grid-area: overlay;
+		display: flex;
+		flex-direction: column-reverse;
+		align-content: flex-end;
+
+		& > p {
+			flex: 0 0 0;
+			margin: 0;
+			padding: .5em;
+			background: rgba(0,0,0,.54);
+			margin-bottom: 0;
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	&:hover, &:active, &:focus {
+		color: #fff;
+		text-decoration: none;
+		& > div > p {
+			background: rgba(0,0,0,1)
+		}
+	}
+}
+
+#pathways-module.active #pathways-desktop-module {
+	display: grid !important;
+	grid-template-columns: 2rem 1fr 2rem;
+	grid-template-rows: auto auto;
+	grid-template-areas: 
+		"back scroll forward"
+		"content content content"
+}
+
+#pathways-module.active #pathways-tab-scroll-zone {
 	overflow-y: hidden;
 	overflow-x: scroll;
+
+	.pathways-scroll-back,
+	.pathways-scroll-forward {
+		display: block;
+	}
 	
 	#pathways-scrolling-grid {
 		display: flex;
 		flex-wrap: nowrap;
 		padding-bottom: 1rem;
 
-		.card {
-			min-width: 40%;
-		}
-		.card:last-child {
+		.pathways-card-tab:last-child {
 			margin-right: 0rem;
 		}
 		.pathways-card-tab {
-			text-decoration: none;
-			background: #A7A9AC;
-			color: #000;
+			filter: grayscale(100%);
+			min-width: 350px;
 
-			img {
-				filter: grayscale(100%);
-			}
-		
+
 			&:hover, &:focus {
-				color: #003d79;
-				text-decoration: underline;
-
-				img {
-					filter: none;
-				}
+				filter: none;
 			}
+
 			
 		}
 		
 		.pathways-card-tab.active {
-			background: #fff;
-			color: #000;
 			text-decoration: none;
-			box-shadow: -2px 2px 2px rgba(0,0,0,0.4), 2px 2px 2px rgba(0,0,0,0.4);
-			
-			&:hover {
+			box-shadow: -4px 4px 4px rgba(0,0,0,0.4), 4px 4px 4px rgba(0,0,0,0.4);
+			filter: none;
+
+			& > div > p {
+				background-color: #fff;
 				color: #000;
-				text-decoration: none;
 			}
-			img {
-				filter: none;
+
+			&:hover {
+				& > div > p {
+					background-color: #fff;
+					color: #000;
+				}
 			}
 		}
 	}
 }
-
