@@ -19,7 +19,7 @@ foreach ( $pathways as $key => $post ):
 				</a>
 			<?php } ?>
 			<div class="card-header">
-				<h3 class"h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+				<h3 class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 				<button class="btn btn-info btn-sm float-right my-0 ml-0" type="button" data-toggle="collapse" data-target="#card-collapse-body-<?php echo $key; ?>" aria-expanded="false" aria-controls="card-collapse-body-<?php echo $key; ?>"><i class="fas fa-chevron-down"></i><span class="sr-only">More about the <?php the_title(); ?> pathway</span></button>
 			</div>
 			<div class="card-body collapse" id="card-collapse-body-<?php echo $key; ?>">

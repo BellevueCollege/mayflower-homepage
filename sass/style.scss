@@ -822,9 +822,12 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
-
+@media (min-width: $breakpoint-bs-sm ) {
+	#pathways-module.active #pathways-desktop-module {
+		display: grid !important;
+	}
+}
 #pathways-module.active #pathways-desktop-module {
-	display: grid !important;
 	grid-template-columns: 2rem 1fr 2rem;
 	grid-template-rows: auto auto;
 	grid-template-areas: 

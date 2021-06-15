@@ -11,7 +11,7 @@ $pathways = get_posts( array(
  * Desktop - Active State
  */
 ?>
-<div id="pathways-desktop-module" class="d-md-block d-none">
+<div id="pathways-desktop-module" class="d-none">
 	<button id="pathways-scroll-back" class="btn btn-dark" aria-hidden="true" title="Scroll Left"><i class="fas fa-chevron-left"></i></button>
 	<div id="pathways-tab-scroll-zone">
 		<div id="pathways-scrolling-grid" class="nav nav-tabs" role="tablist">
