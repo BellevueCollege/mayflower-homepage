@@ -16,7 +16,7 @@ $mfhomepage_allowed_tags = array(
  */
 get_header(); ?>
 
-<h1 class="sr-only" id="content"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
+<h1 class="sr-only" id="main"><?php esc_html_e( 'Welcome to Bellevue College', 'mayflower-homepage' ) ?></h1>
 <section id="mfhomepage-top-menus" class="container px-lg-0 my-3 my-lg-2 d-flex flex-row">
 	<div id="mfhomepage-menus-for" class="d-flex flex-fill flex-column flex-lg-row align-items-lg-center">
 		<h2 class="h6 top-menu-title my-lg-0 text-nowrap pr-2"><?php echo esc_textarea( mfhomepage_get_menu_name( 'mfhomepage_menus_for' ) ); ?></h2>

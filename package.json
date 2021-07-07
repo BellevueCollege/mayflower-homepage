@@ -1,6 +1,6 @@
 {
   "name": "mayflower-homepage",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Mayflower Child Theme to provide custom Bellevue College Homepage",
   "main": " ",
   "browserslist": [
@@ -10,13 +10,13 @@
     "not dead"
   ],
   "dependencies": {
-    "npm": "^7.6.3"
+    "npm": "^7.19.1"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^7.0.0",
     "gulp-notify": "^3.2.0",
-    "gulp-sass": "~4.1.0",
+    "gulp-sass": "^4.1.1",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.1",
     "uglify-save-license": "^0.4.1"
