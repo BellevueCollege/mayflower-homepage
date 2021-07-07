@@ -40,7 +40,7 @@ foreach ( $pathways as $key => $post ):
 				<?php endif; ?>
 				<hr>
 				<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More</a>
-				<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-success">Get Started</a>
+				<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-primary">Get Started</a>
 				
 			</div>
 

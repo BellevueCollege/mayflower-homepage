@@ -7,7 +7,7 @@ if ( $site_id ) : ?>
 
 				<div id="pathways-module">
 					<div id="pathways-module-about" class="card">
-						<h2 class="card-header h5">About Pathways</h2>
+						<h2 class="card-header h5">About BC Pathways</h2>
 						<div class="card-body">
 							<?php
 								$front_page_id = (int)get_option( 'page_on_front' );

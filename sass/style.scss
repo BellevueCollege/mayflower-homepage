@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower-g4
- Version:          3.0.2-#{versionStamp}#
+ Version:          3.1.0-dev6-#{versionStamp}#
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -755,10 +755,19 @@ a.mfhomepage-card:focus {
 	border-bottom: none;
 
 }
+
+#pathways-grid-view,
+#pathways-scroll-back,
+#pathways-scroll-forward {
+	display: none;
+
+}
+
 #pathways-module #pathways-tab-detail {
 	display: none;
 }
 #pathways-module.active {
+	#pathways-grid-view,
 	#pathways-scroll-back,
 	#pathways-scroll-forward {
 		display: block;
@@ -769,15 +778,18 @@ a.mfhomepage-card:focus {
 		display: block;
 		grid-area: content;
 	}
+
+	#pathways-module-about {
+		display: none;
+		
+	}
+	#pathways-card-zone {
+		grid-column: auto / span 3;
+	}
 }
 
 .pathways-card-tab {
 	text-decoration: none;
-}
-
-#pathways-scroll-back,
-#pathways-scroll-forward {
-	display: none;
 }
 
 .desktop-focus-areas {
@@ -823,31 +835,35 @@ a.mfhomepage-card:focus {
 	}
 }
 @media (min-width: $breakpoint-bs-sm ) {
+	#pathways-module #pathways-desktop-module {
+		display: block !important;
+	}
 	#pathways-module.active #pathways-desktop-module {
 		display: grid !important;
 	}
 }
 #pathways-module.active #pathways-desktop-module {
-	grid-template-columns: 2rem 1fr 2rem;
+	grid-template-columns:  2.5rem 2rem 1fr 2rem;
 	grid-template-rows: auto auto;
+	column-gap: .25rem;
+	row-gap: 1rem;
 	grid-template-areas: 
-		"back scroll forward"
-		"content content content"
+		"grid back scroll forward"
+		"content content content content"
+}
+
+#pathways-grid-view {
+	color: #C7EAFB;
+	font-size: 1.2em;
 }
 
 #pathways-module.active #pathways-tab-scroll-zone {
 	overflow-y: hidden;
-	overflow-x: scroll;
+	overflow-x: hidden;
 
-	.pathways-scroll-back,
-	.pathways-scroll-forward {
-		display: block;
-	}
-	
 	#pathways-scrolling-grid {
 		display: flex;
 		flex-wrap: nowrap;
-		padding-bottom: 1rem;
 
 		.pathways-card-tab:last-child {
 			margin-right: 0rem;

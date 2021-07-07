@@ -12,7 +12,8 @@ $pathways = get_posts( array(
  */
 ?>
 <div id="pathways-desktop-module" class="d-none">
-	<button id="pathways-scroll-back" class="btn btn-dark" aria-hidden="true" title="Scroll Left"><i class="fas fa-chevron-left"></i></button>
+	<button id="pathways-grid-view" class="btn btn-primary"><i class="fas fa-grip-vertical" aria-hidden="true"></i><span class="sr-only">Return to Grid View</span></button>
+	<button id="pathways-scroll-back" class="btn btn-primary"><i class="fas fa-chevron-left" aria-hidden="true"></i><span class="sr-only">Move to Previous Tab</span></button>
 	<div id="pathways-tab-scroll-zone">
 		<div id="pathways-scrolling-grid" class="nav nav-tabs" role="tablist">
 			<?
@@ -39,9 +40,9 @@ $pathways = get_posts( array(
 		</div>
 		
 	</div>
-	<button id="pathways-scroll-forward" class="btn btn-dark" aria-hidden="true" title="Scroll Right"><i class="fas fa-chevron-right"></i></button>
+	<button id="pathways-scroll-forward" class="btn btn-primary"><i class="fas fa-chevron-right" aria-hidden="true"></i><span class="sr-only">Move to Next Tab</span></button>
 	<div id="pathways-tab-detail" class="tab-content bg-light p-3">
-		<?
+		<?php
 		foreach ( $pathways as $key => $post ):
 			$outer_post = $post; // save post context for after the nested loop
 			setup_postdata( $post ); ?>
@@ -56,7 +57,7 @@ $pathways = get_posts( array(
 						<?php $post = $outer_post; ?>
 						<div class="col-md-4">
 							<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More</a>
-							<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-success">Get Started</a>
+							<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-primary">Get Started</a>
 						</div>
 					</div>
 					<div class="row">
