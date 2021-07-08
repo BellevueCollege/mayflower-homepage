@@ -26,7 +26,7 @@ $pathways = get_posts( array(
 					   aria-controls="pathway-content-<?php echo $key; ?>" 
 					   aria-selected="false" 
 					   href="#pathway-content-<?php echo $key; ?>">
-						<?php the_post_thumbnail( 'bcgpt-header', ['aria-hidden' => 'true'] ); ?>
+						<?php the_post_thumbnail( 'bcgpt-card-small', ['aria-hidden' => 'true'] ); ?>
 						<div>
 							<p><?php the_title(); ?></p>
 						</div>
