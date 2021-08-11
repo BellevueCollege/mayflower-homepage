@@ -718,28 +718,19 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
-@media (min-width: $breakpoint-bs-md) {
-	#pathways-module {
-		display: grid;
-		grid-template-columns: repeat(3, minmax( 0, 1fr ) );
-		column-gap: 1rem;
-	}
-
-	#pathways-module-about.card {
-		margin-bottom: 0;
-	}
-
-	#pathways-card-zone {
-		grid-column: auto / span 2;
-	}
-}
 
 .responsive-bg-img img,
 .item.responsive-bg-img img  {
 	display: none;
 }
 
-/** Pathways Module Styling */
+/**
+* Pathways Module Styles
+*/
+
+/**
+ * Mobile Styles 
+ */
 .pathways-card {
 	.card-header h3 {
 		clear: none;
@@ -747,6 +738,14 @@ a.mfhomepage-card:focus {
 	}
 }
 
+
+/**
+ * Desktop Styles
+*/
+
+/**
+* Grid view (inactive) styles
+*/
 #pathways-scrolling-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax( 0, 1fr ) );
@@ -756,49 +755,100 @@ a.mfhomepage-card:focus {
 
 }
 
+/* Hide tab controls when in grid view */
 #pathways-grid-view,
 #pathways-scroll-back,
 #pathways-scroll-forward {
 	display: none;
-
 }
 
+/* Hide tab content when in grid view */
 #pathways-module #pathways-tab-detail {
 	display: none;
 }
+
+/**
+ * Tab view (active) styles
+ */
 #pathways-module.active {
+
+	/* Show tab controls */
 	#pathways-grid-view,
 	#pathways-scroll-back,
 	#pathways-scroll-forward {
 		display: block;
-
 	}
 
+	/* Show tab content */
 	#pathways-tab-detail {
 		display: block;
 		grid-area: content;
 	}
 
+	/* Hide about module when in grid view */
 	#pathways-module-about {
 		display: none;
-		
 	}
+
 	#pathways-card-zone {
 		grid-column: auto / span 3;
 	}
+
+	/* Layout for tab area */
+	#pathways-desktop-module {
+		grid-template-columns:  2.5rem 2rem 1fr 2rem;
+		grid-template-rows: auto auto;
+		column-gap: .25rem;
+		row-gap: 1rem;
+		grid-template-areas: 
+			"grid back scroll forward"
+			"content content content content"
+	}
+
+	/* Layout for horizontally scrolling tabs */
+	#pathways-tab-scroll-zone {
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+
+	#pathways-scrolling-grid {
+		display: flex;
+		flex-wrap: nowrap;
+
+		.pathways-card-tab:last-child {
+			margin-right: 0rem;
+		}
+
+		.pathways-card-tab {
+			filter: grayscale(100%);
+			min-width: 350px;
+
+			&:hover, &:focus {
+				filter: none;
+			}
+		
+			&.active {
+				text-decoration: none;
+				box-shadow: -4px 4px 4px rgba(0,0,0,0.4), 4px 4px 4px rgba(0,0,0,0.4);
+				filter: none;
+	
+				& > div > p {
+					background-color: #fff;
+					color: #000;
+				}
+	
+				&:hover {
+					& > div > p {
+						background-color: #fff;
+						color: #000;
+					}
+				}
+			}
+		}
+	}
 }
 
-.pathways-card-tab {
-	text-decoration: none;
-}
-
-.desktop-focus-areas {
-	columns: 2;
-	column-gap: 2rem;
-	column-span: balance;
-}
-
-/* Text Overlay */
+/* Text Overlay on Pathway Tabs */
 .pathways-card-tab {
 	display: grid;
 	grid-template-areas: "overlay";
@@ -807,6 +857,7 @@ a.mfhomepage-card:focus {
 
 	& > img {
 		grid-area: overlay;
+		width: 100%; /* Fix for non-chromium edge */
 	}
 	& > div {
 		grid-area: overlay;
@@ -834,68 +885,62 @@ a.mfhomepage-card:focus {
 		}
 	}
 }
-@media (min-width: $breakpoint-bs-sm ) {
-	#pathways-module #pathways-desktop-module {
-		display: block !important;
-	}
-	#pathways-module.active #pathways-desktop-module {
-		display: grid !important;
-	}
-}
-#pathways-module.active #pathways-desktop-module {
-	grid-template-columns:  2.5rem 2rem 1fr 2rem;
-	grid-template-rows: auto auto;
-	column-gap: .25rem;
-	row-gap: 1rem;
-	grid-template-areas: 
-		"grid back scroll forward"
-		"content content content content"
+
+/**
+* Use text grid for focus area listings
+*/
+.desktop-focus-areas {
+	columns: 2;
+	column-gap: 2rem;
+	column-span: balance;
 }
 
+/* Icon for returning to grid view */
 #pathways-grid-view {
 	color: #C7EAFB;
 	font-size: 1.2em;
 }
 
-#pathways-module.active #pathways-tab-scroll-zone {
-	overflow-y: hidden;
-	overflow-x: hidden;
+@media (min-width: $breakpoint-bs-sm ) {
 
-	#pathways-scrolling-grid {
-		display: flex;
-		flex-wrap: nowrap;
+	@supports (display: grid) {
 
-		.pathways-card-tab:last-child {
-			margin-right: 0rem;
+		.pathways-card-grid {
+			display: none;
 		}
-		.pathways-card-tab {
-			filter: grayscale(100%);
-			min-width: 350px;
 
-
-			&:hover, &:focus {
-				filter: none;
-			}
-
-			
+		/* Display Desktop-Style Module */
+		#pathways-module #pathways-desktop-module {
+			display: block !important;
 		}
-		
-		.pathways-card-tab.active {
-			text-decoration: none;
-			box-shadow: -4px 4px 4px rgba(0,0,0,0.4), 4px 4px 4px rgba(0,0,0,0.4);
-			filter: none;
 
-			& > div > p {
-				background-color: #fff;
-				color: #000;
-			}
-
-			&:hover {
-				& > div > p {
-					background-color: #fff;
-					color: #000;
-				}
-			}
+		/* Display Pathways as a Grid */
+		#pathways-module.active #pathways-desktop-module {
+			display: grid !important;
 		}
 	}
 }
+
+@media (min-width: $breakpoint-bs-md) {
+
+	@supports (display: grid) {
+
+
+		/* Convert entire module to a grid (placing 'about' on left) */
+		#pathways-module {
+			display: grid;
+			grid-template-columns: repeat(3, minmax( 0, 1fr ) );
+			column-gap: 1rem;
+		}
+
+		#pathways-module-about.card {
+			margin-bottom: 0;
+		}
+
+		#pathways-card-zone {
+			grid-column: auto / span 2;
+		}
+	}
+}
+
+

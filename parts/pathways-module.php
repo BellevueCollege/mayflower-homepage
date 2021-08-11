@@ -18,7 +18,7 @@ if ( $site_id ) : ?>
 						</div>
 					</div>
 					<div id="pathways-card-zone">
-						<div class="pathways-card-grid d-md-none">
+						<div class="pathways-card-grid">
 							<?php get_template_part( 'parts/pathway-card-mobile' ); ?>
 						</div>
 						<?php get_template_part( 'parts/pathway-card-desktop' ); ?>
