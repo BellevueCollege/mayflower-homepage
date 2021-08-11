@@ -63,8 +63,17 @@ $pathways = get_posts( array(
 					<div class="row">
 						<div class="col-12">
 							<?php
-							$focus_areas = get_field('pathway_focus_area_connection');
-							if ( $focus_areas ) : ?>
+							$focus_area_ids = get_field('pathway_focus_area_connection', false, false );
+							$args = array(
+								'post_type'         => 'bcgpt-focusarea',
+								'posts_per_page'    => -1,
+								'post__in'          => empty( $focus_area_ids ) ? array(-1) : $focus_area_ids,
+								'order'             => 'ASC',
+								'orderby'           => 'title',
+							);
+							
+							if ( $focus_area_ids ) :
+								$focus_areas = get_posts( $args );?>
 								<h4 class="card-title">Focus Areas:</h4>
 								<ul class="desktop-focus-areas">
 									<?php foreach ( $focus_areas as $post ) : ?>
@@ -73,12 +82,10 @@ $pathways = get_posts( array(
 										<?php wp_reset_postdata(); ?>
 									<?php endforeach; ?>
 								</ul>
-								
 							<?php endif; ?>
-						
+
 						</div>
 					</div>
-					
 				</div>
 				
 				<?php

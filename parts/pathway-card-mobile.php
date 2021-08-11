@@ -24,21 +24,6 @@ foreach ( $pathways as $key => $post ):
 			</div>
 			<div class="card-body collapse" id="card-collapse-body-<?php echo $key; ?>">
 				<?php the_excerpt(); ?>
-				
-				<?php
-				$focus_areas = get_field('pathway_focus_area_connection');
-				if ( $focus_areas ) : ?>
-					<h4 class="card-title">Focus Areas:</h4>
-					<ul>
-						<?php foreach ( $focus_areas as $post ) : ?>
-							<?php setup_postdata( $post ); ?>
-								<li><a href="<?php the_field('associated_department_url') ?>"><?php the_title(); ?></a></li>
-							<?php wp_reset_postdata(); ?>
-						<?php endforeach; ?>
-					</ul>
-					
-				<?php endif; ?>
-				<hr>
 				<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More</a>
 				<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-primary">Get Started</a>
 				
