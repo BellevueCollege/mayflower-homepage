@@ -41,6 +41,8 @@ function mayflower_homepage_enqueue_styles() {
 
 		wp_enqueue_script( 'mhcarousel-script', get_stylesheet_directory_uri() . '/js/mhcarousel.js', array('jquery'), '3.0.1' ); //added jquery because jquery was called after the scripts
 		wp_add_inline_script( 'mhcarousel-script', $carousel_posts_array, 'before' );
+
+		wp_enqueue_script( 'pathways-script', get_stylesheet_directory_uri() . '/js/pathways.js', array('jquery'), '3.0.1#dev5', true );
 	}
 }
 
@@ -301,6 +303,11 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
+	$wp_customize->add_setting( 'pathways_source_site' , array(
+		'default'           => '',
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
 
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'modules_post_type', array(
 		'label'        => __( 'Homepage Modules', 'mayflower-homepage' ),
@@ -385,6 +392,13 @@ function mayflower_homepage_customize_register( $wp_customize ) {
 		'settings'     => 'deadlines_category',
 		'type'         => 'select',
 		'choices'      => get_categories_select( get_theme_mod( 'newsevents_post_type_taxonomy' ) ),
+	) ) );
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'pathways_source_site', array(
+		'label'        => __( 'Pathways Source Site ID', 'mayflower-homepage' ),
+		'description'  => __( 'Numeric ID of the Pathways Module Source Site', 'mayflower-homepage' ),
+		'section'      => 'mayflower_homepage_options',
+		'settings'     => 'pathways_source_site',
+		'type'         => 'text',
 	) ) );
 }
 add_action( 'customize_register', 'mayflower_homepage_customize_register' );
