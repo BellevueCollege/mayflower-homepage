@@ -81,7 +81,6 @@ get_header(); ?>
 	
 	<?php endwhile; ?>
 <?php endif; ?>
-
 <?php
 $the_query = new WP_Query( array(
 	'post_type'      => get_theme_mod( 'modules_post_type' ),
@@ -179,7 +178,7 @@ if ( $the_query->have_posts() ) : ?>
 endif;
 wp_reset_postdata();
 ?>
-
+<?php get_template_part( 'parts/pathways-module' ); ?>
 <section id="mfhomepage-news-events-container">
 	<div id="mfhomepage-news-events" class="container px-0">
 		<?php $the_query = new WP_Query( array(

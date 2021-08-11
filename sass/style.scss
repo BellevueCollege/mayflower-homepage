@@ -5,7 +5,7 @@
  Author:           Bellevue College Information Technology Services
  Author URI:       http://www.bellevuecollege.edu
  Template:         mayflower-g4
- Version:          3.0.3-#{versionStamp}#
+ Version:          3.1.0-dev6-#{versionStamp}#
  GitHub Theme URI: bellevuecollege/mayflower-homepage
  License:          GNU General Public License v2 or later
  License URI:      http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,137 +156,139 @@ $bg-transparent-hover: rgba( 0, 0, 0, .75 );
 		margin-top: 1rem;
 	}
 	
-	& .mfhomepage-content-module {
-		margin-bottom: 1rem;
-		
-		padding: 1rem;
+}
 
-		flex: 1 0 auto;
+.mfhomepage-content-module {
+	margin-bottom: 1rem;
+	
+	padding: 1rem;
 
-		background: #fff;
+	flex: 1 0 auto;
 
-		font-size: 1.2rem;
-		line-height: 1.75rem;
+	background: #fff;
 
-		overflow: hidden;
+	font-size: 1.2rem;
+	line-height: 1.75rem;
 
-		div.content-module-text {
-			margin-top: 1rem;
-		}
+	overflow: hidden;
 
-		h2 {
-			margin: 0;
-			margin-bottom: .25rem;
-			font-size: 1em;  // based on overall font-size
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
-			font-size: 1.1em;
-
-			li {
-				line-height: 1.2em;
-			}
-			
-		}
+	div.content-module-text {
+		margin-top: 1rem;
 	}
-	& .mfhomepage-content-module-embed {
+
+	h2 {
+		margin: 0;
+		margin-bottom: .25rem;
+		font-size: 1em;  // based on overall font-size
+	}
+
+	ul {
+		list-style: none;
 		padding: 0;
-		background: $brand-primary;
-		overflow: hidden;
+		font-size: 1.1em;
 
-		iframe.youvisit-embed {
-			margin-bottom: -7px;
+		li {
+			line-height: 1.2em;
 		}
-
-		figure {
-			margin: 0;
-		}
-
-		& > a {
-			text-align: center;
-			margin: 3em 1em;
-			display: block;
-			color: #fff;
-			
-		}
+		
 	}
-	& a.mfhomepage-content-module {
+}
+.mfhomepage-content-module-embed {
+	padding: 0;
+	background: $brand-primary;
+	overflow: hidden;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+	iframe.youvisit-embed {
+		margin-bottom: -7px;
+	}
 
-		min-height: 180px;
+	figure {
+		margin: 0;
+	}
+
+	& > a {
+		text-align: center;
+		margin: 3em 1em;
+		display: block;
+		color: #fff;
+		
+	}
+}
+a.mfhomepage-content-module {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	min-height: 180px;
+
+	text-decoration: none;
+
+	padding: 1em 0;
+
+	background-color: $brand-primary;
+	background-repeat: no-repeat;
+	background-position: center; 
+	background-size: cover;
+
+	div {
+		background: $bg-transparent;
+		text-align: center;
+		transition: background-color .25s ease-out;
+	}
+
+	p {
+		text-align: center;
+		margin: .5em;
+		padding: .25em .75em;
 
 		text-decoration: none;
+		color: #fff;
 
-		padding: 1em 0;
+	}
 
-		background-color: $brand-primary;
-		background-repeat: no-repeat;
-		background-position: center; 
-		background-size: cover;
-
+	&:hover,
+	&:active,
+	&:focus {
+		box-shadow: 0 0 5px #000;
 		div {
-			background: $bg-transparent;
-			text-align: center;
-			transition: background-color .25s ease-out;
-		}
-
-		p {
-			text-align: center;
-			margin: .5em;
-			padding: .25em .75em;
-
-			text-decoration: none;
-			color: #fff;
-
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			box-shadow: 0 0 5px #000;
-			div {
-				background: #000;
-			}
-		}
-
-		&.mfhomepage-content-module-btn {
-
-			p {
-				margin: 0 .5rem;
-			}
-			p:first-child {
-				margin-top: .25rem;
-				padding-top: .25rem;
-			}
-			p:last-child {
-				margin-bottom: .25rem;
-				padding-bottom: .25rem;
-			}
-
-			strong {
-				padding: .25rem .75rem;
-				
-				display: inline-block;
-				border-radius: 5px;
-				border: 1px solid #ffffff;
-				background: #000000;
-			}
-			&:hover,
-			&:active,
-			&:focus {
-				strong {
-					box-shadow: 0px 0px 5px #fff;
-				}
-				
-			}
+			background: #000;
 		}
 	}
 }
+
+.mfhomepage-content-module-btn {
+
+	p {
+		margin: 0 .5rem;
+	}
+	p:first-child {
+		margin-top: .25rem;
+		padding-top: .25rem;
+	}
+	p:last-child {
+		margin-bottom: .25rem;
+		padding-bottom: .25rem;
+	}
+
+	strong {
+		padding: .25rem .75rem;
+		
+		display: inline-block;
+		border-radius: 5px;
+		border: 1px solid #ffffff;
+		background: #000000;
+	}
+	&:hover,
+	&:active,
+	&:focus {
+		strong {
+			box-shadow: 0px 0px 5px #fff;
+		}
+		
+	}
+}
+
 
 
 //////
@@ -717,9 +719,228 @@ a.mfhomepage-card:focus {
 	}
 }
 
-
 .responsive-bg-img img,
 .item.responsive-bg-img img  {
 	display: none;
 }
+
+/**
+* Pathways Module Styles
+*/
+
+/**
+ * Mobile Styles 
+ */
+.pathways-card {
+	.card-header h3 {
+		clear: none;
+		display: inline;
+	}
+}
+
+
+/**
+ * Desktop Styles
+*/
+
+/**
+* Grid view (inactive) styles
+*/
+#pathways-scrolling-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax( 0, 1fr ) );
+	column-gap: 1rem;
+	row-gap: 1rem;
+	border-bottom: none;
+
+}
+
+/* Hide tab controls when in grid view */
+#pathways-grid-view,
+#pathways-scroll-back,
+#pathways-scroll-forward {
+	display: none;
+}
+
+/* Hide tab content when in grid view */
+#pathways-module #pathways-tab-detail {
+	display: none;
+}
+
+/**
+ * Tab view (active) styles
+ */
+#pathways-module.active {
+
+	/* Show tab controls */
+	#pathways-grid-view,
+	#pathways-scroll-back,
+	#pathways-scroll-forward {
+		display: block;
+	}
+
+	/* Show tab content */
+	#pathways-tab-detail {
+		display: block;
+		grid-area: content;
+	}
+
+	/* Hide about module when in grid view */
+	#pathways-module-about {
+		display: none;
+	}
+
+	#pathways-card-zone {
+		grid-column: auto / span 3;
+	}
+
+	/* Layout for tab area */
+	#pathways-desktop-module {
+		grid-template-columns:  2.5rem 2rem 1fr 2rem;
+		grid-template-rows: auto auto;
+		column-gap: .25rem;
+		row-gap: 1rem;
+		grid-template-areas: 
+			"grid back scroll forward"
+			"content content content content"
+	}
+
+	/* Layout for horizontally scrolling tabs */
+	#pathways-tab-scroll-zone {
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
+
+	#pathways-scrolling-grid {
+		display: flex;
+		flex-wrap: nowrap;
+
+		.pathways-card-tab:last-child {
+			margin-right: 0rem;
+		}
+
+		.pathways-card-tab {
+			filter: grayscale(100%);
+			min-width: 350px;
+
+			&:hover, &:focus {
+				filter: none;
+			}
+		
+			&.active {
+				text-decoration: none;
+				box-shadow: -4px 4px 4px rgba(0,0,0,0.4), 4px 4px 4px rgba(0,0,0,0.4);
+				filter: none;
+	
+				& > div > p {
+					background-color: #fff;
+					color: #000;
+				}
+	
+				&:hover {
+					& > div > p {
+						background-color: #fff;
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Text Overlay on Pathway Tabs */
+.pathways-card-tab {
+	display: grid;
+	grid-template-areas: "overlay";
+	color: #fff;
+	text-decoration: none;
+
+	& > img {
+		grid-area: overlay;
+		width: 100%; /* Fix for non-chromium edge */
+	}
+	& > div {
+		grid-area: overlay;
+		display: flex;
+		flex-direction: column-reverse;
+		align-content: flex-end;
+
+		& > p {
+			flex: 0 0 0;
+			margin: 0;
+			padding: .5em;
+			background: rgba(0,0,0,.54);
+			margin-bottom: 0;
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	&:hover, &:active, &:focus {
+		color: #fff;
+		text-decoration: none;
+		& > div > p {
+			background: rgba(0,0,0,1)
+		}
+	}
+}
+
+/**
+* Use text grid for focus area listings
+*/
+.desktop-focus-areas {
+	columns: 2;
+	column-gap: 2rem;
+	column-span: balance;
+}
+
+/* Icon for returning to grid view */
+#pathways-grid-view {
+	color: #C7EAFB;
+	font-size: 1.2em;
+}
+
+@media (min-width: $breakpoint-bs-sm ) {
+
+	@supports (display: grid) {
+
+		.pathways-card-grid {
+			display: none;
+		}
+
+		/* Display Desktop-Style Module */
+		#pathways-module #pathways-desktop-module {
+			display: block !important;
+		}
+
+		/* Display Pathways as a Grid */
+		#pathways-module.active #pathways-desktop-module {
+			display: grid !important;
+		}
+	}
+}
+
+@media (min-width: $breakpoint-bs-md) {
+
+	@supports (display: grid) {
+
+
+		/* Convert entire module to a grid (placing 'about' on left) */
+		#pathways-module {
+			display: grid;
+			grid-template-columns: repeat(3, minmax( 0, 1fr ) );
+			column-gap: 1rem;
+		}
+
+		#pathways-module-about.card {
+			margin-bottom: 0;
+		}
+
+		#pathways-card-zone {
+			grid-column: auto / span 2;
+		}
+	}
+}
+
 

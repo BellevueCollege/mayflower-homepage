@@ -10,7 +10,7 @@
     "not dead"
   ],
   "dependencies": {
-    "npm": "^7.19.1"
+    "npm": "^7.20.5"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
