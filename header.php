@@ -38,7 +38,7 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/bellevue.ico" />
+	<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/img/bellevue.ico" />
 
 	<?php if ( is_archive( $post->ID ?? null ) ) { ?>
 		<meta name="robots" content="noindex, follow">
