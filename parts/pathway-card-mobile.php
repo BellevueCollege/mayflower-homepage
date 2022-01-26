@@ -24,9 +24,8 @@ foreach ( $pathways as $key => $post ):
 			</div>
 			<div class="card-body collapse" id="card-collapse-body-<?php echo $key; ?>">
 				<?php the_excerpt(); ?>
-				<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More</a>
-				<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-primary">Get Started</a>
-				
+				<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More<br><small>About This Pathway</small></a>
+				<a class="btn btn-block btn-primary" href="https://www.bellevuecollege.edu/advising/pathways-workshops/">Sign Up Now<br><small>BC Pathways Workshop</small></a>
 			</div>
 
 		</div>

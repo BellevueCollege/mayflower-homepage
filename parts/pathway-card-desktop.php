@@ -51,39 +51,17 @@ $pathways = get_posts( array(
 						<?php the_title(); ?>
 					</h3>
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<?php the_excerpt(); ?>
 						</div>
 						<?php $post = $outer_post; ?>
-						<div class="col-md-4">
-							<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More</a>
-							<a href="https://www.bellevuecollege.edu/welcome/admission-advising/" class="btn btn-block btn-primary">Get Started</a>
-						</div>
 					</div>
-					<div class="row">
-						<div class="col-12">
-							<?php
-							$focus_area_ids = get_field('pathway_focus_area_connection', false, false );
-							$args = array(
-								'post_type'         => 'bcgpt-focusarea',
-								'posts_per_page'    => -1,
-								'post__in'          => empty( $focus_area_ids ) ? array(-1) : $focus_area_ids,
-								'order'             => 'ASC',
-								'orderby'           => 'title',
-							);
-							
-							if ( $focus_area_ids ) :
-								$focus_areas = get_posts( $args );?>
-								<h4 class="card-title">Focus Areas:</h4>
-								<ul class="desktop-focus-areas">
-									<?php foreach ( $focus_areas as $post ) : ?>
-										<?php setup_postdata( $post ); ?>
-											<li><a href="<?php the_field('associated_department_url') ?>"><?php the_title(); ?></a></li>
-										<?php wp_reset_postdata(); ?>
-									<?php endforeach; ?>
-								</ul>
-							<?php endif; ?>
-
+					<div class="row justify-content-center">
+						<div class="col-md-4">
+							<a href="<?php the_permalink(); ?>" class="btn btn-block btn-info">Learn More<br><small>About This Pathway</small></a>
+						</div>
+						<div class="col-md-4">
+							<a class="btn btn-block btn-primary" href="https://www.bellevuecollege.edu/advising/pathways-workshops/">Sign Up Now<br><small>BC Pathways Workshop</small></a>
 						</div>
 					</div>
 				</div>
