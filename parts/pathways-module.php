@@ -16,6 +16,9 @@ if ( $site_id ) : ?>
 								echo $excerpt;
 							?>
 						</div>
+						<div class="card-footer">
+							<a class="btn btn-primary float-right" href="https://www.bellevuecollege.edu/pathways/">Learn About BC Pathways</a>
+						</div>
 					</div>
 					<div id="pathways-card-zone">
 						<div class="pathways-card-grid">
